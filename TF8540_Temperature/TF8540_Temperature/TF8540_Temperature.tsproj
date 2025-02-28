@@ -134,7 +134,7 @@
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name IecBaseType="true">ARRAY [1..1] OF Tc2_PfwLib_Processing.ST_TcPfw_TempCtrlInput</Name>
+			<Name GUID="{F9BD6FAD-461A-5894-800A-02EB316C2FBE}" IecBaseType="true" AutoDeleteType="true">ARRAY [1..1] OF Tc2_PfwLib_Processing.ST_TcPfw_TempCtrlInput</Name>
 			<Comment><![CDATA[ $-$ eMold remove to here 
 
 		I/O resources for temp ctrl
@@ -249,7 +249,7 @@ change log
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name IecBaseType="true">ARRAY [1..1] OF Tc2_PfwLib_Processing.ST_TcPfw_TempCtrlOutput</Name>
+			<Name GUID="{004900AF-2EDF-5F61-481A-534DC8DDBB69}" IecBaseType="true" AutoDeleteType="true">ARRAY [1..1] OF Tc2_PfwLib_Processing.ST_TcPfw_TempCtrlOutput</Name>
 			<BitSize>128</BitSize>
 			<BaseType GUID="{3E6715BF-5A90-180E-9521-C3B21869AEDF}" Namespace="Tc2_PfwLib_Processing">ST_TcPfw_TempCtrlOutput</BaseType>
 			<ArrayInfo>
@@ -289,7 +289,7 @@ change log
 		</System>
 		<Plc>
 			<Project GUID="{E3EF9621-99B9-40CC-AA5A-65A1FEE60A10}" Name="PLC1" PrjFilePath="PLC1\PLC1.plcproj" TmcFilePath="PLC1\PLC1.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{28C700C1-7789-7350-3176-CBD585E0341D}" TmcPath="PLC1\PLC1.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{F61A8726-8D95-A300-ACD5-27E9FD0F317D}" TmcPath="PLC1\PLC1.tmc">
 					<Name>PLC1 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" ContextId="1" AreaNo="17">
