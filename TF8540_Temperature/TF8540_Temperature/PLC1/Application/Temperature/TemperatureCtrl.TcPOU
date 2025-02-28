@@ -3,16 +3,15 @@
   <POU Name="TemperatureCtrl" Id="{e8cdaf16-c3f7-4a5d-8bd2-e5b206cf1e4b}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM TemperatureCtrl
 VAR
-	eState					: E_MainStateMachine := eMainSM_BasicInit;
-	nCount					: INT := 0;
-	fCycleTime				: LREAL := 0.025;
-	fbTempCtrl				: FB_TempCtrlMainBody_TcPfw_TC3;
-	fbVisu					: FB_MainVisu;
-	bEntry					: BOOL;
-	fbSave					: FB_Save;
-	fbLoad					: FB_Load;
-//	Demo
-(*	fbDRAND					: DRAND;	*)
+	eState						: E_MainStateMachine := eMainSM_BasicInit;
+	nCount						: INT := 0;
+	fCycleTime					: LREAL := 0.025;
+	fbTempCtrl					: FB_TempCtrlMainBody_TcPfw_TC3;
+	fbVisu						: FB_MainVisu;
+	bEntry						: BOOL;
+	fbSave						: FB_Save;
+	fbLoad						: FB_Load;
+
 	fbGetCurTaskIdx 			: GETCURTASKINDEX;
 	bFirstCycle					: BOOL;
 ///	iRead						: INT;
@@ -101,19 +100,7 @@ CASE eState OF
 		
 END_CASE
 
-////////////////////////////////////////////////////////////////////////////////
-	/// Demo actual supply load
-(*	
-fbDRAND(Seed:= 700, Num=>);
-
-IF out_PfwTempCtrlOutput[1].SelOutPos THEN	
-	stPfwSupplyLineCfg[1].fActSupplyLoad:= (700+100*fbDRAND.Num);
-ELSE
-	stPfwSupplyLineCfg[1].fActSupplyLoad:= 0;	
-END_IF
-*)
-////////////////////////////////////////////////////////////////////////////////
-
+// =========================================================
 fbTempCtrl(
 	Looptest_Enable:= TRUE,
 	Scope_TempCtrlVariables:= Scope_TempCtrlVariables);
@@ -229,10 +216,6 @@ END_FOR
       <LineId Id="49" Count="4" />
       <LineId Id="55" Count="0" />
       <LineId Id="57" Count="11" />
-      <LineId Id="102" Count="1" />
-      <LineId Id="69" Count="6" />
-      <LineId Id="104" Count="0" />
-      <LineId Id="76" Count="1" />
       <LineId Id="79" Count="9" />
       <LineId Id="2" Count="0" />
     </LineIds>
