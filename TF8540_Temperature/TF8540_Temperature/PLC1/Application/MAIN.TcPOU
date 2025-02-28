@@ -6,8 +6,6 @@ PROGRAM MAIN
 VAR
 	fbGetCurTaskIdx 			: GETCURTASKINDEX;
 	bFirstCycle					: BOOL;
-///	iRead						: INT;
-///	opPWM 				AT %Q*	: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -19,20 +17,7 @@ bFirstCycle:= _TaskInfo[fbGetCurTaskIdx.index].FirstCycle;
 IF bFirstCycle THEN
 	;
 END_IF
-(*
-// =========================================================
-	// Temp
-///aaaPfwTempMparamFromHmi[1].SensorType:= eTcPfwTempSensT_TC_K;
-///aaaPfwTempMparamFromHmi[1].TempSensTerm:= eTcPfwTermT_EL331x;
 
-///TcPfw_Global_TempCtrlVariables.in_PfwTempCtrlInput[1].EL_SnsData:= iRead;
-///opPWM:=out_PfwTempCtrlOutput[1].SelOutPos;
-
-///aaaPfwTempMparamFromHmi[1].AbsoluteHigh:= 405;
-
-	// Call temperature control
-TemperatureCtrl();
-*)
 // =========================================================]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
@@ -42,17 +27,6 @@ TemperatureCtrl();
       <LineId Id="1839" Count="0" />
       <LineId Id="1706" Count="2" />
       <LineId Id="1578" Count="0" />
-      <LineId Id="636" Count="0" />
-      <LineId Id="3" Count="0" />
-      <LineId Id="1991" Count="0" />
-      <LineId Id="2" Count="0" />
-      <LineId Id="1966" Count="0" />
-      <LineId Id="1979" Count="1" />
-      <LineId Id="1978" Count="0" />
-      <LineId Id="1974" Count="0" />
-      <LineId Id="1973" Count="0" />
-      <LineId Id="1976" Count="1" />
-      <LineId Id="1975" Count="0" />
       <LineId Id="1990" Count="0" />
       <LineId Id="1989" Count="0" />
     </LineIds>
