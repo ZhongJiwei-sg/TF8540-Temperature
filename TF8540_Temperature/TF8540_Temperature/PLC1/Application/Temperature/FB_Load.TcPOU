@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Load" Id="{508d3fb0-e11d-4506-9cb5-c1b7bfcf7ffc}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Load
+VAR
+	nCount							: INT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// =========================================================
+(* Product parameters *)
+(* Product parameter - Set load on true *)
+IF (stTempLoad.stTempCmd.bLoadPparams AND NOT stTempLoad.stTempState.bPparamLoad) THEN
+	stTempLoad.stTempCmd.bLoadPparams:=
+	stTempLoad.stTempState.bPparamLoaded:= FALSE;
+	stTempLoad.stTempState.bPparamLoad:= TRUE;
+	FOR nCount:=cnPfwTempCtrlFirst TO cnPfwTempCtrlLast DO
+		aaaPfwTempPparamFromHmi[nCount].bLoadParams:= TRUE;
+	END_FOR
+END_IF
+(* Product parameter - check load is done *)
+IF stTempLoad.stTempState.bPparamLoad THEN
+	stTempLoad.stTempState.bPparamLoad:= FALSE;
+	FOR nCount:=cnPfwTempCtrlFirst TO cnPfwTempCtrlLast DO
+		IF aaaPfwTempPparamFromHmi[nCount].bLoadParams THEN
+			stTempLoad.stTempState.bPparamLoad:= TRUE;
+		END_IF
+	END_FOR
+	stTempLoad.stTempState.bPparamLoaded:= NOT stTempLoad.stTempState.bPparamLoad;
+END_IF
+
+
+
+(* Machine parameters *)
+(* Machine parameter - Set load on true *)
+IF (stTempLoad.stTempCmd.bLoadMparams AND NOT stTempLoad.stTempState.bMparamLoad) THEN
+	stTempLoad.stTempCmd.bLoadMparams:=
+	stTempLoad.stTempState.bMparamLoaded:= FALSE;
+	stTempLoad.stTempState.bMparamLoad:= TRUE;
+	FOR nCount:=cnPfwTempCtrlFirst TO cnPfwTempCtrlLast DO
+		aaaPfwTempMparamFromHmi[nCount].bLoadParams:= TRUE;
+	END_FOR
+END_IF
+(* Machine parameter - check load is done *)
+IF stTempLoad.stTempState.bMparamLoad THEN
+	stTempLoad.stTempState.bMparamLoad:= FALSE;
+	FOR nCount:=cnPfwTempCtrlFirst TO cnPfwTempCtrlLast DO
+		IF aaaPfwTempMparamFromHmi[nCount].bLoadParams THEN
+			stTempLoad.stTempState.bPparamLoad:= TRUE;
+		END_IF
+	END_FOR
+	stTempLoad.stTempState.bMparamLoaded:= NOT stTempLoad.stTempState.bMparamLoad;
+END_IF
+
+
+
+(* Supply lines *)
+(* Supply lines - Set load on true *)
+IF (stTempLoad.stTempCmd.bLoadSupplyParams AND NOT stTempLoad.stTempState.bSupplyParamsLoad) THEN
+	stTempLoad.stTempCmd.bLoadSupplyParams:=
+	stTempLoad.stTempState.bSupplyParamsLoaded:= FALSE;
+	stTempLoad.stTempState.bSupplyParamsLoad:= TRUE;
+	FOR nCount:=cnPfwAppSupplyFirst TO cnPfwAppSupplyLast DO
+		stPfwSupplyLineCfg[nCount].bLoadParams:= TRUE;
+	END_FOR
+END_IF
+(* Supply lines - check load is done *)
+IF stTempLoad.stTempState.bSupplyParamsLoad THEN
+	stTempLoad.stTempState.bSupplyParamsLoad:= FALSE;
+	FOR nCount:=cnPfwAppSupplyFirst TO cnPfwAppSupplyLast DO
+		IF stPfwSupplyLineCfg[nCount].bLoadParams THEN
+			stTempLoad.stTempState.bSupplyParamsLoad:= TRUE;
+		END_IF
+	END_FOR
+	stTempLoad.stTempState.bSupplyParamsLoaded:= NOT stTempLoad.stTempState.bSupplyParamsLoad;
+END_IF
+// =========================================================
+
+
+
+
+
+
+(* Old Routine *)
+(*
+IF (stTempLoad.stTempCmd.bLoadPparams AND NOT stTempLoad.stTempCmd.bLoadMparams AND NOT stTempLoad.stTempCmd.bLoadSupplyParams)THEN
+	IF(Loadidx<.cnPfwTempCtrlFirst)THEN
+		stTempLoad.stTempState.bPparamLoaded:=FALSE;
+		Loadidx:=cnPfwTempCtrlFirst;
+		fbLoadParams.PathName:=sPathP;
+	ELSIF(Loadidx>cnPfwTempCtrlLast)THEN
+		Loadidx:=cnPfwTempCtrlFirst-1;
+		stTempLoad.stTempState.bPparamLoaded:=TRUE;
+		stTempLoad.stTempState.bPparamLoad:=FALSE;
+		stTempLoad.stTempCmd.bLoadPparams:=FALSE;
+	ELSE
+		fbLoadParams
+			(
+			Mparam:=aaaPfwTempMparamFromHmi[Loadidx],
+			Pparam:=aaaPfwTempPparamFromHmi[Loadidx],
+			ProductParam:=TRUE
+			);
+		IF(fbLoadParams.Execute AND (fbLoadParams.Done OR fbLoadParams.Error))THEN
+			fbLoadParams.Execute:=FALSE;
+			Loadidx:=Loadidx+1;
+		ELSE
+			fbLoadParams.Execute:=TRUE;
+		END_IF
+	END_IF
+END_IF
+
+(*
+load machine parameters 
+*)
+IF(NOT stTempLoad.stTempCmd.bLoadPparams AND  stTempLoad.stTempCmd.bLoadMparams AND NOT stTempLoad.stTempCmd.bLoadSupplyParams)THEN
+	IF(Loadidx<cnPfwTempCtrlFirst)THEN
+		stTempLoad.stTempState.bMparamLoaded:=FALSE;
+		Loadidx:=cnPfwTempCtrlFirst;
+		fbLoadParams.PathName:=sPathM;
+	ELSIF(Loadidx>cnPfwTempCtrlLast)THEN
+		Loadidx:=cnPfwTempCtrlFirst-1;
+		stTempLoad.stTempState.bMparamLoaded:=TRUE;
+		stTempLoad.stTempState.bMparamLoad:=FALSE;
+		stTempLoad.stTempCmd.bLoadMparams:=FALSE;
+	ELSE
+		fbLoadParams
+			(
+			Mparam:=aaaPfwTempMparamFromHmi[Loadidx],
+			Pparam:=aaaPfwTempPparamFromHmi[Loadidx],
+			ProductParam:=FALSE
+			);
+		IF(fbLoadParams.Execute AND (fbLoadParams.Done OR fbLoadParams.Error))THEN
+			fbLoadParams.Execute:=FALSE;
+			Loadidx:=Loadidx+1;
+		ELSE
+			fbLoadParams.Execute:=TRUE;
+		END_IF
+	END_IF
+END_IF
+
+(*
+load supply lines 
+*)
+IF(stTempLoad.stTempCmd.bLoadSupplyParams AND NOT stTempLoad.stTempCmd.bLoadPparams AND NOT stTempLoad.stTempCmd.bLoadMparams)THEN
+	IF(Loadidx<cnPfwAppSupplyFirst)THEN
+		stTempLoad.stTempState.bSupplyParamsLoaded:=FALSE;
+		Loadidx:=cnPfwAppSupplyFirst;
+		fbLoadSupplyParams.PathName:=sPathM;
+	ELSIF(Loadidx>cnPfwAppSupplyLast)THEN
+		Loadidx:=cnPfwTempCtrlFirst-1;
+		stTempLoad.stTempState.bSupplyParamsLoaded:=TRUE;
+		stTempLoad.stTempState.bSupplyParamsLoad:=FALSE;
+		stTempLoad.stTempCmd.bLoadSupplyParams:=FALSE;
+	ELSE
+		fbLoadSupplyParams
+			(
+			Supply:=stPfwSupplyLineCfg[Loadidx],
+			Supidx:=Loadidx
+			);
+		IF(fbLoadSupplyParams.Execute AND (fbLoadSupplyParams.Done OR fbLoadSupplyParams.Error))THEN
+			fbLoadSupplyParams.Execute:=FALSE;
+			Loadidx:=Loadidx+1;
+		ELSE
+			fbLoadSupplyParams.Execute:=TRUE;
+		END_IF
+	END_IF
+END_IF
+*)]]></ST>
+    </Implementation>
+    <LineIds Name="FB_Load">
+      <LineId Id="164" Count="0" />
+      <LineId Id="3" Count="156" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

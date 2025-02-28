@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="TemperatureCtrl" Id="{e8cdaf16-c3f7-4a5d-8bd2-e5b206cf1e4b}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM TemperatureCtrl
+VAR
+	eState					: E_MainStateMachine := eMainSM_BasicInit;
+	nCount					: INT := 0;
+	fCycleTime				: LREAL := 0.025;
+	fbTempCtrl				: FB_TempCtrlMainBody_TcPfw_TC3;
+	fbVisu					: FB_MainVisu;
+	bEntry					: BOOL;
+	fbSave					: FB_Save;
+	fbLoad					: FB_Load;
+//	Demo
+(*	fbDRAND					: DRAND;	*)
+	fbGetCurTaskIdx 			: GETCURTASKINDEX;
+	bFirstCycle					: BOOL;
+///	iRead						: INT;
+///	opPWM 				AT %Q*	: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// =========================================================
+	// Get plc first cycle flag	
+fbGetCurTaskIdx(); 
+bFirstCycle:= _TaskInfo[fbGetCurTaskIdx.index].FirstCycle;
+
+IF bFirstCycle THEN
+	;
+END_IF
+
+// =========================================================
+	// Temp
+///aaaPfwTempMparamFromHmi[1].SensorType:= eTcPfwTempSensT_TC_K;
+///aaaPfwTempMparamFromHmi[1].TempSensTerm:= eTcPfwTermT_EL331x;
+
+///TcPfw_Global_TempCtrlVariables.in_PfwTempCtrlInput[1].EL_SnsData:= iRead;
+///opPWM:=out_PfwTempCtrlOutput[1].SelOutPos;
+
+///aaaPfwTempMparamFromHmi[1].AbsoluteHigh:= 405;
+
+// =========================================================
+CASE eState OF
+	
+	eMainSM_BasicInit:
+		_01_BasicInit();
+		bEntry:= TRUE;
+		eState:= eMainSM_MParamLoad;
+		
+	eMainSM_TempInit:
+		_02_ParamsInit();
+		bParamsInit:= FALSE;
+		eState:= eMainSM_Idle;
+		
+	eMainSM_MParamLoad:
+		IF bEntry THEN
+			bEntry:= FALSE;
+			stTempLoad.stTempCmd.bLoadMparams:= TRUE;
+		ELSE
+			IF stTempLoad.stTempState.bMparamLoaded THEN
+				eState:= eMainSM_PParamLoad;
+				bEntry:= TRUE;
+			END_IF
+		END_IF
+	
+	eMainSM_PParamLoad:
+		IF bEntry THEN
+			bEntry:= FALSE;
+			stTempLoad.stTempCmd.bLoadPparams:= TRUE;
+		ELSE
+			IF stTempLoad.stTempState.bPparamLoaded THEN
+				eState:= eMainSM_SupParamLoad;
+				bEntry:= TRUE;
+			END_IF
+		END_IF
+		
+	eMainSM_SupParamLoad:
+		IF bEntry THEN
+			bEntry:= FALSE;
+			stTempLoad.stTempCmd.bLoadSupplyParams:= TRUE;
+		ELSE
+			IF stTempLoad.stTempState.bSupplyParamsLoaded THEN
+				eState:= eMainSM_StartUp;
+				bEntry:= TRUE;
+			END_IF
+		END_IF
+		
+	eMainSM_StartUp:
+		bEntry:= FALSE;
+		fbTempCtrl.ConfigEnable:= TRUE;
+		fbTempCtrl.tCycle:= fCycleTime;
+		fbTempCtrl.Looptest_Enable:= FALSE;
+		fbTempCtrl.Callback_Enable:= TRUE;
+		fbTempCtrl.Simu_Enable:= TRUE;
+		eState:= eMainSM_Idle;
+	
+	eMainSM_Idle:
+		IF bParamsInit THEN
+			eState:= eMainSM_TempInit;
+		END_IF
+		
+END_CASE
+
+////////////////////////////////////////////////////////////////////////////////
+	/// Demo actual supply load
+(*	
+fbDRAND(Seed:= 700, Num=>);
+
+IF out_PfwTempCtrlOutput[1].SelOutPos THEN	
+	stPfwSupplyLineCfg[1].fActSupplyLoad:= (700+100*fbDRAND.Num);
+ELSE
+	stPfwSupplyLineCfg[1].fActSupplyLoad:= 0;	
+END_IF
+*)
+////////////////////////////////////////////////////////////////////////////////
+
+fbTempCtrl(
+	Looptest_Enable:= TRUE,
+	Scope_TempCtrlVariables:= Scope_TempCtrlVariables);
+	
+fbVisu();
+
+fbSave();
+fbLoad();
+// =========================================================
+]]></ST>
+    </Implementation>
+    <Action Name="_01_BasicInit" Id="{9f68b5f7-2cd3-499c-83fd-fa5a11b3239e}">
+      <Implementation>
+        <ST><![CDATA[// =========================================================
+// Get Cycle Time
+IF(GETCURTASKINDEXEX()<=0)THEN
+	fCycletime:= 0.025;		(* Don't know, just guessing *)
+ELSE
+	fCycletime:= UDINT_TO_LREAL(_TaskInfo[GETCURTASKINDEXEX()].cycleTime)/10000000.0;
+END_IF
+
+// Init Zone ID/Name
+FOR nCount := cnPfwTempCtrlFirst TO cnPfwTempCtrlLast DO
+	aaaPfwTempMparamFromHmi[nCount].ZoneId := nCount;				(* Zone id	*)
+	aaaPfwTempMparamFromHmi[nCount].ZoneName := CONCAT('Zone_', INT_TO_STRING(nCount));	(* Zone name  *)
+END_FOR
+// =========================================================
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="_02_ParamsInit" Id="{b1fe17cb-ee99-4c19-8759-57d8cf0caa10}">
+      <Implementation>
+        <ST><![CDATA[// =========================================================
+(* Initialize of the machine parameters*)
+	FOR nCount := cnPfwTempCtrlFirst TO cnPfwTempCtrlLast DO
+		aaaPfwTempMparamFromHmi[nCount].AbsoluteHigh:= 300;											(* Limiting value of absolute hight.	*)
+		aaaPfwTempMparamFromHmi[nCount].AbsoluteLow:= 100;											(* Limiting value of absolute low.	*)
+		aaaPfwTempMparamFromHmi[nCount].InUse:= TRUE;												(* Zone is in use	*)
+		aaaPfwTempMparamFromHmi[nCount].Enable:= TRUE;
+		aaaPfwTempMparamFromHmi[nCount].SensorType:= 0;												(* Simulation	*)
+		aaaPfwTempMparamFromHmi[nCount].ExtruderId:= 1;												(* Simulation	*)
+		aaaPfwTempMparamFromHmi[nCount].TempSensTerm:= 0;											(* Simulation	*)
+		aaaPfwTempMparamFromHmi[nCount].ZoneId:= nCount;											(* Zone id		*)
+		aaaPfwTempMparamFromHmi[nCount].ZoneName:= CONCAT('Zone_', INT_TO_STRING(nCount));			(* Zone name	*)
+		IF(aaaPfwTempMparamFromHmi[nCount].KpCool<0.1)THEN
+			aaaPfwTempMparamFromHmi[nCount].KpCool:= 0.1;											(* Default Kp cooling	*)
+		END_IF
+		IF(aaaPfwTempMparamFromHmi[nCount].KpHeat<0.1)THEN
+			aaaPfwTempMparamFromHmi[nCount].KpHeat:= 0.2;											(* Default Kp heating 	*)
+		END_IF
+(*		aaaPfwTempMparamFromHmi[nCount].SettlingTime:= 5.0;											(* Settling Time	*)*)
+//		aaaPfwTempMparamFromHmi[nCount].SupplyLoad_Cooler:= 100; 									(* Coolingpower	*)
+		aaaPfwTempMparamFromHmi[nCount].SupplyLoad_Heater:= 1200;	 								(* Heatingpower	*)
+		aaaPfwTempMparamFromHmi[nCount].TuneEnd:= 80;												(* Tune End % of setpoint	*)
+		aaaPfwTempMparamFromHmi[nCount].TuneKp:= 1.2;												(* Kp Tuning	*)
+		aaaPfwTempMparamFromHmi[nCount].TuneTd:= 0.25;												(* Td Tuning	*)
+		aaaPfwTempMparamFromHmi[nCount].TuneTn:= 2;													(* Tn Tuning	*)
+		aaaPfwTempMparamFromHmi[nCount].TuneTv:= 0.5;												(* Tv Tuning	*)
+		aaaPfwTempMparamFromHmi[nCount].TuneY:= 100;												(* Y Tuning		*)
+		aaaPfwTempMparamFromHmi[nCount].Ramping_Rate:= 0.005;										(* Ramping rate	*)
+		aaaPfwTempMparamFromHmi[nCount].Ramping_Tolerance:= 10;										(* Ramping tolerance*)
+		aaaPfwTempMparamFromHmi[nCount].OutputSel_H:= eTcPfwTcOut_PWM;								(* Heating output signal	*)
+		aaaPfwTempMparamFromHmi[nCount].OutputSel_C:= eTcPfwTcOut_NoSignal;							(* Cooling output signal	*)
+		aaaPfwTempMparamFromHmi[nCount].UseCooling:= FALSE;											(* Cooling on	*)
+		aaaPfwTempMparamFromHmi[nCount].TuneCooling:= FALSE;										(* Cooling on	*)
+		aaaPfwTempMparamFromHmi[nCount].ExtruderCompEna:= FALSE;									(* Extruder comp	*)
+		aaaPfwTempMparamFromHmi[nCount].fc_Enable:= FALSE;											(* Zwangskuelung	*)
+		aaaPfwTempMparamFromHmi[nCount].fc_OffTime:= 600.0;											(* Zwangskuelung	*)
+		aaaPfwTempMparamFromHmi[nCount].fc_OnTime:= 10.0;											(* Zwangskuelung	*)
+
+(*		aaaPfwTempMparamFromHmi[nCount].SupplyLoad_Tolerance:= 20.0;								(* Supply Tolerance	*)*)
+
+		aaaPfwTempMparamFromHmi[nCount].SupplyLoad_Tolerance:= 0.0;									(* Supply Tolerance	*)
+
+		aaaPfwTempMparamFromHmi[nCount].SupplyId:= 1;
+		aaaPfwTempMparamFromHmi[nCount].ModuleId:= 1;
+	END_FOR
+	(* Mapping of the zones to the module and supply lines	*)
+		//
+
+	(* Initialize of the product parameter*)
+	FOR nCount := cnPfwTempCtrlFirst TO cnPfwTempCtrlLast DO
+		aaaPfwTempPparamFromHmi[nCount].Setpoint:= 180;
+		aaaPfwTempPparamFromHmi[nCount].StandbySetpoint:= 18;
+		aaaPfwTempPparamFromHmi[nCount].Threshold_M:= -10;
+		aaaPfwTempPparamFromHmi[nCount].Threshold_MM:= -15;
+		aaaPfwTempPparamFromHmi[nCount].Threshold_P:= 10;
+		aaaPfwTempPparamFromHmi[nCount].Threshold_PP:= 15;
+		aaaPfwTempPparamFromHmi[nCount].Update:= TRUE;
+	END_FOR
+
+	(* Initialize of the supply lines*)
+	FOR nCount := cnPfwAppSupplyFirst TO cnPfwAppSupplyLast DO
+		stPfwSupplyLineCfg[nCount].fPwmCycleTime:= 1;
+		stPfwSupplyLineCfg[nCount].fPwmMaxOnTime:= 1.0;
+		stPfwSupplyLineCfg[nCount].fPwmMinOnTime:= 0.1;
+		stPfwSupplyLineCfg[nCount].fPwmMaxRampLoad:= 1;
+		stPfwSupplyLineCfg[nCount].nPwmFactorC:= 10;
+	END_FOR
+// =========================================================
+]]></ST>
+      </Implementation>
+    </Action>
+    <LineIds Name="TemperatureCtrl">
+      <LineId Id="123" Count="17" />
+      <LineId Id="145" Count="0" />
+      <LineId Id="3" Count="0" />
+      <LineId Id="121" Count="0" />
+      <LineId Id="4" Count="19" />
+      <LineId Id="101" Count="0" />
+      <LineId Id="26" Count="9" />
+      <LineId Id="37" Count="10" />
+      <LineId Id="49" Count="4" />
+      <LineId Id="55" Count="0" />
+      <LineId Id="57" Count="11" />
+      <LineId Id="102" Count="1" />
+      <LineId Id="69" Count="6" />
+      <LineId Id="104" Count="0" />
+      <LineId Id="76" Count="1" />
+      <LineId Id="79" Count="9" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="TemperatureCtrl._01_BasicInit">
+      <LineId Id="15" Count="0" />
+      <LineId Id="2" Count="12" />
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="TemperatureCtrl._02_ParamsInit">
+      <LineId Id="69" Count="0" />
+      <LineId Id="2" Count="66" />
+      <LineId Id="1" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

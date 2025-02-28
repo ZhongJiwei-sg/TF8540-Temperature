@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<TcLicenseInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2011/11/TcLicenseInfo">
+	<LicenseInfo>
+		<SystemId>{F9D961FA-F09E-314E-DCDD-D6E05D2A5AA9}</SystemId>
+		<IssueTime>2025-02-26T06:29:00</IssueTime>
+		<ExpireTime>2025-03-06T00:00:00</ExpireTime>
+		<LicenseKey>3f84077be6cff067666bcda8228e87307a3430d971d402b3e0bee038289d232c93a886b6ba283f5109be9129880e984d932b4681eccf5b9035a32b42a583146257a3ecc994c8e4f65b0880cc64773ab1746ecbee200a480c669095ce205e3968884acfd76c1a59f566ed3f637118a8216cb988024a1fc425077ad67184852646291fd5b81ca8cc583e8fb1f3f8aa55478beab12f1fc31c5be770b7f889d49e37aad67382243f327bab0da29b9118d5753934230c60f19eab6b4dd406e550bcf454aeb5a246b36438ee5a3dec3beafc272710d34cc13f67e631625a1336138bdd167e07de3cc9ea00ef47e66c6c88d3e7a2167a95c10f30a99703e0b308f0483f</LicenseKey>
+		<License>
+			<LicenseId>{28FFAB70-2B9C-472A-AA02-7F730A9C83B9}</LicenseId>
+			<Name>Plastic Processing TwinCAT Framework</Name>
+			<OrderNo>TF8540</OrderNo>
+		</License>
+	</LicenseInfo>
+</TcLicenseInfo>

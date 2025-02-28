@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="ST_Param_Visu" Id="{ec7d4194-0b7a-4b22-b381-4bfa9c48f257}">
+    <Declaration><![CDATA[TYPE ST_Param_Visu :
+STRUCT
+	nActiveParamList							: INT := 0;
+	sInUse										: STRING;
+	bBoolAktValue								: ARRAY[1..cnParamsArrayLast] OF BOOL;
+	bBoolNewValue								: ARRAY[1..cnParamsArrayLast] OF BOOL;
+	bBoolSetValue								: ARRAY[1..cnParamsArrayLast] OF BOOL;
+	fLrealAktValue								: ARRAY[1..cnParamsArrayLast] OF LREAL;
+	fLrealNewValue								: ARRAY[1..cnParamsArrayLast] OF LREAL;
+	bLrealSetValue								: ARRAY[1..cnParamsArrayLast] OF BOOL;
+	nDintAktValue								: ARRAY[1..cnParamsArrayLast] OF DINT;
+	nDintNewValue								: ARRAY[1..cnParamsArrayLast] OF DINT;
+	bDintSetValue								: ARRAY[1..cnParamsArrayLast] OF BOOL;
+	nEnumAktValue								: ARRAY[1..cnParamsArrayLast] OF DINT;
+	nEnumNewValue								: ARRAY[1..cnParamsArrayLast] OF DINT;
+	bEnumSetValue								: ARRAY[1..cnParamsArrayLast] OF BOOL;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

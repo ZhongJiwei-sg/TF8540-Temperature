@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <Task Name="Temperature_Task" Id="{80581ecd-34c8-42ac-9431-88b0205401b6}">
+    <!--CycleTime in micro seconds.-->
+    <CycleTime>25000</CycleTime>
+    <Priority>20</Priority>
+    <PouCall>
+      <Name>TemperatureCtrl</Name>
+    </PouCall>
+    <TaskFBGuid>{ae441b8e-230a-45d6-afb3-a24ee3799a80}</TaskFBGuid>
+    <Fb_init>{1ebbbadb-9d6d-475a-8da9-84d1eda97776}</Fb_init>
+    <Fb_exit>{6f4a1980-9953-4cb4-8928-c5c13d2ce6c7}</Fb_exit>
+    <CycleUpdate>{6a409337-5b7b-4c80-b5d9-1bad23a1b31c}</CycleUpdate>
+    <PostCycleUpdate>{3100537d-b392-4c96-8539-b03a1d3f7df4}</PostCycleUpdate>
+  </Task>
+</TcPlcObject>

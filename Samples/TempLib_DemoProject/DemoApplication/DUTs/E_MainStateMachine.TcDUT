@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <DUT Name="E_MainStateMachine" Id="{307774db-ccd3-4d90-aa67-0b9aed463f8b}">
+    <Declaration><![CDATA[TYPE E_MainStateMachine :
+(
+	eMainSM_BasicInit := 0,
+	eMainSM_TempInit,
+	eMainSM_MParamLoad,
+	eMainSM_PParamLoad,
+	eMainSM_SupParamLoad,
+	eMainSM_StartUp,
+	eMainSM_Idle
+);
+END_TYPE
+]]></Declaration>
+    <ObjectProperties />
+  </DUT>
+</TcPlcObject>

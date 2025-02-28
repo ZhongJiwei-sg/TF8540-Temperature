@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4018.5">
+  <GVL Name="GVL_10_Visu" Id="{3ef80c93-8009-4da5-ad55-f2a1531adad6}">
+    <Declaration><![CDATA[VAR_GLOBAL CONSTANT
+	cnParamsArrayLast:				INT:=50;
+END_VAR
+
+VAR_GLOBAL
+	nVisuCount: INT:=cnPfwTempCtrlFirst;
+	nSupplyCnt:	INT:=cnPfwAppSupplyFirst;
+	
+	eStatus: E_HMIstatus:=Off;
+	
+	bVisuNext: BOOL;
+	bVisuBefore: BOOL;
+	
+	bVisuAutotune: BOOL;
+	bVisuIdleLoad: BOOL;
+	bVisuIdleLoadAktiv: BOOL;
+	
+	bGlobalError: BOOL;
+	
+	bParamsInit: BOOL:=FALSE;
+	
+	sErrorText:	STRING;
+	
+	
+	
+	
+	stMParam_Visu:	ST_Param_Visu;
+	stPParam_Visu:	ST_Param_Visu;
+	stSupply_Visu:	ST_Param_Visu;
+	stParamsUnsave:	st_ParamsUnsave;
+	
+
+	GlobalOne:INT:=1;
+		A:INT:=0;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

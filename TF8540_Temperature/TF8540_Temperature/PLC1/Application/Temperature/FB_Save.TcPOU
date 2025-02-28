@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Save" Id="{9a2d5367-8ec4-47f4-8670-b6742d2e0d56}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Save
+VAR
+	nCount												: INT;
+	bSavePparamsOld										: BOOL;
+	bSaveMparamsOld										: BOOL;
+	bSaveSupplyOld										: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// =========================================================
+(* Save product parameters *)
+IF(stTempSave.stTempCmd.bSavePparams AND NOT bSavePparamsOld)  THEN
+	FOR nCount:=cnPfwTempCtrlFirst TO cnPfwTempCtrlLast DO
+		IF	aaaPfwTempPparamFromHmi[nCount].SaveDelay= -1 THEN
+			aaaPfwTempPparamFromHmi[nCount].SaveDelay:= 100_000;
+		END_IF
+	END_FOR
+ELSIF(stTempSave.stTempCmd.bSavePparams AND  bSavePparamsOld)  THEN
+	stTempSave.stTempCmd.bSavePparams:= FALSE;
+	FOR nCount:=cnPfwTempCtrlFirst TO cnPfwTempCtrlLast DO
+		IF	aaaPfwTempPparamFromHmi[nCount].SaveDelay>-1 THEN
+			stTempSave.stTempCmd.bSavePparams:= TRUE;
+		END_IF
+	END_FOR
+END_IF
+bSavePparamsOld:= stTempSave.stTempCmd.bSavePparams;
+
+
+(* Save machine parameters *)
+IF(stTempSave.stTempCmd.bSaveMparams AND NOT bSaveMparamsOld)  THEN
+	FOR nCount:=cnPfwTempCtrlFirst TO cnPfwTempCtrlLast DO
+		IF	aaaPfwTempMparamFromHmi[nCount].SaveDelay= -1 THEN
+			aaaPfwTempMparamFromHmi[nCount].SaveDelay:= 100_000;
+		END_IF
+	END_FOR
+ELSIF(stTempSave.stTempCmd.bSaveMparams AND  bSaveMparamsOld)  THEN
+	stTempSave.stTempCmd.bSaveMparams:= FALSE;
+	FOR nCount:=cnPfwTempCtrlFirst TO cnPfwTempCtrlLast DO
+		IF	aaaPfwTempMparamFromHmi[nCount].SaveDelay>-1 THEN
+			stTempSave.stTempCmd.bSaveMparams:= TRUE;
+		END_IF
+	END_FOR
+	IF NOT stTempSave.stTempCmd.bSaveMparams THEN
+		//bMParamUnsave:=FALSE;
+		//MEMSET(ADR(bArMParamUnsave),0,SIZEOF(bArMParamUnsave));
+	END_IF
+END_IF
+bSaveMparamsOld:= stTempSave.stTempCmd.bSaveMparams;
+
+
+(* Save supply lines *)
+IF(stTempSave.stTempCmd.bSaveSupplyParams AND NOT bSaveSupplyOld)  THEN
+	FOR nCount:=cnPfwAppSupplyFirst TO cnPfwAppSupplyLast DO
+		IF	stPfwSupplyLineCfg[nCount].SaveDelay= -1 THEN
+			stPfwSupplyLineCfg[nCount].SaveDelay:= 100_000;
+		END_IF
+	END_FOR
+ELSIF(stTempSave.stTempCmd.bSaveSupplyParams AND  bSaveSupplyOld)  THEN
+	stTempSave.stTempCmd.bSaveSupplyParams:= FALSE;
+	FOR nCount:=cnPfwAppSupplyFirst TO cnPfwAppSupplyLast DO
+		IF	stPfwSupplyLineCfg[nCount].SaveDelay>-1 THEN
+			stTempSave.stTempCmd.bSaveSupplyParams:= TRUE;
+		END_IF
+	END_FOR
+END_IF
+bSaveSupplyOld:= stTempSave.stTempCmd.bSaveSupplyParams;
+// =========================================================
+
+
+
+
+
+
+
+
+(* Old Routine *)
+(*
+
+(* save product parameters *)
+IF(stTempSave.stTempCmd.bSavePparams AND NOT stTempSave.stTempCmd.bSaveMparams AND NOT stTempSave.stTempCmd.bSaveSupplyParams)THEN
+	IF(nSaveTemp>cnPfwTempCtrlLast)THEN
+		nSaveTemp:=cnPfwTempCtrlFirst;
+		stTempSave.stTempCmd.bSavePparams:=FALSE;
+	ELSIF fbSaveParams.Execute AND (fbSaveParams.Done OR fbSaveParams.Error) THEN
+		fbSaveParams.Execute:=FALSE;
+		nSaveTemp:=nSaveTemp+1;
+	ELSE
+		fbSaveParams.PathName:=sPathP;
+		fbSaveParams.Execute:=TRUE;
+	END_IF
+	fbSaveParams
+		(
+		Pparam:=aaaPfwTempPparamFromHmi[nSaveTemp],
+		Mparam:=aaaPfwTempMparamFromHmi[nSaveTemp]
+		);
+END_IF
+
+(* save supply lines *)
+IF(stTempSave.stTempCmd.bSaveSupplyParams AND NOT stTempSave.stTempCmd.bSavePparams AND NOT stTempSave.stTempCmd.bSaveMparams)THEN
+	IF(nSaveTemp>cnPfwAppSupplyLast)THEN
+		nSaveTemp:=cnPfwAppSupplyFirst;
+		stTempSave.stTempCmd.bSaveSupplyParams:=FALSE;
+	ELSIF(fbSaveSupplyParams.Execute AND (fbSaveSupplyParams.Done OR fbSaveSupplyParams.Error))THEN
+		fbSaveSupplyParams.Execute:=FALSE;
+		nSaveTemp:=nSaveTemp+1;
+	ELSE
+		fbSaveSupplyParams.PathName:=sPathM;
+		fbSaveSupplyParams.Execute:=TRUE;
+	END_IF
+	fbSaveSupplyParams
+		(
+		Supply:=stPfwSupplyLineCfg[nSaveTemp],
+		supidx:=nSaveTemp
+		);
+END_IF
+
+(* save machine parameters *)
+IF(NOT stTempSave.stTempCmd.bSavePparams AND  stTempSave.stTempCmd.bSaveMparams AND NOT stTempSave.stTempCmd.bSaveSupplyParams)THEN
+	IF(nSaveTemp>cnPfwTempCtrlLast)THEN
+		nSaveTemp:=cnPfwTempCtrlFirst;
+		stTempSave.stTempCmd.bSaveMparams:=FALSE;
+	ELSIF(fbSaveParams.Execute AND (fbSaveParams.Done OR fbSaveParams.Error))THEN
+		fbSaveParams.Execute:=FALSE;
+		nSaveTemp:=nSaveTemp+1;
+	ELSE
+		fbSaveParams.PathName:=sPathM;
+		fbSaveParams.Execute:=TRUE;
+	END_IF
+	fbSaveParams
+		(
+		Pparam:=aaaPfwTempPparamFromHmi[nSaveTemp],
+		Mparam:=aaaPfwTempMparamFromHmi[nSaveTemp]
+		);
+END_IF
+
+*)]]></ST>
+    </Implementation>
+    <LineIds Name="FB_Save">
+      <LineId Id="135" Count="0" />
+      <LineId Id="3" Count="124" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

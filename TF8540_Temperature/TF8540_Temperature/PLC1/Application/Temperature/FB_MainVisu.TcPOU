@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_MainVisu" Id="{f1d8b7b9-c66f-4ac5-ab5d-0fbc237d4e59}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_MainVisu
+VAR
+	bOldVisuNext									: BOOL;
+	ncount											: INT;
+	bAutotuneAllDone								: BOOL;
+	eOldState										: E_HMIstatus;
+	bEntry											: BOOL := TRUE;
+	nIdx											: INT;
+	fbVisuMParam									: FB_Visu_Param;
+	fbVisuPParam									: FB_Visu_PParam;
+	fbVisuSupply									: FB_Visu_Supply;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// =========================================================
+//
+//		All Zones
+//
+
+bEntry:= (eStatus<>eOldState);
+eOldState:= eStatus;
+
+CASE eStatus OF
+
+	Off:
+		IF bEntry THEN
+			FOR ncount:=cnPfwTempCtrlFirst TO cnPfwTempCtrlLast DO
+				aaaPfwTempMparamFromHmi[ncount].Enable:= FALSE;
+				stPfwTempCtrl[nCount].Enable:= FALSE;
+			END_FOR
+			bEntry:= FALSE;
+		END_IF
+	
+	Standby:
+		IF bEntry THEN
+			FOR ncount:=cnPfwTempCtrlFirst TO cnPfwTempCtrlLast DO
+				IF aaaPfwTempToHmi[nCount].InUse THEN
+					stPfwTempCtrl[nCount].SelSetpoint:= TRUE;
+					aaaPfwTempMparamFromHmi[ncount].Enable:= TRUE;
+					stPfwTempCtrl[nCount].Enable:= TRUE;
+				END_IF
+			END_FOR
+			bEntry:= FALSE;
+		END_IF
+	
+	On:
+		IF bEntry THEN
+			FOR ncount:=cnPfwTempCtrlFirst TO cnPfwTempCtrlLast DO
+				IF aaaPfwTempToHmi[nCount].InUse THEN
+					stPfwTempCtrl[nCount].SelSetpoint:= FALSE;
+					aaaPfwTempMparamFromHmi[ncount].Enable:= TRUE;
+					stPfwTempCtrl[nCount].Enable:= TRUE;
+				END_IF
+			END_FOR
+			bEntry:=FALSE;
+		END_IF
+	
+	Autotune:
+		IF bEntry THEN
+			FOR ncount:=cnPfwTempCtrlFirst TO cnPfwTempCtrlLast DO
+				IF aaaPfwTempToHmi[nCount].InUse THEN
+					stPfwTempCtrl[nCount].Enable:= TRUE;
+					aaaPfwTempMparamFromHmi[ncount].Enable:= TRUE;
+					aaaPfwTempMparamFromHmi[ncount].Autotune:= TRUE;
+				END_IF
+			END_FOR
+		ELSE
+			bAutotuneAllDone:=TRUE;
+			FOR ncount:=cnPfwTempCtrlFirst TO cnPfwTempCtrlLast DO
+				IF(aaaPfwTempToHmi[nCount].TuningDone OR aaaPfwTempToHmi[nCount].Error) THEN
+					IF aaaPfwTempToHmi[nCount].InUse THEN
+						stPfwTempCtrl[nCount].Enable:= FALSE;
+						aaaPfwTempMparamFromHmi[ncount].Enable:= FALSE;
+						aaaPfwTempMparamFromHmi[ncount].Autotune:= FALSE;
+					END_IF
+				ELSE
+					bAutoTuneAllDone:= FALSE;
+				END_IF
+			END_FOR
+			IF bAutotuneAllDone THEN
+				eStatus:= Standby;
+			END_IF
+		END_IF
+		
+	IdleLoad:
+		IF bEntry THEN
+			FOR ncount:=cnPfwTempCtrlFirst TO cnPfwTempCtrlLast DO
+				IF aaaPfwTempToHmi[ncount].Enable THEN
+					aaaPfwTempMparamFromHmi[ncount].Ena_TuneIdleLoad:= TRUE;
+				END_IF
+			END_FOR
+		ELSE
+			FOR ncount:=cnPfwTempCtrlFirst TO cnPfwTempCtrlLast DO
+				bVisuIdleLoadAktiv:= FALSE;
+				IF(aaaPfwTempToHmi[ncount].IdleLoadActive)THEN
+					bVisuIdleLoadAktiv:= TRUE;
+				END_IF
+			END_FOR
+			IF NOT bVisuIdleLoadAktiv THEN
+				eStatus:= On;
+			END_IF
+		END_IF
+END_CASE
+
+
+
+//
+//		Selected Zone
+//
+
+// Select Zone
+IF(bVisuNext)THEN
+	nVisuCount:= MIN(nVisuCount+1,cnPfwTempCtrlLast);
+	bVisuNext:= FALSE;
+ELSIF(bVisuBefore)THEN
+	nVisuCount:= MAX(nVisuCount-1,cnPfwTempCtrlFirst);
+	bVisuBefore:= FALSE;
+END_IF
+
+IF(bVisuAutotune)THEN
+	aaaPfwTempMparamFromHmi[nVisuCount].Autotune:= TRUE;
+ELSIF bVisuIdleLoad THEN
+	aaaPfwTempMparamFromHmi[nVisuCount].Ena_TuneIdleLoad:= TRUE;
+END_IF
+
+
+
+ErrorHandling();
+fbVisuMParam(stMParam_Visu:=stMParam_Visu, stParamsUnsave:=stParamsUnsave);
+fbVisuPParam(stPParam_Visu:=stPParam_Visu, stParamsUnsave:=stParamsUnsave);
+fbVisuSupply(stSupply_Visu:=stSupply_Visu, stParamsUnsave:=stParamsUnsave);
+// =========================================================
+
+]]></ST>
+    </Implementation>
+    <Action Name="ErrorHandling" Id="{1b29e2d3-fbf5-4eca-8f6a-660c9ee3000a}">
+      <Implementation>
+        <ST><![CDATA[// =========================================================
+bGlobalError:= FALSE;
+sErrorText:= 'No Error';
+FOR ncount:=cnPfwTempCtrlFirst TO cnPfwTempCtrlLast DO
+	IF aaaPfwTempToHmi[ncount].Error THEN
+		IF sErrorText= 'No Error' THEN
+			sErrorText:= 'Error in Zone ';
+		ELSE
+			sErrorText:= CONCAT(sErrorText, ', ');
+		END_IF
+		sErrorText:= CONCAT(sErrorText, INT_TO_STRING(ncount));
+		bGlobalError:= TRUE;
+	END_IF
+END_FOR
+// =========================================================]]></ST>
+      </Implementation>
+    </Action>
+    <LineIds Name="FB_MainVisu">
+      <LineId Id="133" Count="0" />
+      <LineId Id="3" Count="117" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_MainVisu.ErrorHandling">
+      <LineId Id="15" Count="0" />
+      <LineId Id="2" Count="12" />
+      <LineId Id="1" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.38">
+  <GVL Name="GVL_20_Applikation" Id="{44b4d13a-449a-4cf8-9d7f-415bf0aea4b6}">
+    <Declaration><![CDATA[VAR_GLOBAL
+
+	stTempLoad: ST_TempLoad;
+	stTempSave: ST_TempSave;
+	
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

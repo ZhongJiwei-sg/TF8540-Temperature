@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<TcLicenseInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2011/11/TcLicenseInfo">
+	<LicenseInfo>
+		<SystemId>{F9D961FA-F09E-314E-DCDD-D6E05D2A5AA9}</SystemId>
+		<IssueTime>2023-07-11T02:03:00</IssueTime>
+		<ExpireTime>2023-07-19T00:00:00</ExpireTime>
+		<LicenseKey>167d273441ac85cacc77ce155144e843cb70c972b9995a9ae9be6439b0cdec1c7a0321f6412d3ac3aca869b39c5e8964bcf2077f6a3b096304c3f3f7f4450feba7db91fa1818deec93ad611e2e2fff6c08d3679dcab0e518d67ba585d7ec814f8f62c2828ce9163f236479925ee1b34f4cfb890cb6d43625ad1b109541d55c350f3b2bf4b3cb3befe5eabc36d8fc122c88152b43352a58f0374fe1b6863cd3bf6ad61eecea73c16afe5bb8565f222d7cbcc75e7759c512acecf42c333f8a099c3351c3b1594379a22b764cff90e5f436ac6addca5e8372f1aca0118f86ada3d554d6801c270771fb9672ebc1c8a61c91e8d2989c36a2d372a901a4ef68231a3b</LicenseKey>
+		<License>
+			<LicenseId>{28FFAB70-2B9C-472A-AA02-7F730A9C83B9}</LicenseId>
+			<Name>Plastic Processing TwinCAT Framework</Name>
+			<OrderNo>TF8540</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{4C256767-E6E6-4AF5-BD68-9F7ABAD0C200}</LicenseId>
+			<Name>TC3 ADS</Name>
+			<OrderNo>TC1000</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{66689887-CCBD-452C-AC9A-039D997C6E66}</LicenseId>
+			<Name>TC3 PLC</Name>
+			<OrderNo>TC1200</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{3FF18E97-7754-401B-93FB-70544DE28A13}</LicenseId>
+			<Name>TC3 IO</Name>
+			<OrderNo>TC1100</OrderNo>
+		</License>
+	</LicenseInfo>
+</TcLicenseInfo>

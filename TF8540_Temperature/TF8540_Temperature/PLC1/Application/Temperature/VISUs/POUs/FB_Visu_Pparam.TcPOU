@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Visu_Pparam" Id="{2c87a0eb-457d-4781-87d1-1943a2914bff}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Visu_Pparam
+VAR_IN_OUT
+	stPParam_Visu								: ST_Param_Visu;
+	stParamsUnsave								: st_ParamsUnsave;
+END_VAR
+VAR
+	nIdx										: INT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// =========================================================
+// LREAL
+
+
+FOR nIdx:=1 TO cnParamsArrayLast BY 1 DO
+	// Get
+	stPParam_Visu.fLrealAktValue[nIdx]:=GetLreal(nVisuCount, nIdx);
+	
+
+	IF stPParam_Visu.bLrealSetValue[nIdx] THEN
+		stPParam_Visu.bLrealSetValue[nIdx]:=FALSE;
+		SetLreal(nVisuCount,nIdx, stPParam_Visu.fLrealNewValue[nidx]);
+	END_IF
+END_FOR
+// =========================================================]]></ST>
+    </Implementation>
+    <Method Name="GetLreal" Id="{dae0f41a-8b0c-4b42-b11d-a6bae1b4878c}">
+      <Declaration><![CDATA[METHOD GetLreal : LREAL
+VAR_INPUT
+	nZone												: INT;
+	nIdx												: INT;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// =========================================================
+CASE nIdx OF 
+1:
+	GetLreal:= aaaPfwTempPparamFromHmi[nZone].Setpoint;
+2:
+	GetLreal:= aaaPfwTempPparamFromHmi[nZone].StandbySetpoint;
+3:
+	GetLreal:= aaaPfwTempPparamFromHmi[nZone].Setpoints[1];
+4:
+	GetLreal:= aaaPfwTempPparamFromHmi[nZone].Setpoints[2];
+5:
+	GetLreal:= aaaPfwTempPparamFromHmi[nZone].Setpoints[3];
+6:
+	GetLreal:= aaaPfwTempPparamFromHmi[nZone].Setpoints[4];
+7:
+	GetLreal:= aaaPfwTempPparamFromHmi[nZone].Setpoints[5];
+8:
+	GetLreal:= aaaPfwTempPparamFromHmi[nZone].Threshold_PP;
+9:
+	GetLreal:= aaaPfwTempPparamFromHmi[nZone].Threshold_P;
+10:
+	GetLreal:= aaaPfwTempPparamFromHmi[nZone].Threshold_M;
+11:
+	GetLreal:= aaaPfwTempPparamFromHmi[nZone].Threshold_MM;
+12:
+	GetLreal:= aaaPfwTempPparamFromHmi[nZone].Openloop_Output;
+	
+ELSE
+	GetLreal:= 0.0;
+END_CASE
+// =========================================================]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SetLreal" Id="{0ebaa786-34c8-4f06-b779-2467b2b19035}">
+      <Declaration><![CDATA[METHOD SetLreal : LREAL
+VAR_INPUT
+	nZone												: INT;
+	nIdx												: INT;
+	fValue												: LREAL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// =========================================================
+CASE nIdx OF 
+1:
+	aaaPfwTempPparamFromHmi[nZone].Setpoint:= fValue;
+2:
+	aaaPfwTempPparamFromHmi[nZone].StandbySetpoint:= fValue;
+3:
+	aaaPfwTempPparamFromHmi[nZone].Setpoints[1]:= fValue;
+4:
+	aaaPfwTempPparamFromHmi[nZone].Setpoints[2]:= fValue;
+5:
+	aaaPfwTempPparamFromHmi[nZone].Setpoints[3]:= fValue;
+6:
+	aaaPfwTempPparamFromHmi[nZone].Setpoints[4]:= fValue;
+7:
+	aaaPfwTempPparamFromHmi[nZone].Setpoints[5]:= fValue;
+8:
+	aaaPfwTempPparamFromHmi[nZone].Threshold_PP:= fValue;
+9:
+	aaaPfwTempPparamFromHmi[nZone].Threshold_P:= fValue;
+10:
+	aaaPfwTempPparamFromHmi[nZone].Threshold_M:= fValue;
+11:
+	aaaPfwTempPparamFromHmi[nZone].Threshold_MM:= fValue;
+12:
+	aaaPfwTempPparamFromHmi[nZone].Openloop_Output:= fValue;
+ELSE
+	;
+END_CASE
+
+stParamsUnsave.pParams[nZone]:= TRUE;
+// =========================================================
+]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_Visu_Pparam">
+      <LineId Id="23" Count="0" />
+      <LineId Id="3" Count="11" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Visu_Pparam.GetLreal">
+      <LineId Id="36" Count="0" />
+      <LineId Id="3" Count="27" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Visu_Pparam.SetLreal">
+      <LineId Id="39" Count="0" />
+      <LineId Id="3" Count="28" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

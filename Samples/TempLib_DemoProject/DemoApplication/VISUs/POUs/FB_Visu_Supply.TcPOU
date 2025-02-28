@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4018.5">
+  <POU Name="FB_Visu_Supply" Id="{61bc8a30-66e6-43fb-b8ee-fc86cea6f217}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Visu_Supply
+VAR_IN_OUT
+	stSupply_Visu:	ST_Param_Visu;
+	stParamsUnsave:st_ParamsUnsave;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	nidx:		INT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+// LREAL
+FOR nIdx:=1 TO cnParamsArrayLast BY 1 DO
+	
+	// Get
+	stSupply_Visu.fLrealAktValue[nIdx]:=GetLreal(nVisuCount, nIdx);
+	
+	//Set
+	IF stSupply_Visu.bLrealSetValue[nIdx] THEN
+		stSupply_Visu.bLrealSetValue[nIdx]:=FALSE;
+		SetLreal(nVisuCount,nIdx, stSupply_Visu.fLrealNewValue[nidx]);
+	END_IF
+	
+END_FOR]]></ST>
+    </Implementation>
+    <Method Name="GetLreal" Id="{0fc1a49e-5d50-4c9d-8bcb-c36b4d2d5388}">
+      <Declaration><![CDATA[METHOD GetLreal : LREAL
+VAR_INPUT
+	nZone:	INT;
+	nIdx:	INT;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[CASE nIdx OF 
+1:
+	GetLreal:=stPfwSupplyLineCfg[nSupplyCnt].fPwmCycleTime;
+2:
+	GetLreal:=stPfwSupplyLineCfg[nSupplyCnt].fPwmMinOnTime;
+3:
+	GetLreal:=stPfwSupplyLineCfg[nSupplyCnt].fPwmMaxOnTime;
+4:
+	GetLreal:=stPfwSupplyLineCfg[nSupplyCnt].fPwmMaxOnC;
+5:
+	GetLreal:=stPfwSupplyLineCfg[nSupplyCnt].fPwmMaxRampLoad;
+6:
+	GetLreal:=stPfwSupplyLineCfg[nSupplyCnt].fActSupplyLoad;
+7:
+	GetLreal:=stPfwSupplyLineCfg[nSupplyCnt].fActSupplyLoad;
+8:
+	GetLreal:=stPfwSupplyLineCfg[nSupplyCnt].fActSupplyCurrent;
+9:
+	GetLreal:=stPfwSupplyLineCfg[nSupplyCnt].fSupplyLoad;
+10:
+	GetLreal:=stPfwSupplyLineCfg[nSupplyCnt].fSupplyMatch;
+
+	
+ELSE
+	GetLreal:=0.0;
+END_CASE]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SetLreal" Id="{4a67f2d8-7297-4317-a767-2fb59e2ac086}">
+      <Declaration><![CDATA[METHOD SetLreal : LREAL
+VAR_INPUT
+	nZone:	INT;
+	nIdx:	INT;
+	fValue:	LREAL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[CASE nIdx OF 
+1:
+	stPfwSupplyLineCfg[nSupplyCnt].fPwmCycleTime:=fValue;
+2:
+	stPfwSupplyLineCfg[nSupplyCnt].fPwmMinOnTime:=fValue;
+3:
+	stPfwSupplyLineCfg[nSupplyCnt].fPwmMaxOnTime:=fValue;
+4:
+	stPfwSupplyLineCfg[nSupplyCnt].fPwmMaxOnC:=fValue;
+5:
+	stPfwSupplyLineCfg[nSupplyCnt].fPwmMaxRampLoad:=fValue;
+6:
+	stPfwSupplyLineCfg[nSupplyCnt].fActSupplyLoad:=fValue;
+7:
+	stPfwSupplyLineCfg[nSupplyCnt].fActSupplyLoad:=fValue;
+8:
+	stPfwSupplyLineCfg[nSupplyCnt].fActSupplyCurrent:=fValue;
+9:
+	stPfwSupplyLineCfg[nSupplyCnt].fSupplyLoad:=fValue;
+10:
+	stPfwSupplyLineCfg[nSupplyCnt].fSupplyMatch:=fValue;
+
+	
+ELSE
+	SetLreal:=0.0;
+END_CASE
+
+stParamsUnsave.supply[nSupplyCnt]:=TRUE;]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>
