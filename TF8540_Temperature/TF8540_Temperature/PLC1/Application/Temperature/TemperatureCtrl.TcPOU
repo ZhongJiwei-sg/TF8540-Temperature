@@ -21,7 +21,7 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// =========================================================
-	// Get plc first cycle flag	
+	// Get temperature task first cycle flag	
 fbGetCurTaskIdx(); 
 bFirstCycle:= _TaskInfo[fbGetCurTaskIdx.index].FirstCycle;
 
