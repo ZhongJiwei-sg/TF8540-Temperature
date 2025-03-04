@@ -289,7 +289,7 @@ change log
 		</System>
 		<Plc>
 			<Project GUID="{E3EF9621-99B9-40CC-AA5A-65A1FEE60A10}" Name="PLC1" PrjFilePath="PLC1\PLC1.plcproj" TmcFilePath="PLC1\PLC1.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{F61A8726-8D95-A300-ACD5-27E9FD0F317D}" TmcPath="PLC1\PLC1.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{218967B3-75AE-38C3-BFF8-417BED2CBECD}" TmcPath="PLC1\PLC1.tmc">
 					<Name>PLC1 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" ContextId="1" AreaNo="17">
@@ -297,6 +297,11 @@ change log
 						<Var>
 							<Name>.out_PfwTempCtrlOutput</Name>
 							<Type GUID="{004900AF-2EDF-5F61-481A-534DC8DDBB69}">ARRAY [1..1] OF Tc2_PfwLib_Processing.ST_TcPfw_TempCtrlOutput</Type>
+						</Var>
+						<Var>
+							<Name>TemperatureCtrl.opPWM</Name>
+							<Comment><![CDATA[	iRead						: INT;]]></Comment>
+							<Type>BOOL</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="1" ContextId="1" AreaNo="16">

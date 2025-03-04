@@ -14,8 +14,6 @@ VAR
 
 	fbGetCurTaskIdx 			: GETCURTASKINDEX;
 	bFirstCycle					: BOOL;
-///	iRead						: INT;
-///	opPWM 				AT %Q*	: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -32,70 +30,69 @@ END_IF
 	// Temp
 ///aaaPfwTempMparamFromHmi[1].SensorType:= eTcPfwTempSensT_TC_K;
 ///aaaPfwTempMparamFromHmi[1].TempSensTerm:= eTcPfwTermT_EL331x;
-
+///	iRead						: INT;
+///	opPWM 				AT %Q*	: BOOL;
 ///TcPfw_Global_TempCtrlVariables.in_PfwTempCtrlInput[1].EL_SnsData:= iRead;
 ///opPWM:=out_PfwTempCtrlOutput[1].SelOutPos;
-
-///aaaPfwTempMparamFromHmi[1].AbsoluteHigh:= 405;
 
 // =========================================================
 CASE eState OF
 	
-	eMainSM_BasicInit:
+	E_MainStateMachine.eMainSM_BasicInit:
 		_01_BasicInit();
 		bEntry:= TRUE;
-		eState:= eMainSM_MParamLoad;
+		eState:= E_MainStateMachine.eMainSM_MParamLoad;
 		
-	eMainSM_TempInit:
+	E_MainStateMachine.eMainSM_TempInit:
 		_02_ParamsInit();
 		bParamsInit:= FALSE;
-		eState:= eMainSM_Idle;
+		eState:= E_MainStateMachine.eMainSM_Idle;
 		
-	eMainSM_MParamLoad:
+	E_MainStateMachine.eMainSM_MParamLoad:
 		IF bEntry THEN
 			bEntry:= FALSE;
 			stTempLoad.stTempCmd.bLoadMparams:= TRUE;
 		ELSE
 			IF stTempLoad.stTempState.bMparamLoaded THEN
-				eState:= eMainSM_PParamLoad;
+				eState:= E_MainStateMachine.eMainSM_PParamLoad;
 				bEntry:= TRUE;
 			END_IF
 		END_IF
 	
-	eMainSM_PParamLoad:
+	E_MainStateMachine.eMainSM_PParamLoad:
 		IF bEntry THEN
 			bEntry:= FALSE;
 			stTempLoad.stTempCmd.bLoadPparams:= TRUE;
 		ELSE
 			IF stTempLoad.stTempState.bPparamLoaded THEN
-				eState:= eMainSM_SupParamLoad;
+				eState:= E_MainStateMachine.eMainSM_SupParamLoad;
 				bEntry:= TRUE;
 			END_IF
 		END_IF
 		
-	eMainSM_SupParamLoad:
+	E_MainStateMachine.eMainSM_SupParamLoad:
 		IF bEntry THEN
 			bEntry:= FALSE;
 			stTempLoad.stTempCmd.bLoadSupplyParams:= TRUE;
 		ELSE
 			IF stTempLoad.stTempState.bSupplyParamsLoaded THEN
-				eState:= eMainSM_StartUp;
+				eState:= E_MainStateMachine.eMainSM_StartUp;
 				bEntry:= TRUE;
 			END_IF
 		END_IF
 		
-	eMainSM_StartUp:
+	E_MainStateMachine.eMainSM_StartUp:
 		bEntry:= FALSE;
 		fbTempCtrl.ConfigEnable:= TRUE;
 		fbTempCtrl.tCycle:= fCycleTime;
 		fbTempCtrl.Looptest_Enable:= FALSE;
 		fbTempCtrl.Callback_Enable:= TRUE;
 		fbTempCtrl.Simu_Enable:= TRUE;
-		eState:= eMainSM_Idle;
+		eState:= E_MainStateMachine.eMainSM_Idle;
 	
-	eMainSM_Idle:
+	E_MainStateMachine.eMainSM_Idle:
 		IF bParamsInit THEN
-			eState:= eMainSM_TempInit;
+			eState:= E_MainStateMachine.eMainSM_TempInit;
 		END_IF
 		
 END_CASE
@@ -117,7 +114,7 @@ fbLoad();
         <ST><![CDATA[// =========================================================
 // Get Cycle Time
 IF(GETCURTASKINDEXEX()<=0)THEN
-	fCycletime:= 0.025;		(* Don't know, just guessing *)
+	fCycletime:= TO_LREAL(0.025);		(* Don't know, just guessing *)
 ELSE
 	fCycletime:= UDINT_TO_LREAL(_TaskInfo[GETCURTASKINDEXEX()].cycleTime)/10000000.0;
 END_IF
@@ -162,8 +159,8 @@ END_FOR
 		aaaPfwTempMparamFromHmi[nCount].TuneY:= 100;												(* Y Tuning		*)
 		aaaPfwTempMparamFromHmi[nCount].Ramping_Rate:= 0.005;										(* Ramping rate	*)
 		aaaPfwTempMparamFromHmi[nCount].Ramping_Tolerance:= 10;										(* Ramping tolerance*)
-		aaaPfwTempMparamFromHmi[nCount].OutputSel_H:= eTcPfwTcOut_PWM;								(* Heating output signal	*)
-		aaaPfwTempMparamFromHmi[nCount].OutputSel_C:= eTcPfwTcOut_NoSignal;							(* Cooling output signal	*)
+		aaaPfwTempMparamFromHmi[nCount].OutputSel_H:= E_TcPfw_TctrlOutSelect.eTcPfwTcOut_PWM;		(* Heating output signal	*)
+		aaaPfwTempMparamFromHmi[nCount].OutputSel_C:= E_TcPfw_TctrlOutSelect.eTcPfwTcOut_NoSignal;	(* Cooling output signal	*)
 		aaaPfwTempMparamFromHmi[nCount].UseCooling:= FALSE;											(* Cooling on	*)
 		aaaPfwTempMparamFromHmi[nCount].TuneCooling:= FALSE;										(* Cooling on	*)
 		aaaPfwTempMparamFromHmi[nCount].ExtruderCompEna:= FALSE;									(* Extruder comp	*)
@@ -205,7 +202,9 @@ END_FOR
       </Implementation>
     </Action>
     <LineIds Name="TemperatureCtrl">
-      <LineId Id="123" Count="17" />
+      <LineId Id="123" Count="12" />
+      <LineId Id="146" Count="0" />
+      <LineId Id="136" Count="2" />
       <LineId Id="145" Count="0" />
       <LineId Id="3" Count="0" />
       <LineId Id="121" Count="0" />
