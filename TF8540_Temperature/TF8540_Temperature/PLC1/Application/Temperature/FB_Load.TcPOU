@@ -71,105 +71,13 @@ IF stTempLoad.stTempState.bSupplyParamsLoad THEN
 	END_FOR
 	stTempLoad.stTempState.bSupplyParamsLoaded:= NOT stTempLoad.stTempState.bSupplyParamsLoad;
 END_IF
-// =========================================================
-
-
-
-
-
-
-(* Old Routine *)
-(*
-IF (stTempLoad.stTempCmd.bLoadPparams AND NOT stTempLoad.stTempCmd.bLoadMparams AND NOT stTempLoad.stTempCmd.bLoadSupplyParams)THEN
-	IF(Loadidx<.cnPfwTempCtrlFirst)THEN
-		stTempLoad.stTempState.bPparamLoaded:=FALSE;
-		Loadidx:=cnPfwTempCtrlFirst;
-		fbLoadParams.PathName:=sPathP;
-	ELSIF(Loadidx>cnPfwTempCtrlLast)THEN
-		Loadidx:=cnPfwTempCtrlFirst-1;
-		stTempLoad.stTempState.bPparamLoaded:=TRUE;
-		stTempLoad.stTempState.bPparamLoad:=FALSE;
-		stTempLoad.stTempCmd.bLoadPparams:=FALSE;
-	ELSE
-		fbLoadParams
-			(
-			Mparam:=aaaPfwTempMparamFromHmi[Loadidx],
-			Pparam:=aaaPfwTempPparamFromHmi[Loadidx],
-			ProductParam:=TRUE
-			);
-		IF(fbLoadParams.Execute AND (fbLoadParams.Done OR fbLoadParams.Error))THEN
-			fbLoadParams.Execute:=FALSE;
-			Loadidx:=Loadidx+1;
-		ELSE
-			fbLoadParams.Execute:=TRUE;
-		END_IF
-	END_IF
-END_IF
-
-(*
-load machine parameters 
-*)
-IF(NOT stTempLoad.stTempCmd.bLoadPparams AND  stTempLoad.stTempCmd.bLoadMparams AND NOT stTempLoad.stTempCmd.bLoadSupplyParams)THEN
-	IF(Loadidx<cnPfwTempCtrlFirst)THEN
-		stTempLoad.stTempState.bMparamLoaded:=FALSE;
-		Loadidx:=cnPfwTempCtrlFirst;
-		fbLoadParams.PathName:=sPathM;
-	ELSIF(Loadidx>cnPfwTempCtrlLast)THEN
-		Loadidx:=cnPfwTempCtrlFirst-1;
-		stTempLoad.stTempState.bMparamLoaded:=TRUE;
-		stTempLoad.stTempState.bMparamLoad:=FALSE;
-		stTempLoad.stTempCmd.bLoadMparams:=FALSE;
-	ELSE
-		fbLoadParams
-			(
-			Mparam:=aaaPfwTempMparamFromHmi[Loadidx],
-			Pparam:=aaaPfwTempPparamFromHmi[Loadidx],
-			ProductParam:=FALSE
-			);
-		IF(fbLoadParams.Execute AND (fbLoadParams.Done OR fbLoadParams.Error))THEN
-			fbLoadParams.Execute:=FALSE;
-			Loadidx:=Loadidx+1;
-		ELSE
-			fbLoadParams.Execute:=TRUE;
-		END_IF
-	END_IF
-END_IF
-
-(*
-load supply lines 
-*)
-IF(stTempLoad.stTempCmd.bLoadSupplyParams AND NOT stTempLoad.stTempCmd.bLoadPparams AND NOT stTempLoad.stTempCmd.bLoadMparams)THEN
-	IF(Loadidx<cnPfwAppSupplyFirst)THEN
-		stTempLoad.stTempState.bSupplyParamsLoaded:=FALSE;
-		Loadidx:=cnPfwAppSupplyFirst;
-		fbLoadSupplyParams.PathName:=sPathM;
-	ELSIF(Loadidx>cnPfwAppSupplyLast)THEN
-		Loadidx:=cnPfwTempCtrlFirst-1;
-		stTempLoad.stTempState.bSupplyParamsLoaded:=TRUE;
-		stTempLoad.stTempState.bSupplyParamsLoad:=FALSE;
-		stTempLoad.stTempCmd.bLoadSupplyParams:=FALSE;
-	ELSE
-		fbLoadSupplyParams
-			(
-			Supply:=stPfwSupplyLineCfg[Loadidx],
-			Supidx:=Loadidx
-			);
-		IF(fbLoadSupplyParams.Execute AND (fbLoadSupplyParams.Done OR fbLoadSupplyParams.Error))THEN
-			fbLoadSupplyParams.Execute:=FALSE;
-			Loadidx:=Loadidx+1;
-		ELSE
-			fbLoadSupplyParams.Execute:=TRUE;
-		END_IF
-	END_IF
-END_IF
-*)]]></ST>
+// =========================================================]]></ST>
     </Implementation>
     <LineIds Name="FB_Load">
       <LineId Id="164" Count="0" />
       <LineId Id="3" Count="19" />
       <LineId Id="25" Count="21" />
-      <LineId Id="48" Count="111" />
-      <LineId Id="2" Count="0" />
+      <LineId Id="48" Count="21" />
     </LineIds>
   </POU>
 </TcPlcObject>
