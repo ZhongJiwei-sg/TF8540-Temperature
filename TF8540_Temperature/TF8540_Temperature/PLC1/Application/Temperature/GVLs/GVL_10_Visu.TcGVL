@@ -23,9 +23,7 @@ VAR_GLOBAL
 	bParamsInit					: BOOL:= FALSE;
 	
 	sErrorText					: STRING;
-	
-	
-	
+		
 	
 	stMParam_Visu				: ST_Param_Visu;
 	stPParam_Visu				: ST_Param_Visu;

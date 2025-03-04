@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+<TcPlcObject Version="1.1.0.1">
   <POU Name="FB_Visu_Param" Id="{d370d93e-1e75-477c-8f64-76e6a61c8be7}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_Visu_Param
 VAR_IN_OUT
@@ -34,8 +34,7 @@ FOR nIdx:=1 TO cnParamsArrayLast BY 1 DO
 	IF stMParam_Visu.bLrealSetValue[nIdx] THEN
 		stMParam_Visu.bLrealSetValue[nIdx]:= FALSE;
 		SetLreal(nVisuCount,nIdx, stMParam_Visu.fLrealNewValue[nidx]);
-	END_IF
-	
+	END_IF	
 	
 	IF stMParam_Visu.bDintSetValue[nIdx] THEN
 		stMParam_Visu.bDintSetValue[nIdx]:= FALSE;
@@ -347,7 +346,6 @@ END_VAR
       <Implementation>
         <ST><![CDATA[// =========================================================
 CASE nIdx OF 
-
 1:
 	aaaPfwTempMparamFromHmi[nZone].OutputSel_H:= DINT_TO_INT(nValue);
 2:
@@ -513,7 +511,8 @@ stParamsUnsave.mParams[nZone]:= TRUE;
     <LineIds Name="FB_Visu_Param">
       <LineId Id="49" Count="0" />
       <LineId Id="3" Count="4" />
-      <LineId Id="11" Count="29" />
+      <LineId Id="11" Count="17" />
+      <LineId Id="30" Count="10" />
       <LineId Id="2" Count="0" />
     </LineIds>
     <LineIds Name="FB_Visu_Param.GetBool">
@@ -547,7 +546,8 @@ stParamsUnsave.mParams[nZone]:= TRUE;
     </LineIds>
     <LineIds Name="FB_Visu_Param.SetEnum">
       <LineId Id="23" Count="0" />
-      <LineId Id="3" Count="13" />
+      <LineId Id="3" Count="0" />
+      <LineId Id="5" Count="11" />
       <LineId Id="24" Count="0" />
       <LineId Id="2" Count="0" />
     </LineIds>

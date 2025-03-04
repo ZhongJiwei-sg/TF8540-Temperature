@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+<TcPlcObject Version="1.1.0.1">
   <POU Name="FB_Load" Id="{508d3fb0-e11d-4506-9cb5-c1b7bfcf7ffc}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_Load
 VAR
@@ -29,8 +29,6 @@ IF stTempLoad.stTempState.bPparamLoad THEN
 	stTempLoad.stTempState.bPparamLoaded:= NOT stTempLoad.stTempState.bPparamLoad;
 END_IF
 
-
-
 (* Machine parameters *)
 (* Machine parameter - Set load on true *)
 IF (stTempLoad.stTempCmd.bLoadMparams AND NOT stTempLoad.stTempState.bMparamLoad) THEN
@@ -51,7 +49,6 @@ IF stTempLoad.stTempState.bMparamLoad THEN
 	END_FOR
 	stTempLoad.stTempState.bMparamLoaded:= NOT stTempLoad.stTempState.bMparamLoad;
 END_IF
-
 
 
 (* Supply lines *)
@@ -169,7 +166,9 @@ END_IF
     </Implementation>
     <LineIds Name="FB_Load">
       <LineId Id="164" Count="0" />
-      <LineId Id="3" Count="156" />
+      <LineId Id="3" Count="19" />
+      <LineId Id="25" Count="21" />
+      <LineId Id="48" Count="111" />
       <LineId Id="2" Count="0" />
     </LineIds>
   </POU>
