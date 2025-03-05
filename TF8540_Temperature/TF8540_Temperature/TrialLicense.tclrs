@@ -2,9 +2,14 @@
 <TcLicenseInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2011/11/TcLicenseInfo">
 	<LicenseInfo>
 		<SystemId>{F9D961FA-F09E-314E-DCDD-D6E05D2A5AA9}</SystemId>
-		<IssueTime>2025-02-26T06:29:00</IssueTime>
-		<ExpireTime>2025-03-06T00:00:00</ExpireTime>
-		<LicenseKey>3f84077be6cff067666bcda8228e87307a3430d971d402b3e0bee038289d232c93a886b6ba283f5109be9129880e984d932b4681eccf5b9035a32b42a583146257a3ecc994c8e4f65b0880cc64773ab1746ecbee200a480c669095ce205e3968884acfd76c1a59f566ed3f637118a8216cb988024a1fc425077ad67184852646291fd5b81ca8cc583e8fb1f3f8aa55478beab12f1fc31c5be770b7f889d49e37aad67382243f327bab0da29b9118d5753934230c60f19eab6b4dd406e550bcf454aeb5a246b36438ee5a3dec3beafc272710d34cc13f67e631625a1336138bdd167e07de3cc9ea00ef47e66c6c88d3e7a2167a95c10f30a99703e0b308f0483f</LicenseKey>
+		<IssueTime>2025-03-04T07:52:00</IssueTime>
+		<ExpireTime>2025-03-12T00:00:00</ExpireTime>
+		<LicenseKey>5739099f76684d6e68a552b955bb9291c5cdb35138a6899d3549e209d95dc1daaab75a42f492762157b8192068696258c7ea615ed6d3eb069cb3e54c936ee41062da811d259d136391ac3ca8f36720e06748e2677559d3991740ef1eea6b2519b726cc5ff33be097a7afa4b1a2396b057b99a0b5e531d37a4b2056059edb47a89609663cbc8d4874cb82cc7f40c49f832b7fdc6c99a8eaeb6d2aefc0a517c6c0fc1c7f1a0d320f1a49d78460c095803764095cfce7b74acf0b7f45ea5443e5293e522ea56f6de8de946a3c2fe6db5e5b7031423fc95a3d8a6d516c30f698c29b725fc6f91528ffe9fa1e4c9e2bfa764d0b4ab6d023e7fb978f2ef95dffeed036</LicenseKey>
+		<License>
+			<LicenseId>{777F1598-583B-4503-99BB-7C02E0ABD97E}</LicenseId>
+			<Name>TC3 Controller Toolbox</Name>
+			<OrderNo>TF4100</OrderNo>
+		</License>
 		<License>
 			<LicenseId>{28FFAB70-2B9C-472A-AA02-7F730A9C83B9}</LicenseId>
 			<Name>Plastic Processing TwinCAT Framework</Name>

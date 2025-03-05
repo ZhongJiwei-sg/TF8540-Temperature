@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+<TcPlcObject Version="1.1.0.1">
   <POU Name="FB_MainVisu" Id="{f1d8b7b9-c66f-4ac5-ab5d-0fbc237d4e59}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_MainVisu
 VAR
@@ -106,7 +106,6 @@ CASE eStatus OF
 END_CASE
 
 
-
 //
 //		Selected Zone
 //
@@ -127,11 +126,11 @@ ELSIF bVisuIdleLoad THEN
 END_IF
 
 
-
 ErrorHandling();
 fbVisuMParam(stMParam_Visu:=stMParam_Visu, stParamsUnsave:=stParamsUnsave);
 fbVisuPParam(stPParam_Visu:=stPParam_Visu, stParamsUnsave:=stParamsUnsave);
 fbVisuSupply(stSupply_Visu:=stSupply_Visu, stParamsUnsave:=stParamsUnsave);
+
 // =========================================================
 
 ]]></ST>
@@ -157,7 +156,11 @@ END_FOR
     </Action>
     <LineIds Name="FB_MainVisu">
       <LineId Id="133" Count="0" />
-      <LineId Id="3" Count="117" />
+      <LineId Id="3" Count="88" />
+      <LineId Id="93" Count="19" />
+      <LineId Id="114" Count="4" />
+      <LineId Id="134" Count="0" />
+      <LineId Id="119" Count="1" />
       <LineId Id="2" Count="0" />
     </LineIds>
     <LineIds Name="FB_MainVisu.ErrorHandling">

@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_Lin_Interpolation" Id="{11558e57-bfd3-4785-8eb5-01f908160e2b}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Lin_Interpolation
+VAR CONSTANT
+	nNoOfRows											: INT:= 45;
+	nNoOfColumns										: INT:= 2;
+END_VAR
+VAR
+	arrTableOffset										: ARRAY[1..nNoOfRows,1..nNoOfColumns] OF LREAL;	
+	arrTable											: ARRAY[1..nNoOfRows,1..nNoOfColumns] OF LREAL;
+	fIn, fOut, fManValue								: LREAL;
+	bExtrapolate										: BOOL;
+	eMode												: E_CTRL_MODE;
+	stCTRL_LIN_INTERPOLATION_PARAMS						: ST_CTRL_LIN_INTERPOLATION_PARAMS;
+	eErrorId											: E_CTRL_ERRORCODES;
+	bError												: BOOL;
+	fbCTRL_LIN_INTERPOLATION							: FB_CTRL_LIN_INTERPOLATION;
+	bInit, bUpdate										: BOOL	:= TRUE;
+	fbGetCurTaskIdx 									: GETCURTASKINDEX;
+	bFirstCycle											: BOOL;
+	fCycleTime											: LREAL := 0.025;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// =========================================================
+	// Get temperature task first cycle flag	
+fbGetCurTaskIdx(); 
+bFirstCycle:= _TaskInfo[fbGetCurTaskIdx.index].FirstCycle;
+
+IF bFirstCycle THEN
+	;
+END_IF
+
+// Get Cycle Time
+IF(GETCURTASKINDEXEX()<=0)THEN
+	fCycletime:= TO_LREAL(0.025);(* Don't know, just guessing *)
+ELSE
+	fCycletime:= UDINT_TO_LREAL(_TaskInfo[GETCURTASKINDEXEX()].cycleTime)/10000000.0;
+END_IF
+
+// =========================================================]]></ST>
+    </Implementation>
+    <Method Name="FB_Init" Id="{d5689ca5-f6bf-449e-a7c6-659bdadb3b06}">
+      <Declaration><![CDATA[//FB_Init is always available implicitly and it is used primarily for initialization.
+//The return value is not evaluated. For a specific influence, you can also declare the
+//methods explicitly and provide additional code there with the standard initialization
+//code. You can evaluate the return value.
+METHOD FB_Init: BOOL
+VAR_INPUT
+    bInitRetains: BOOL; // TRUE: the retain variables are initialized (reset warm / reset cold)
+    bInCopyCode: BOOL;  // TRUE: the instance will be copied to the copy code afterward (online change)   
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// =========================================================
+	// Init
+	arrTableOffset[1,1]:= 0.1;		arrTableOffset[1,2]:= 0.9;
+	arrTableOffset[2,1]:= 0.3;		arrTableOffset[2,2]:= 0.8;
+	arrTableOffset[3,1]:= 0.5;		arrTableOffset[3,2]:= 0.7;
+	arrTableOffset[4,1]:= 0.7;		arrTableOffset[4,2]:= 0.6;
+	arrTableOffset[5,1]:= 0.9;		arrTableOffset[5,2]:= 0.5;
+	arrTableOffset[6,1]:= 0.8;		arrTableOffset[6,2]:= 0.4;
+	arrTableOffset[7,1]:= 0.7;		arrTableOffset[7,2]:= 0.3;
+	arrTableOffset[8,1]:= 0.6;		arrTableOffset[8,2]:= 0.2;
+	arrTableOffset[9,1]:= 0.5;		arrTableOffset[9,2]:= 0.1;
+	arrTableOffset[10,1]:= 0.4;		arrTableOffset[10,2]:= 0.3;
+	arrTableOffset[11,1]:= 0.3;		arrTableOffset[11,2]:= 0.5;
+	arrTableOffset[12,1]:= 0.2;		arrTableOffset[12,2]:= 0.7;
+	arrTableOffset[13,1]:= 0.1;		arrTableOffset[13,2]:= 0.9;
+	arrTableOffset[14,1]:= 0.3;		arrTableOffset[14,2]:= 0.7;
+	arrTableOffset[15,1]:= 0.5;		arrTableOffset[15,2]:= 0.5;
+	arrTableOffset[16,1]:= 0.7;		arrTableOffset[16,2]:= 0.3;
+	arrTableOffset[17,1]:= 0.9;		arrTableOffset[17,2]:= 0.1;
+	arrTableOffset[18,1]:= 0.8;		arrTableOffset[18,2]:= 0.2;
+	arrTableOffset[19,1]:= 0.7;		arrTableOffset[19,2]:= 0.3;
+	arrTableOffset[20,1]:= 0.6;		arrTableOffset[20,2]:= 0.4;
+	arrTableOffset[21,1]:= 0.5;		arrTableOffset[21,2]:= 0.5;
+	arrTableOffset[22,1]:= 0.4;		arrTableOffset[22,2]:= 0.6;
+	arrTableOffset[23,1]:= 0.3;		arrTableOffset[23,2]:= 0.7;
+	arrTableOffset[24,1]:= 0.2;		arrTableOffset[24,2]:= 0.8;
+	arrTableOffset[25,1]:= 0.1;		arrTableOffset[25,2]:= 0.9;
+	arrTableOffset[26,1]:= 0.9;		arrTableOffset[26,2]:= 0.7;
+	arrTableOffset[27,1]:= 0.7;		arrTableOffset[27,2]:= 0.5;
+	arrTableOffset[28,1]:= 0.5;		arrTableOffset[28,2]:= 0.5;
+	arrTableOffset[29,1]:= 0.3;		arrTableOffset[29,2]:= 0.3;
+	arrTableOffset[30,1]:= 0.1;		arrTableOffset[30,2]:= 0.1;
+	arrTableOffset[31,1]:= 0.3;		arrTableOffset[31,2]:= 0.3;
+	arrTableOffset[32,1]:= 0.5;		arrTableOffset[32,2]:= 0.5;
+	arrTableOffset[33,1]:= 0.7;		arrTableOffset[33,2]:= 0.7;
+	arrTableOffset[34,1]:= 0.9;		arrTableOffset[34,2]:= 0.9;
+	arrTableOffset[35,1]:= 0.8;		arrTableOffset[35,2]:= 0.7;
+	arrTableOffset[36,1]:= 0.7;		arrTableOffset[36,2]:= 0.5;
+	arrTableOffset[37,1]:= 0.6;		arrTableOffset[37,2]:= 0.3;
+	arrTableOffset[38,1]:= 0.5;		arrTableOffset[38,2]:= 0.1;
+	arrTableOffset[39,1]:= 0.4;		arrTableOffset[39,2]:= 0.2;
+	arrTableOffset[40,1]:= 0.3;		arrTableOffset[40,2]:= 0.3;
+	arrTableOffset[41,1]:= 0.2;		arrTableOffset[41,2]:= 0.4;
+	arrTableOffset[42,1]:= 0.1;		arrTableOffset[42,2]:= 0.5;
+	arrTableOffset[43,1]:= 0.3;		arrTableOffset[43,2]:= 0.6;
+	arrTableOffset[44,1]:= 0.5;		arrTableOffset[44,2]:= 0.7;
+	arrTableOffset[45,1]:= 0.7;		arrTableOffset[45,2]:= 0.8;
+	
+// =========================================================]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_Cyclic" Id="{43f48770-94a3-49f4-b149-1bd9b033466a}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Cyclic
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// =========================================================
+bUpdate := TRUE;
+
+IF bInit OR bUpdate THEN
+	(* Init array with the interpolation points  *)
+	(* 	fIn					 						|		fOut		*)
+	arrTable[1,1] := 25.0+arrTableOffset[1,1];			arrTable[1,2] := 25.0+arrTableOffset[1,2];
+	arrTable[2,1] := 30.0+arrTableOffset[2,1];			arrTable[2,2] := 30.0+arrTableOffset[2,2];
+	arrTable[3,1] := 35.0+arrTableOffset[3,1];			arrTable[3,2] := 35.0+arrTableOffset[3,2];
+	arrTable[4,1] := 40.0+arrTableOffset[4,1];			arrTable[4,2] := 40.0+arrTableOffset[4,2];
+	arrTable[5,1] := 45.0+arrTableOffset[5,1];			arrTable[5,2] := 45.0+arrTableOffset[5,2];
+	arrTable[6,1] := 50.0+arrTableOffset[6,1];			arrTable[6,2] := 50.0+arrTableOffset[6,2];
+	arrTable[7,1] := 55.0+arrTableOffset[7,1];			arrTable[7,2] := 55.0+arrTableOffset[7,2];
+	arrTable[8,1] := 60.0+arrTableOffset[8,1];			arrTable[8,2] := 60.0+arrTableOffset[8,2];
+	arrTable[9,1] := 65.0+arrTableOffset[9,1];			arrTable[9,2] := 65.0+arrTableOffset[9,2];
+	arrTable[10,1] := 70.0+arrTableOffset[10,1];		arrTable[10,2] := 70.0+arrTableOffset[10,2];
+	arrTable[11,1] := 75.0+arrTableOffset[11,1];		arrTable[11,2] := 75.0+arrTableOffset[11,2];
+	arrTable[12,1] := 80.0+arrTableOffset[12,1];		arrTable[12,2] := 80.0+arrTableOffset[12,2];
+	arrTable[13,1] := 85.0+arrTableOffset[13,1];		arrTable[13,2] := 85.0+arrTableOffset[13,2];
+	arrTable[14,1] := 90.0+arrTableOffset[14,1];		arrTable[14,2] := 90.0+arrTableOffset[14,2];
+	arrTable[15,1] := 95.0+arrTableOffset[15,1];		arrTable[15,2] := 95.0+arrTableOffset[15,2];
+	arrTable[16,1] := 100.0+arrTableOffset[16,1];		arrTable[16,2] := 100.0+arrTableOffset[16,2];
+	arrTable[17,1] := 105.0+arrTableOffset[17,1];		arrTable[17,2] := 105.0+arrTableOffset[17,2];
+	arrTable[18,1] := 110.0+arrTableOffset[18,1];		arrTable[18,2] := 110.0+arrTableOffset[18,2];
+	arrTable[19,1] := 115.0+arrTableOffset[19,1];		arrTable[19,2] := 115.0+arrTableOffset[19,2];
+	arrTable[20,1] := 120.0+arrTableOffset[20,1];		arrTable[20,2] := 120.0+arrTableOffset[20,2];
+	arrTable[21,1] := 125.0+arrTableOffset[21,1];		arrTable[21,2] := 125.0+arrTableOffset[21,2];
+	arrTable[22,1] := 130.0+arrTableOffset[22,1];		arrTable[22,2] := 130.0+arrTableOffset[22,2];
+	arrTable[23,1] := 135.0+arrTableOffset[23,1];		arrTable[23,2] := 135.0+arrTableOffset[23,2];
+	arrTable[24,1] := 140.0+arrTableOffset[24,1];		arrTable[24,2] := 140.0+arrTableOffset[24,2];
+	arrTable[25,1] := 145.0+arrTableOffset[25,1];		arrTable[25,2] := 145.0+arrTableOffset[25,2];
+	arrTable[26,1] := 150.0+arrTableOffset[26,1];		arrTable[26,2] := 150.0+arrTableOffset[26,2];
+	arrTable[27,1] := 155.0+arrTableOffset[27,1];		arrTable[27,2] := 155.0+arrTableOffset[27,2];
+	arrTable[28,1] := 160.0+arrTableOffset[28,1];		arrTable[28,2] := 160.0+arrTableOffset[28,2];
+	arrTable[29,1] := 165.0+arrTableOffset[29,1];		arrTable[29,2] := 165.0+arrTableOffset[29,2];
+	arrTable[30,1] := 170.0+arrTableOffset[30,1];		arrTable[30,2] := 170.0+arrTableOffset[30,2];
+	arrTable[31,1] := 175.0+arrTableOffset[31,1];		arrTable[31,2] := 175.0+arrTableOffset[31,2];
+	arrTable[32,1] := 180.0+arrTableOffset[32,1];		arrTable[32,2] := 180.0+arrTableOffset[32,2];
+	arrTable[33,1] := 185.0+arrTableOffset[33,1];		arrTable[33,2] := 185.0+arrTableOffset[33,2];
+	arrTable[34,1] := 190.0+arrTableOffset[34,1];		arrTable[34,2] := 190.0+arrTableOffset[34,2];
+	arrTable[35,1] := 195.0+arrTableOffset[35,1];		arrTable[35,2] := 195.0+arrTableOffset[35,2];
+	arrTable[36,1] := 200.0+arrTableOffset[36,1];		arrTable[36,2] := 200.0+arrTableOffset[36,2];
+	arrTable[37,1] := 205.0+arrTableOffset[37,1];		arrTable[37,2] := 205.0+arrTableOffset[37,2];
+	arrTable[38,1] := 210.0+arrTableOffset[38,1];		arrTable[38,2] := 210.0+arrTableOffset[38,2];
+	arrTable[39,1] := 215.0+arrTableOffset[39,1];		arrTable[39,2] := 215.0+arrTableOffset[39,2];
+	arrTable[40,1] := 220.0+arrTableOffset[40,1];		arrTable[40,2] := 220.0+arrTableOffset[40,2];
+	arrTable[41,1] := 225.0+arrTableOffset[41,1];		arrTable[41,2] := 225.0+arrTableOffset[41,2];
+	arrTable[42,1] := 230.0+arrTableOffset[42,1];		arrTable[42,2] := 230.0+arrTableOffset[42,2];
+	arrTable[43,1] := 235.0+arrTableOffset[43,1];		arrTable[43,2] := 235.0+arrTableOffset[43,2];
+	arrTable[44,1] := 240.0+arrTableOffset[44,1];		arrTable[44,2] := 240.0+arrTableOffset[44,2];
+	arrTable[45,1] := 245.0+arrTableOffset[45,1];		arrTable[45,2] := 245.0+arrTableOffset[45,2];;
+
+	(* Init parameter struct *)
+	stCTRL_LIN_INTERPOLATION_PARAMS.tCtrlCycleTime	:= UDINT_TO_TIME(_TaskInfo[GETCURTASKINDEXEX()].cycleTime/10000);
+	stCTRL_LIN_INTERPOLATION_PARAMS.tTaskCycleTime	:= UDINT_TO_TIME(_TaskInfo[GETCURTASKINDEXEX()].cycleTime/10000);
+//	stCTRL_LIN_INTERPOLATION_PARAMS.tTaskCycleTime	:= LREAL_TO_TIME((fCycletime*10000000.0)/10000);
+	stCTRL_LIN_INTERPOLATION_PARAMS.nDataTable_NumberOfRows	:= 45;
+
+	(* Set the mode to ACTIVE --> Normal operation *)
+	eMode := E_CTRL_MODE.eCTRL_MODE_ACTIVE;
+
+	(* Reset the init flag *)
+	bInit := FALSE;
+	(* Reset the update flag *)
+	bUpdate := FALSE;
+END_IF
+
+(* Set the addresses *)
+stCTRL_LIN_INTERPOLATION_PARAMS.pDataTable_ADR			:= ADR(arrTable);
+stCTRL_LIN_INTERPOLATION_PARAMS.nDataTable_SIZEOF		:= SIZEOF(arrTable);
+
+(* Call interpolation fb *)
+fbCTRL_LIN_INTERPOLATION(	fIn						:= fIn,
+							fManValue				:= fManValue,
+							bExtrapolate			:= bExtrapolate,
+							stParams				:= stCTRL_LIN_INTERPOLATION_PARAMS,
+							eMode					:= eMode,
+							fOut					=> fOut,
+							eErrorId				=> eErrorId,
+							bError					=> bError);
+							
+// =========================================================]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_Lin_Interpolation">
+      <LineId Id="3" Count="13" />
+      <LineId Id="1" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="17" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Lin_Interpolation.FB_Init">
+      <LineId Id="46" Count="0" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="1" Count="44" />
+      <LineId Id="49" Count="0" />
+      <LineId Id="47" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Lin_Interpolation.M_Cyclic">
+      <LineId Id="80" Count="0" />
+      <LineId Id="1" Count="0" />
+      <LineId Id="79" Count="0" />
+      <LineId Id="2" Count="51" />
+      <LineId Id="90" Count="0" />
+      <LineId Id="54" Count="23" />
+      <LineId Id="89" Count="0" />
+      <LineId Id="88" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

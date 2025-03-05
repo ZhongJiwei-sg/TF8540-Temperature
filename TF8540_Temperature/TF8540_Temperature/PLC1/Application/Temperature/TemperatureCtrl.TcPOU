@@ -14,6 +14,8 @@ VAR
 
 	fbGetCurTaskIdx 			: GETCURTASKINDEX;
 	bFirstCycle					: BOOL;
+//	For temperature feedback linearisation
+	fbLinInterpolation			: FB_LIN_INTERPOLATION;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -31,13 +33,14 @@ END_IF
 ///aaaPfwTempMparamFromHmi[1].SensorType:= eTcPfwTempSensT_TC_K;
 ///aaaPfwTempMparamFromHmi[1].TempSensTerm:= eTcPfwTermT_EL331x;
 ///	iRead						: INT;
-///	opPWM 				AT %Q*	: BOOL;
+///	opHeat 				AT %Q*	: BOOL;
+/// opCool				AT %Q*	: BOOL:
 ///TcPfw_Global_TempCtrlVariables.in_PfwTempCtrlInput[1].EL_SnsData:= iRead;
-///opPWM:=out_PfwTempCtrlOutput[1].SelOutPos;
+///opHeat :=out_PfwTempCtrlOutput[1].SelOutPos;
+///opCool :=out_PfwTempCtrlOutput[1].SelOutNeg;
 
 // =========================================================
-CASE eState OF
-	
+CASE eState OF	
 	E_MainStateMachine.eMainSM_BasicInit:
 		_01_BasicInit();
 		bEntry:= TRUE;
@@ -98,6 +101,12 @@ CASE eState OF
 END_CASE
 
 // =========================================================
+	// Temperature feedback linearisation	
+fbLinInterpolation();
+	
+fbLinInterpolation.M_Cyclic();
+
+// =========================================================
 fbTempCtrl(
 	Looptest_Enable:= TRUE,
 	Scope_TempCtrlVariables:= Scope_TempCtrlVariables);
@@ -106,6 +115,7 @@ fbVisu();
 
 fbSave();
 fbLoad();
+
 // =========================================================
 ]]></ST>
     </Implementation>
@@ -114,16 +124,17 @@ fbLoad();
         <ST><![CDATA[// =========================================================
 // Get Cycle Time
 IF(GETCURTASKINDEXEX()<=0)THEN
-	fCycletime:= TO_LREAL(0.025);		(* Don't know, just guessing *)
+	fCycletime:= TO_LREAL(0.025);(* Don't know, just guessing *)
 ELSE
 	fCycletime:= UDINT_TO_LREAL(_TaskInfo[GETCURTASKINDEXEX()].cycleTime)/10000000.0;
 END_IF
 
 // Init Zone ID/Name
 FOR nCount := cnPfwTempCtrlFirst TO cnPfwTempCtrlLast DO
-	aaaPfwTempMparamFromHmi[nCount].ZoneId := nCount;				(* Zone id	*)
-	aaaPfwTempMparamFromHmi[nCount].ZoneName := CONCAT('Zone_', INT_TO_STRING(nCount));	(* Zone name  *)
+	aaaPfwTempMparamFromHmi[nCount].ZoneId := nCount;(* Zone id	*)
+	aaaPfwTempMparamFromHmi[nCount].ZoneName := CONCAT('Zone_', INT_TO_STRING(nCount));(* Zone name  *)
 END_FOR
+
 // =========================================================
 ]]></ST>
       </Implementation>
@@ -137,7 +148,7 @@ END_FOR
 		aaaPfwTempMparamFromHmi[nCount].AbsoluteLow:= 100;											(* Limiting value of absolute low.	*)
 		aaaPfwTempMparamFromHmi[nCount].InUse:= TRUE;												(* Zone is in use	*)
 		aaaPfwTempMparamFromHmi[nCount].Enable:= TRUE;
-		aaaPfwTempMparamFromHmi[nCount].SensorType:= 0;												(* Simulation	*)
+		aaaPfwTempMparamFromHmi[nCount].SensorType:= E_TcPfw_TempSensType.eTcPfwTempSensT_NoSensor;	(* Simulation	*)
 		aaaPfwTempMparamFromHmi[nCount].ExtruderId:= 1;												(* Simulation	*)
 		aaaPfwTempMparamFromHmi[nCount].TempSensTerm:= 0;											(* Simulation	*)
 		aaaPfwTempMparamFromHmi[nCount].ZoneId:= nCount;											(* Zone id		*)
@@ -197,6 +208,7 @@ END_FOR
 		stPfwSupplyLineCfg[nCount].fPwmMaxRampLoad:= 1;
 		stPfwSupplyLineCfg[nCount].nPwmFactorC:= 10;
 	END_FOR
+	
 // =========================================================
 ]]></ST>
       </Implementation>
@@ -204,28 +216,41 @@ END_FOR
     <LineIds Name="TemperatureCtrl">
       <LineId Id="123" Count="12" />
       <LineId Id="146" Count="0" />
-      <LineId Id="136" Count="2" />
+      <LineId Id="136" Count="0" />
+      <LineId Id="148" Count="0" />
+      <LineId Id="137" Count="1" />
+      <LineId Id="149" Count="0" />
       <LineId Id="145" Count="0" />
       <LineId Id="3" Count="0" />
       <LineId Id="121" Count="0" />
-      <LineId Id="4" Count="19" />
+      <LineId Id="5" Count="18" />
       <LineId Id="101" Count="0" />
       <LineId Id="26" Count="9" />
       <LineId Id="37" Count="10" />
       <LineId Id="49" Count="4" />
       <LineId Id="55" Count="0" />
-      <LineId Id="57" Count="11" />
-      <LineId Id="79" Count="9" />
+      <LineId Id="57" Count="10" />
+      <LineId Id="150" Count="0" />
+      <LineId Id="68" Count="0" />
+      <LineId Id="153" Count="2" />
+      <LineId Id="151" Count="1" />
+      <LineId Id="79" Count="8" />
+      <LineId Id="147" Count="0" />
+      <LineId Id="88" Count="0" />
       <LineId Id="2" Count="0" />
     </LineIds>
     <LineIds Name="TemperatureCtrl._01_BasicInit">
       <LineId Id="15" Count="0" />
-      <LineId Id="2" Count="12" />
+      <LineId Id="2" Count="11" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="14" Count="0" />
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="TemperatureCtrl._02_ParamsInit">
       <LineId Id="69" Count="0" />
-      <LineId Id="2" Count="66" />
+      <LineId Id="2" Count="65" />
+      <LineId Id="70" Count="0" />
+      <LineId Id="68" Count="0" />
       <LineId Id="1" Count="0" />
     </LineIds>
   </POU>

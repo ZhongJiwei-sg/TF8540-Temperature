@@ -66,13 +66,16 @@ ELSIF(stTempSave.stTempCmd.bSaveSupplyParams AND  bSaveSupplyOld)  THEN
 	END_FOR
 END_IF
 bSaveSupplyOld:= stTempSave.stTempCmd.bSaveSupplyParams;
+
 // =========================================================
 ]]></ST>
     </Implementation>
     <LineIds Name="FB_Save">
       <LineId Id="135" Count="0" />
       <LineId Id="3" Count="33" />
-      <LineId Id="38" Count="21" />
+      <LineId Id="38" Count="20" />
+      <LineId Id="136" Count="0" />
+      <LineId Id="59" Count="0" />
       <LineId Id="2" Count="0" />
     </LineIds>
   </POU>
