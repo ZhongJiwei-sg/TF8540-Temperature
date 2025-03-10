@@ -6,7 +6,11 @@ VAR
 	fbGetCurTaskIdx 			: GETCURTASKINDEX;
 	bFirstCycle					: BOOL;
 //	For temperature feedback linearisation
-	fbLinInterpolation			: FB_LIN_INTERPOLATION;
+	fbLinInterpolation			: FB_Linear_Interpolation;
+//	Setpoint generator
+	fbSetpointGenerator			: FB_Setpoint_Generator;
+//	Ramp generator
+	fbRampGenerator				: FB_Ramp_Generator;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -24,10 +28,14 @@ END_IF
 fbLinInterpolation();	
 fbLinInterpolation.M_Cyclic();
 
+	// Setpoint generator	
+fbSetpointGenerator();
+fbSetpointGenerator.M_Cyclic();	
+
 // =========================================================]]></ST>
     </Implementation>
     <LineIds Name="MAIN_Fast">
-      <LineId Id="1" Count="14" />
+      <LineId Id="1" Count="18" />
     </LineIds>
   </POU>
 </TcPlcObject>

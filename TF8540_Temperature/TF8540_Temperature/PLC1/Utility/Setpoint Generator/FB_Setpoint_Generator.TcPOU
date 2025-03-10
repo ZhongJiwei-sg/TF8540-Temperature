@@ -2,30 +2,55 @@
 <TcPlcObject Version="1.1.0.1">
   <POU Name="FB_Setpoint_Generator" Id="{ba46414f-087c-4b1c-8465-4eeebd5edc8b}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_Setpoint_Generator
-VAR_INPUT
-END_VAR
-VAR_OUTPUT
+VAR CONSTANT
+	nNoOfRows											: INT:= 45;
 END_VAR
 VAR
-	fManValue							: LREAL;
-	eMode								: E_CTRL_MODE;
-	nSetpointIndex						: INT		:= 3;
-	fCurrentSetpoint					: LREAL;
-	bValueReached						: BOOL;
+	fManValue											: LREAL;
+	eMode												: E_CTRL_MODE;
+	nSetpointIndex										: INT:= 3;
+	fCurrentSetpoint									: LREAL;
+	bValueReached										: BOOL;
 
-	fbCTRL_SETPOINT_GENERATOR			: FB_CTRL_SETPOINT_GENERATOR;
-	stCTRL_SETPOINT_GENERATOR_PARAMS	: ST_CTRL_SETPOINT_GENERATOR_PARAMS;
-	arSetpointTable						: ARRAY [1..4] OF FLOAT;
+	fbCTRL_SETPOINT_GENERATOR							: FB_CTRL_SETPOINT_GENERATOR;
+	stCTRL_SETPOINT_GENERATOR_PARAMS					: ST_CTRL_SETPOINT_GENERATOR_PARAMS;
+	arSetpointTable										: ARRAY [1..nNoOfRows] OF FLOAT;
 
-	eErrorId							: E_CTRL_ERRORCODES;
-	bError								: BOOL;
+	eErrorId											: E_CTRL_ERRORCODES;
+	bError												: BOOL;
 
-	bInit								: BOOL := TRUE;
-	fbTON								: TON;
+	bInit, bUpdate										: BOOL	:= TRUE;
+	fbTON												: TON;
+	
+	fbGetCurTaskIdx 									: GETCURTASKINDEX;
+	bFirstCycle											: BOOL;
+	fCycleTime											: LREAL := 0.025;
+//	Scope
+	fInToScope											: LREAL;
+	fOutToScope											: LREAL;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF bInit THEN
+      <ST><![CDATA[// =========================================================
+	// Get task first cycle flag	
+fbGetCurTaskIdx(); 
+bFirstCycle:= _TaskInfo[fbGetCurTaskIdx.index].FirstCycle;
+
+IF bFirstCycle THEN
+	;
+END_IF
+
+// Get Cycle Time
+IF(GETCURTASKINDEXEX()<=0)THEN
+	fCycletime:= TO_LREAL(0.025);(* Don't know, just guessing *)
+ELSE
+	fCycletime:= UDINT_TO_LREAL(_TaskInfo[GETCURTASKINDEXEX()].cycleTime)/10000000.0;
+END_IF
+
+// =========================================================
+
+(*
+IF bInit THEN
 	(* init the setpoint array *)
 	arSetpointTable[ 1 ]	:= 12;
 	arSetpointTable[ 2 ]	:= 25;
@@ -46,7 +71,9 @@ END_VAR
 	(* reset init flag *)
 	bInit := FALSE;
 END_IF
+*)
 
+(*
 (* set the addresses *)
 stCTRL_SETPOINT_GENERATOR_PARAMS.nDataTable_SIZEOF			:= SIZEOF(arSetpointTable);
 stCTRL_SETPOINT_GENERATOR_PARAMS.pDataTable_ADR				:= ADR(arSetpointTable);
@@ -78,7 +105,8 @@ fbCTRL_SETPOINT_GENERATOR(	nSetpointIndex		:= nSetpointIndex,
 										 );
 
 (* copy var to scope var *)
-fOutToScope := fCurrentSetpoint;]]></ST>
+fOutToScope := fCurrentSetpoint;
+*)]]></ST>
     </Implementation>
     <Method Name="FB_Init" Id="{934b235d-9833-48db-b6f4-391752153908}">
       <Declaration><![CDATA[//FB_Init is always available implicitly and it is used primarily for initialization.
@@ -92,7 +120,69 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[// =========================================================
+(* Init the setpoint array *)
+arSetpointTable[ 1 ]	:= 25;
+arSetpointTable[ 2 ]	:= 30;
+arSetpointTable[ 3 ]	:= 35;
+arSetpointTable[ 4 ]	:= 40;
+arSetpointTable[ 5 ]	:= 45;
+arSetpointTable[ 6 ]	:= 50;
+arSetpointTable[ 7 ]	:= 55;
+arSetpointTable[ 8 ]	:= 60;
+arSetpointTable[ 9 ]	:= 65;
+arSetpointTable[ 10 ]	:= 70;
+arSetpointTable[ 11 ]	:= 75;
+arSetpointTable[ 12 ]	:= 80;
+arSetpointTable[ 13 ]	:= 85;
+arSetpointTable[ 14 ]	:= 90;
+arSetpointTable[ 15 ]	:= 95;
+arSetpointTable[ 16 ]	:= 100;
+arSetpointTable[ 17 ]	:= 105;
+arSetpointTable[ 18 ]	:= 110;
+arSetpointTable[ 19 ]	:= 115;
+arSetpointTable[ 20 ]	:= 120;
+arSetpointTable[ 21 ]	:= 125;
+arSetpointTable[ 22 ]	:= 130;
+arSetpointTable[ 23 ]	:= 135;
+arSetpointTable[ 24 ]	:= 140;
+arSetpointTable[ 25 ]	:= 145;
+arSetpointTable[ 26 ]	:= 150;
+arSetpointTable[ 27 ]	:= 155;
+arSetpointTable[ 28 ]	:= 160;
+arSetpointTable[ 29 ]	:= 165;
+arSetpointTable[ 30 ]	:= 170;
+arSetpointTable[ 31 ]	:= 175;
+arSetpointTable[ 32 ]	:= 180;
+arSetpointTable[ 33 ]	:= 185;
+arSetpointTable[ 34 ]	:= 190;
+arSetpointTable[ 35 ]	:= 195;
+arSetpointTable[ 36 ]	:= 200;
+arSetpointTable[ 37 ]	:= 205;
+arSetpointTable[ 38 ]	:= 210;
+arSetpointTable[ 39 ]	:= 215;
+arSetpointTable[ 40 ]	:= 220;
+arSetpointTable[ 41 ]	:= 225;
+arSetpointTable[ 42 ]	:= 230;
+arSetpointTable[ 43 ]	:= 235;
+arSetpointTable[ 44 ]	:= 240;
+arSetpointTable[ 45 ]	:= 245;
+
+(*
+(* Init parameter struct *)
+stCTRL_SETPOINT_GENERATOR_PARAMS.tTaskCycleTime				:= UDINT_TO_TIME(_TaskInfo[GETCURTASKINDEXEX()].cycleTime/10000);
+stCTRL_SETPOINT_GENERATOR_PARAMS.tCtrlCycleTime				:= UDINT_TO_TIME(_TaskInfo[GETCURTASKINDEXEX()].cycleTime/10000);
+stCTRL_SETPOINT_GENERATOR_PARAMS.bDisableRamping			:= FALSE;
+stCTRL_SETPOINT_GENERATOR_PARAMS.fVeloNeg					:= 10;
+stCTRL_SETPOINT_GENERATOR_PARAMS.fVeloPos					:= 8;
+stCTRL_SETPOINT_GENERATOR_PARAMS.nDataTable_NumberOfRows	:= 4;
+
+(* Set the mode to ACTIVE --> normal operation *)
+eMode := eCTRL_MODE_ACTIVE;
+*)
+// =========================================================
+
+]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_Cyclic" Id="{2bbf86ce-9f52-4111-bf2f-dbebf9a0a72b}">
@@ -101,29 +191,66 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="M_InTarget" Id="{3e592c98-8280-4a07-9f0d-81e7bb9d76b7}">
-      <Declaration><![CDATA[METHOD PUBLIC M_InTarget : BOOL
-VAR_INPUT
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[// =========================================================
+IF bInit OR bUpdate THEN
+	(* Init parameter struct *)
+	stCTRL_SETPOINT_GENERATOR_PARAMS.tTaskCycleTime				:= UDINT_TO_TIME(_TaskInfo[GETCURTASKINDEXEX()].cycleTime/10000);
+	stCTRL_SETPOINT_GENERATOR_PARAMS.tCtrlCycleTime				:= UDINT_TO_TIME(_TaskInfo[GETCURTASKINDEXEX()].cycleTime/10000);
+	stCTRL_SETPOINT_GENERATOR_PARAMS.bDisableRamping			:= FALSE; (*A continuous output value is not calculated if this parameter is TRUE. There is a step change between the output values*)
+	stCTRL_SETPOINT_GENERATOR_PARAMS.fVeloNeg					:= 10; (* In units per second *)
+	stCTRL_SETPOINT_GENERATOR_PARAMS.fVeloPos					:= 8;  (* In units per second *)
+	stCTRL_SETPOINT_GENERATOR_PARAMS.nDataTable_NumberOfRows	:= nNoOfRows;
+
+	(* Set the mode to ACTIVE --> normal operation *)
+	eMode := eCTRL_MODE_ACTIVE;
+	(* Reset the init flag *)
+	bInit := FALSE;
+	(* Reset the update flag *)
+	bUpdate := FALSE;
+END_IF
+
+(* Set the addresses *)
+stCTRL_SETPOINT_GENERATOR_PARAMS.nDataTable_SIZEOF			:= SIZEOF(arSetpointTable);
+stCTRL_SETPOINT_GENERATOR_PARAMS.pDataTable_ADR				:= ADR(arSetpointTable);
+
+(* Generate setpoint-index *)
+fbTON( IN := TRUE, PT:= T#5S);
+IF fbTON.Q
+THEN
+	nSetpointIndex	:=  nSetpointIndex + 1;
+	IF nSetPointIndex > 4
+	THEN
+		nSetPointIndex := 1;
+	END_IF
+	fbTON( IN := FALSE);
+END_IF
+
+(* Copy var to scope var *)
+fInToScope := INT_TO_FLOAT(nSetpointIndex);
+
+(* Call setpointgenerator *)
+fbCTRL_SETPOINT_GENERATOR(nSetpointIndex:= nSetpointIndex,
+										fManValue				:= fManValue,
+										eMode					:= eMode,
+										stParams				:= stCTRL_SETPOINT_GENERATOR_PARAMS,
+										fOut					=> fCurrentSetpoint,
+										bValueReached		=> bValueReached
+										 );
+
+(* Copy var to scope var *)
+fOutToScope := fCurrentSetpoint;
+
+// =========================================================]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="FB_Setpoint_Generator">
-      <LineId Id="1" Count="53" />
+      <LineId Id="1" Count="75" />
     </LineIds>
     <LineIds Name="FB_Setpoint_Generator.FB_Init">
-      <LineId Id="1" Count="0" />
+      <LineId Id="1" Count="62" />
     </LineIds>
     <LineIds Name="FB_Setpoint_Generator.M_Cyclic">
-      <LineId Id="1" Count="0" />
-    </LineIds>
-    <LineIds Name="FB_Setpoint_Generator.M_InTarget">
-      <LineId Id="1" Count="0" />
+      <LineId Id="1" Count="49" />
     </LineIds>
   </POU>
 </TcPlcObject>

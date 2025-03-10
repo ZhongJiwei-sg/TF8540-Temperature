@@ -292,17 +292,17 @@ change log
 		</System>
 		<Plc>
 			<Project GUID="{E3EF9621-99B9-40CC-AA5A-65A1FEE60A10}" Name="PLC1" PrjFilePath="PLC1\PLC1.plcproj" TmcFilePath="PLC1\PLC1.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{2A77F171-52A8-BE77-7F40-9B90A9B1A476}" TmcPath="PLC1\PLC1.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{7E2E9AC6-DC63-DC36-47D9-41EBCC7D637C}" TmcPath="PLC1\PLC1.tmc">
 					<Name>PLC1 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
-					<Vars VarGrpType="2" ContextId="1" AreaNo="17">
+					<Vars VarGrpType="2" ContextId="2" AreaNo="33">
 						<Name>Temperature_Task Outputs</Name>
 						<Var>
 							<Name>.out_PfwTempCtrlOutput</Name>
 							<Type GUID="{004900AF-2EDF-5F61-481A-534DC8DDBB69}">ARRAY [1..1] OF Tc2_PfwLib_Processing.ST_TcPfw_TempCtrlOutput</Type>
 						</Var>
 					</Vars>
-					<Vars VarGrpType="1" ContextId="1" AreaNo="16">
+					<Vars VarGrpType="1" ContextId="2" AreaNo="32">
 						<Name>Temperature_Task Inputs</Name>
 						<Var>
 							<Name>.in_PfwTempCtrlInput</Name>
@@ -330,6 +330,15 @@ change log
 						</Context>
 						<Context>
 							<Id>1</Id>
+							<Name>Fast_Task</Name>
+							<ManualConfig>
+								<OTCID>#x02010050</OTCID>
+							</ManualConfig>
+							<Priority>2</Priority>
+							<CycleTime>2000000</CycleTime>
+						</Context>
+						<Context>
+							<Id>2</Id>
 							<Name>Temperature_Task</Name>
 							<ManualConfig>
 								<OTCID>#x02010030</OTCID>
@@ -340,6 +349,7 @@ change log
 					</Contexts>
 					<TaskPouOids>
 						<TaskPouOid Prio="1" OTCID="#x08502002"/>
+						<TaskPouOid Prio="2" OTCID="#x08502003"/>
 						<TaskPouOid Prio="20" OTCID="#x08502001"/>
 					</TaskPouOids>
 				</Instance>

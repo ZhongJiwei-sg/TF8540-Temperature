@@ -26,7 +26,13 @@
     <Compile Include="MAIN_Fast.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PLC_Task.TcTTO">
+    <Compile Include="Tasks\Fast_Task.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tasks\PLC_Task.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tasks\Temperature_Task.TcTTO">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Temperature\DUTs\E_HMIstatus.TcDUT">
@@ -219,10 +225,7 @@
       <SubType>Code</SubType>
       <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
     </Compile>
-    <Compile Include="Temperature_Task.TcTTO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Utility\Linearisation\FB_Lin_Interpolation.TcPOU">
+    <Compile Include="Utility\Linearisation\FB_Linear_Interpolation.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Utility\Ramp Generator\FB_Ramp_Generator.TcPOU">
@@ -236,6 +239,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Tasks" />
     <Folder Include="Temperature" />
     <Folder Include="Temperature\DUTs" />
     <Folder Include="Temperature\GVLs" />
@@ -334,6 +338,10 @@
       <DefaultResolution>Tc2_System, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc2_System</Namespace>
     </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_Utilities">
+      <DefaultResolution>Tc2_Utilities, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_Utilities</Namespace>
+    </PlaceholderReference>
     <PlaceholderReference Include="Tc3_Module">
       <DefaultResolution>Tc3_Module, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc3_Module</Namespace>
@@ -351,8 +359,8 @@
   <ProjectExtensions>
     <PlcProjectOptions>
       <XmlArchive>
-        <Data>
-          <o xml:space="preserve" t="OptionKey">
+  <Data>
+    <o xml:space="preserve" t="OptionKey">
       <v n="Name">"&lt;ProjectRoot&gt;"</v>
       <d n="SubKeys" t="Hashtable" ckt="String" cvt="OptionKey">
         <v>{192FAD59-8248-4824-A8DE-9177C94C195A}</v>
@@ -429,15 +437,15 @@
       </d>
       <d n="Values" t="Hashtable" />
     </o>
-        </Data>
-        <TypeList>
-          <Type n="Boolean">System.Boolean</Type>
-          <Type n="Hashtable">System.Collections.Hashtable</Type>
-          <Type n="Int32">System.Int32</Type>
-          <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
-          <Type n="String">System.String</Type>
-        </TypeList>
-      </XmlArchive>
+  </Data>
+  <TypeList>
+    <Type n="Boolean">System.Boolean</Type>
+    <Type n="Hashtable">System.Collections.Hashtable</Type>
+    <Type n="Int32">System.Int32</Type>
+    <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
+    <Type n="String">System.String</Type>
+  </TypeList>
+</XmlArchive>
     </PlcProjectOptions>
   </ProjectExtensions>
 </Project>
