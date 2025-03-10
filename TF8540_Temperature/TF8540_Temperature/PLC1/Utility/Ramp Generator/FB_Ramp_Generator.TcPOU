@@ -44,49 +44,7 @@ ELSE
 	fCycletime:= UDINT_TO_LREAL(_TaskInfo[GETCURTASKINDEXEX()].cycleTime)/10000000.0;
 END_IF
 
-// =========================================================
-
-(*
-IF bInit THEN
-	(* init parameter struct *)
-	stCTRL_RAMP_GENERATOR_PARAMS.tTaskCycleTime		:= T#10MS;
-	stCTRL_RAMP_GENERATOR_PARAMS.tCtrlCycleTime		:= T#10MS;
-	stCTRL_RAMP_GENERATOR_PARAMS.fVeloPos			:= 20; (* in units per second *)
-	stCTRL_RAMP_GENERATOR_PARAMS.fVeloNeg			:= 40; (* in units per second *)
-
-	(* reset the init flag *)
-	bInit := FALSE;
-END_IF
-*)
-
-(*
-(* generate target value *)
-fbTON(	IN	:= TRUE,
-		PT	:= T#6S);
-		
-IF fbTON.Q THEN
-	fTarget := -1.0 * fTarget;
-	fbTON(	 IN	:= FALSE);
-END_IF
-
-
-(* copy var to scope var *)
-fInToScope := fTarget;
-
-(* call function block *)
-fbCTRL_RAMP_GENERATOR(	bEnable			:= bEnable,
-						fStart			:= fStart,
-						fTarget			:= fTarget,
-						stParams		:= stCTRL_RAMP_GENERATOR_PARAMS,
-						fOut			=> fOut,
-						bValueReached	=> bValueReached,
-						bError			=> bError,
-						eErrorId		=> eErrorId);
-
-
-(* copy var to scope var *)
-fOutToScope := fOut;
-*)]]></ST>
+// =========================================================]]></ST>
     </Implementation>
     <Method Name="FB_Init" Id="{3164f709-7d5d-4ba8-a1aa-6c89b25bbc12}">
       <Declaration><![CDATA[//FB_Init is always available implicitly and it is used primarily for initialization.
@@ -156,7 +114,7 @@ fOutToScope := fOut;
       </Implementation>
     </Method>
     <LineIds Name="FB_Ramp_Generator">
-      <LineId Id="1" Count="58" />
+      <LineId Id="1" Count="16" />
     </LineIds>
     <LineIds Name="FB_Ramp_Generator.FB_Init">
       <LineId Id="1" Count="7" />
