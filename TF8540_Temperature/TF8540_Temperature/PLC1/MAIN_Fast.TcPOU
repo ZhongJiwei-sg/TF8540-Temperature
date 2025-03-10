@@ -3,13 +3,31 @@
   <POU Name="MAIN_Fast" Id="{f3aabdab-143e-4e78-8800-ab31e3e5df70}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN_Fast
 VAR
+	fbGetCurTaskIdx 			: GETCURTASKINDEX;
+	bFirstCycle					: BOOL;
+//	For temperature feedback linearisation
+	fbLinInterpolation			: FB_LIN_INTERPOLATION;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[
+// =========================================================
+	// Get plc task first cycle flag	
+fbGetCurTaskIdx(); 
+bFirstCycle:= _TaskInfo[fbGetCurTaskIdx.index].FirstCycle;
+
+IF bFirstCycle THEN
+	;
+END_IF
+
+	// Temperature feedback linearisation	
+fbLinInterpolation();	
+fbLinInterpolation.M_Cyclic();
+
+// =========================================================]]></ST>
     </Implementation>
     <LineIds Name="MAIN_Fast">
-      <LineId Id="1" Count="0" />
+      <LineId Id="1" Count="14" />
     </LineIds>
   </POU>
 </TcPlcObject>
