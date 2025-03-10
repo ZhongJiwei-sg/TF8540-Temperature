@@ -47,66 +47,7 @@ ELSE
 	fCycletime:= UDINT_TO_LREAL(_TaskInfo[GETCURTASKINDEXEX()].cycleTime)/10000000.0;
 END_IF
 
-// =========================================================
-
-(*
-IF bInit THEN
-	(* init the setpoint array *)
-	arSetpointTable[ 1 ]	:= 12;
-	arSetpointTable[ 2 ]	:= 25;
-	arSetpointTable[ 3 ]	:= 42;
-	arSetpointTable[ 4 ]	:= 73;
-
-	(* init parameter struct *)
-	stCTRL_SETPOINT_GENERATOR_PARAMS.tTaskCycleTime				:= T#10MS;
-	stCTRL_SETPOINT_GENERATOR_PARAMS.tCtrlCycleTime				:= T#10MS;
-	stCTRL_SETPOINT_GENERATOR_PARAMS.bDisableRamping			:= FALSE;
-	stCTRL_SETPOINT_GENERATOR_PARAMS.fVeloNeg					:= 10;
-	stCTRL_SETPOINT_GENERATOR_PARAMS.fVeloPos					:= 8;
-	stCTRL_SETPOINT_GENERATOR_PARAMS.nDataTable_NumberOfRows	:= 4;
-
-	(* set the mode to ACTIVE --> normal operation *)
-	eMode := eCTRL_MODE_ACTIVE;
-
-	(* reset init flag *)
-	bInit := FALSE;
-END_IF
-*)
-
-(*
-(* set the addresses *)
-stCTRL_SETPOINT_GENERATOR_PARAMS.nDataTable_SIZEOF			:= SIZEOF(arSetpointTable);
-stCTRL_SETPOINT_GENERATOR_PARAMS.pDataTable_ADR				:= ADR(arSetpointTable);
-
-(* generate setpoint-index *)
-fbTON( IN := TRUE,
-		PT	:= T#5s);
-IF fbTON.Q
-THEN
-	nSetpointIndex	:=  nSetpointIndex + 1;
-	IF nSetPointIndex > 4
-	THEN
-		nSetPointIndex := 1;
-	END_IF
-	fbTON( IN := FALSE);
-END_IF
-
-
-(* copy var to scope var *)
-fInToScope := INT_TO_FLOAT(nSetpointIndex);
-
-(* call setpointgenerator *)
-fbCTRL_SETPOINT_GENERATOR(	nSetpointIndex		:= nSetpointIndex,
-										fManValue				:= fManValue,
-										eMode					:= eMode,
-										stParams				:= stCTRL_SETPOINT_GENERATOR_PARAMS,
-										fOut					=> fCurrentSetpoint,
-										bValueReached		=> bValueReached
-										 );
-
-(* copy var to scope var *)
-fOutToScope := fCurrentSetpoint;
-*)]]></ST>
+// =========================================================]]></ST>
     </Implementation>
     <Method Name="FB_Init" Id="{934b235d-9833-48db-b6f4-391752153908}">
       <Declaration><![CDATA[//FB_Init is always available implicitly and it is used primarily for initialization.
@@ -244,7 +185,7 @@ fOutToScope := fCurrentSetpoint;
       </Implementation>
     </Method>
     <LineIds Name="FB_Setpoint_Generator">
-      <LineId Id="1" Count="75" />
+      <LineId Id="1" Count="16" />
     </LineIds>
     <LineIds Name="FB_Setpoint_Generator.FB_Init">
       <LineId Id="1" Count="62" />
