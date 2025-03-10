@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="MAIN" Id="{53e098ee-c10b-4533-88f1-a760e550a780}" SpecialFunc="None">
+    <Declaration><![CDATA[{attribute 'TcCallAfterOutputUpdate'}
+PROGRAM MAIN
+VAR
+	fbGetCurTaskIdx 			: GETCURTASKINDEX;
+	bFirstCycle					: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// =========================================================
+	// Get plc task first cycle flag	
+fbGetCurTaskIdx(); 
+bFirstCycle:= _TaskInfo[fbGetCurTaskIdx.index].FirstCycle;
+
+IF bFirstCycle THEN
+	;
+END_IF
+
+// =========================================================]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="1" Count="9" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

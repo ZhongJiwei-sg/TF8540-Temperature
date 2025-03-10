@@ -6,7 +6,7 @@
     <ProjectGuid>{e3ef9621-99b9-40cc-aa5a-65a1fee60a10}</ProjectGuid>
     <SubObjectsSortedByName>True</SubObjectsSortedByName>
     <Name>PLC1</Name>
-    <ProgramVersion>3.1.4026.14</ProgramVersion>
+    <ProgramVersion>3.1.4026.15</ProgramVersion>
     <Application>{86b597c2-e8c6-4527-a707-4986d61c691b}</Application>
     <TypeSystem>{bd946bd9-b81e-4351-a87d-bd7752821a64}</TypeSystem>
     <Implicit_Task_Info>{561f0f6f-c97d-4d53-bcc7-dd33f2724d8f}</Implicit_Task_Info>
@@ -20,206 +20,209 @@
     <GlobalVersionStructureIncluded>false</GlobalVersionStructureIncluded>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Application\Linearisation\FB_Lin_Interpolation.TcPOU">
+    <Compile Include="MAIN.TcPOU">
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\MAIN.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\DUTs\E_HMIstatus.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\DUTs\E_MainStateMachine.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\DUTs\ST_TempLoad.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\DUTs\ST_TempLoad_Cmd.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\DUTs\ST_TempLoad_State.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\DUTs\ST_TempSave.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\DUTs\ST_TempSave_Cmd.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\FB_Load.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\FB_MainVisu.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\FB_Save.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\GVLs\GVL_10_Visu.TcGVL">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\GVLs\GVL_20_Application.TcGVL">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\GVLs\GVL_30_Scope.TcGVL">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\TemperatureCtrl.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\TextLists\GlobalTextList_1.TcGTLO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\TextLists\TL_Mparams_LREAL.TcTLO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\TextLists\TL_Params_BOOL.TcTLO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\TextLists\TL_Params_Enum.TcTLO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\TextLists\TL_Params_INT.TcTLO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\TextLists\TL_Pparmas.TcTLO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\TextLists\TL_Supply.TcTLO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\TextLists\TL_TcPfw_ErrorId.TcTLO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\TextLists\TL_TctrlOutSelect.TcTLO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\TextLists\TL_TctrlPowerTerminal.TcTLO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\TextLists\TL_TempSensType.TcTLO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\TextLists\TL_TerminalType.TcTLO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\DUTs\st_ParamsUnsave.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\DUTs\ST_Param_Visu.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\POUs\FB_Visu_Param.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\POUs\FB_Visu_Pparam.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\POUs\FB_Visu_Supply.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\VISUs\Pages\Load Save\Visu_SaveLoad.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\VISUs\Pages\LoopTest\Visu_LoopTest.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\VISUs\Pages\Machine\Parameter\Param_BOOL.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\VISUs\Pages\Machine\Parameter\Param_DINT.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\VISUs\Pages\Machine\Parameter\Param_ENUM_PowerTerm.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\VISUs\Pages\Machine\Parameter\Param_ENUM_SelOut.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\VISUs\Pages\Machine\Parameter\Param_ENUM_SensType.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\VISUs\Pages\Machine\Parameter\Param_ENUM_TermType.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\VISUs\Pages\Machine\Parameter\Param_LREAL.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\VISUs\Pages\Machine\Subpage\Visu_Mparam_Autotune.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\VISUs\Pages\Machine\Subpage\Visu_Mparam_Heat.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\VISUs\Pages\Machine\Subpage\Visu_Mparam_Extruder.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-      <ExcludeFromBuild>true</ExcludeFromBuild>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\VISUs\Pages\Machine\Subpage\Visu_Mparam_General.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\VISUs\Pages\Machine\Subpage\Visu_Mparam_Cool.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\VISUs\Pages\Machine\Subpage\Visu_Mparam_Supply.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\VISUs\Pages\Machine\Subpage\Visu_Mparam_Temperature.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\VISUs\Pages\Machine\Visu_MParam.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\VISUs\Pages\Product\Param_LREAL_Pparam.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\VISUs\Pages\Product\Visu_PParam.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\VISUs\Pages\Product\Visu_PParam_Params.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\VISUs\Pages\Supply\Param_LREAL_Supply.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\VISUs\Pages\Supply\Visu_Supply.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\VISUs\Pages\Supply\Visu_Supply_Params.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-    </Compile>
-    <Compile Include="Application\Temperature\VISUs\VISUs\Pages\Visu_Main.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
     </Compile>
     <Compile Include="PLC_Task.TcTTO">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Temperature\DUTs\E_HMIstatus.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\DUTs\E_MainStateMachine.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\DUTs\ST_TempLoad.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\DUTs\ST_TempLoad_Cmd.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\DUTs\ST_TempLoad_State.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\DUTs\ST_TempSave.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\DUTs\ST_TempSave_Cmd.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\FB_Load.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\FB_MainVisu.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\FB_Save.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\GVLs\GVL_10_Visu.TcGVL">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\GVLs\GVL_20_Application.TcGVL">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\GVLs\GVL_30_Scope.TcGVL">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\TemperatureCtrl.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\TextLists\GlobalTextList_1.TcGTLO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\TextLists\TL_Mparams_LREAL.TcTLO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\TextLists\TL_Params_BOOL.TcTLO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\TextLists\TL_Params_Enum.TcTLO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\TextLists\TL_Params_INT.TcTLO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\TextLists\TL_Pparmas.TcTLO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\TextLists\TL_Supply.TcTLO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\TextLists\TL_TcPfw_ErrorId.TcTLO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\TextLists\TL_TctrlOutSelect.TcTLO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\TextLists\TL_TctrlPowerTerminal.TcTLO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\TextLists\TL_TempSensType.TcTLO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\TextLists\TL_TerminalType.TcTLO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\VISUs\DUTs\st_ParamsUnsave.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\VISUs\DUTs\ST_Param_Visu.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\VISUs\POUs\FB_Visu_Param.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\VISUs\POUs\FB_Visu_Pparam.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\VISUs\POUs\FB_Visu_Supply.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Temperature\VISUs\VISUs\Pages\Load Save\Visu_SaveLoad.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="Temperature\VISUs\VISUs\Pages\LoopTest\Visu_LoopTest.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="Temperature\VISUs\VISUs\Pages\Machine\Parameter\Param_BOOL.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="Temperature\VISUs\VISUs\Pages\Machine\Parameter\Param_DINT.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="Temperature\VISUs\VISUs\Pages\Machine\Parameter\Param_ENUM_PowerTerm.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="Temperature\VISUs\VISUs\Pages\Machine\Parameter\Param_ENUM_SelOut.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="Temperature\VISUs\VISUs\Pages\Machine\Parameter\Param_ENUM_SensType.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="Temperature\VISUs\VISUs\Pages\Machine\Parameter\Param_ENUM_TermType.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="Temperature\VISUs\VISUs\Pages\Machine\Parameter\Param_LREAL.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="Temperature\VISUs\VISUs\Pages\Machine\Subpage\Visu_Mparam_Autotune.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="Temperature\VISUs\VISUs\Pages\Machine\Subpage\Visu_Mparam_Cool.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="Temperature\VISUs\VISUs\Pages\Machine\Subpage\Visu_Mparam_Extruder.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="Temperature\VISUs\VISUs\Pages\Machine\Subpage\Visu_Mparam_General.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="Temperature\VISUs\VISUs\Pages\Machine\Subpage\Visu_Mparam_Heat.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="Temperature\VISUs\VISUs\Pages\Machine\Subpage\Visu_Mparam_Supply.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="Temperature\VISUs\VISUs\Pages\Machine\Subpage\Visu_Mparam_Temperature.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="Temperature\VISUs\VISUs\Pages\Machine\Visu_MParam.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="Temperature\VISUs\VISUs\Pages\Product\Param_LREAL_Pparam.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="Temperature\VISUs\VISUs\Pages\Product\Visu_PParam.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="Temperature\VISUs\VISUs\Pages\Product\Visu_PParam_Params.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="Temperature\VISUs\VISUs\Pages\Supply\Param_LREAL_Supply.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="Temperature\VISUs\VISUs\Pages\Supply\Visu_Supply.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="Temperature\VISUs\VISUs\Pages\Supply\Visu_Supply_Params.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="Temperature\VISUs\VISUs\Pages\Visu_Main.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
     <Compile Include="Temperature_Task.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utility\Linearisation\FB_Lin_Interpolation.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utility\Setpoint Generator\FB_Setpoint_Generator.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Visualization Manager.TcVMO">
@@ -228,23 +231,25 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Application" />
-    <Folder Include="Application\Linearisation" />
-    <Folder Include="Application\Temperature" />
-    <Folder Include="Application\Temperature\DUTs" />
-    <Folder Include="Application\Temperature\GVLs" />
-    <Folder Include="Application\Temperature\TextLists" />
-    <Folder Include="Application\Temperature\VISUs" />
-    <Folder Include="Application\Temperature\VISUs\DUTs" />
-    <Folder Include="Application\Temperature\VISUs\POUs" />
-    <Folder Include="Application\Temperature\VISUs\VISUs" />
-    <Folder Include="Application\Temperature\VISUs\VISUs\Pages" />
-    <Folder Include="Application\Temperature\VISUs\VISUs\Pages\Load Save" />
-    <Folder Include="Application\Temperature\VISUs\VISUs\Pages\LoopTest" />
-    <Folder Include="Application\Temperature\VISUs\VISUs\Pages\Machine" />
-    <Folder Include="Application\Temperature\VISUs\VISUs\Pages\Machine\Parameter" />
-    <Folder Include="Application\Temperature\VISUs\VISUs\Pages\Machine\Subpage" />
-    <Folder Include="Application\Temperature\VISUs\VISUs\Pages\Product" />
-    <Folder Include="Application\Temperature\VISUs\VISUs\Pages\Supply" />
+    <Folder Include="Temperature" />
+    <Folder Include="Temperature\DUTs" />
+    <Folder Include="Temperature\GVLs" />
+    <Folder Include="Temperature\TextLists" />
+    <Folder Include="Temperature\VISUs" />
+    <Folder Include="Temperature\VISUs\DUTs" />
+    <Folder Include="Temperature\VISUs\POUs" />
+    <Folder Include="Temperature\VISUs\VISUs" />
+    <Folder Include="Temperature\VISUs\VISUs\Pages" />
+    <Folder Include="Temperature\VISUs\VISUs\Pages\Load Save" />
+    <Folder Include="Temperature\VISUs\VISUs\Pages\LoopTest" />
+    <Folder Include="Temperature\VISUs\VISUs\Pages\Machine" />
+    <Folder Include="Temperature\VISUs\VISUs\Pages\Machine\Parameter" />
+    <Folder Include="Temperature\VISUs\VISUs\Pages\Machine\Subpage" />
+    <Folder Include="Temperature\VISUs\VISUs\Pages\Product" />
+    <Folder Include="Temperature\VISUs\VISUs\Pages\Supply" />
+    <Folder Include="Utility" />
+    <Folder Include="Utility\Linearisation" />
+    <Folder Include="Utility\Setpoint Generator" />
   </ItemGroup>
   <ItemGroup>
     <PlaceholderReference Include="System_VisuElemEventTable">

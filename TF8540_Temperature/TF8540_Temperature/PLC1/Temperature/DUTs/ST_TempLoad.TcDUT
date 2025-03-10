@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="ST_TempLoad" Id="{0e0b134f-eb0f-42cc-b524-4d4227e3d9cb}">
+    <Declaration><![CDATA[TYPE ST_TempLoad :
+STRUCT
+	stTempCmd						: ST_TempLoad_Cmd;
+	stTempState						: ST_TempLoad_State;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

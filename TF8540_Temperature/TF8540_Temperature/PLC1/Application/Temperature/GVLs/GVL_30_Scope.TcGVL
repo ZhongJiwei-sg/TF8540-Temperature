@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
-  <GVL Name="GVL_30_Scope" Id="{eae30708-51e6-42d1-a1c7-5b5eea3db711}">
-    <Declaration><![CDATA[VAR_GLOBAL
-	Scope_TempCtrlVariables					: FB_Scope_TempCtrlVariables;
-END_VAR]]></Declaration>
-  </GVL>
-</TcPlcObject>
