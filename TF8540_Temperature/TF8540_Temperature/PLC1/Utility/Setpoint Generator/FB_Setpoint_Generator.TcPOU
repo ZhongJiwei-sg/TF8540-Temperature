@@ -104,6 +104,15 @@ END_VAR
         <ST><![CDATA[]]></ST>
       </Implementation>
     </Method>
+    <Method Name="M_InTarget" Id="{3e592c98-8280-4a07-9f0d-81e7bb9d76b7}">
+      <Declaration><![CDATA[METHOD PUBLIC M_InTarget : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
     <LineIds Name="FB_Setpoint_Generator">
       <LineId Id="1" Count="53" />
     </LineIds>
@@ -111,6 +120,9 @@ END_VAR
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="FB_Setpoint_Generator.M_Cyclic">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Setpoint_Generator.M_InTarget">
       <LineId Id="1" Count="0" />
     </LineIds>
   </POU>

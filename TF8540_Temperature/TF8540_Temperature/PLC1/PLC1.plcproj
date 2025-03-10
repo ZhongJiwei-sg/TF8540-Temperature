@@ -23,6 +23,9 @@
     <Compile Include="MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MAIN_Fast.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="PLC_Task.TcTTO">
       <SubType>Code</SubType>
     </Compile>

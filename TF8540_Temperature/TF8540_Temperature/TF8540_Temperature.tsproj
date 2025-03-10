@@ -285,6 +285,9 @@ change log
 				<Task Id="4" Priority="1" CycleTime="100000" AmsPort="351" AdtTasks="true">
 					<Name>PLC Task</Name>
 				</Task>
+				<Task Id="5" Priority="2" CycleTime="20000" AmsPort="352" AdtTasks="true">
+					<Name>Fast Task</Name>
+				</Task>
 			</Tasks>
 		</System>
 		<Plc>
