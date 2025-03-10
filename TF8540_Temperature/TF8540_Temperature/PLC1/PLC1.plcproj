@@ -222,6 +222,9 @@
     <Compile Include="Utility\Linearisation\FB_Lin_Interpolation.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Utility\Ramp Generator\FB_Ramp_Generator.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Utility\Setpoint Generator\FB_Setpoint_Generator.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -230,7 +233,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Application" />
     <Folder Include="Temperature" />
     <Folder Include="Temperature\DUTs" />
     <Folder Include="Temperature\GVLs" />
@@ -249,6 +251,7 @@
     <Folder Include="Temperature\VISUs\VISUs\Pages\Supply" />
     <Folder Include="Utility" />
     <Folder Include="Utility\Linearisation" />
+    <Folder Include="Utility\Ramp Generator" />
     <Folder Include="Utility\Setpoint Generator" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_Ramp_Generator" Id="{00e25aef-eb31-44c5-b22a-b60ab6dcc24a}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Ramp_Generator
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	(* input *)
+	bEnable								: BOOL		:= TRUE;
+	fStart								: LREAL;
+	fTarget								: LREAL		:= 	50.0;
+
+	(* output *)
+	fOut								: LREAL;
+	bValueReached						: BOOL;
+
+	(* function block *)
+	fbCTRL_RAMP_GENERATOR				: FB_CTRL_RAMP_GENERATOR;
+	stCTRL_RAMP_GENERATOR_PARAMS		: ST_CTRL_RAMP_GENERATOR_PARAMS;
+
+	eErrorId							: E_CTRL_ERRORCODES;
+	bError								: BOOL;
+
+	bInit								: BOOL := TRUE;
+	fbTON								: TON;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF bInit THEN
+	(* init parameter struct *)
+	stCTRL_RAMP_GENERATOR_PARAMS.tTaskCycleTime		:= T#10MS;
+	stCTRL_RAMP_GENERATOR_PARAMS.tCtrlCycleTime		:= T#10MS;
+	stCTRL_RAMP_GENERATOR_PARAMS.fVeloPos			:= 20; (* in units per second *)
+	stCTRL_RAMP_GENERATOR_PARAMS.fVeloNeg			:= 40; (* in units per second *)
+
+	(* reset the init flag *)
+	bInit := FALSE;
+END_IF
+
+(* generate target value *)
+fbTON(	IN	:= TRUE,
+		PT	:= T#6S);
+		
+IF fbTON.Q THEN
+	fTarget := -1.0 * fTarget;
+	fbTON(	 IN	:= FALSE);
+END_IF
+
+
+(* copy var to scope var *)
+fInToScope := fTarget;
+
+(* call function block *)
+fbCTRL_RAMP_GENERATOR(	bEnable			:= bEnable,
+						fStart			:= fStart,
+						fTarget			:= fTarget,
+						stParams		:= stCTRL_RAMP_GENERATOR_PARAMS,
+						fOut			=> fOut,
+						bValueReached	=> bValueReached,
+						bError			=> bError,
+						eErrorId		=> eErrorId);
+
+
+(* copy var to scope var *)
+fOutToScope := fOut;]]></ST>
+    </Implementation>
+    <Method Name="FB_Init" Id="{3164f709-7d5d-4ba8-a1aa-6c89b25bbc12}">
+      <Declaration><![CDATA[//FB_Init is always available implicitly and it is used primarily for initialization.
+//The return value is not evaluated. For a specific influence, you can also declare the
+//methods explicitly and provide additional code there with the standard initialization
+//code. You can evaluate the return value.
+METHOD FB_Init: BOOL
+VAR_INPUT
+    bInitRetains: BOOL; // TRUE: the retain variables are initialized (reset warm / reset cold)
+    bInCopyCode: BOOL;  // TRUE: the instance will be copied to the copy code afterward (online change)   
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_Cyclic" Id="{3328f87e-c500-453f-b9b0-1afa8ddb5d01}">
+      <Declaration><![CDATA[METHOD PUBLIC M_Cyclic
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_Ramp_Generator">
+      <LineId Id="1" Count="36" />
+    </LineIds>
+    <LineIds Name="FB_Ramp_Generator.FB_Init">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Ramp_Generator.M_Cyclic">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
