@@ -31,11 +31,14 @@ fbLinInterpolation.M_Cyclic();
 	// Setpoint generator	
 fbSetpointGenerator();
 fbSetpointGenerator.M_Cyclic();	
-
+	// Ramp generator
+fbRampGenerator();
+fbRampGenerator.M_Cyclic();
+	
 // =========================================================]]></ST>
     </Implementation>
     <LineIds Name="MAIN_Fast">
-      <LineId Id="1" Count="18" />
+      <LineId Id="1" Count="21" />
     </LineIds>
   </POU>
 </TcPlcObject>

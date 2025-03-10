@@ -175,7 +175,7 @@ IF bInit OR bUpdate THEN
 	bUpdate := FALSE;
 END_IF
 
-(* Set the addresses *)
+(* Set the address *)
 stCTRL_LIN_INTERPOLATION_PARAMS.pDataTable_ADR			:= ADR(arrTable);
 stCTRL_LIN_INTERPOLATION_PARAMS.nDataTable_SIZEOF		:= SIZEOF(arrTable);
 

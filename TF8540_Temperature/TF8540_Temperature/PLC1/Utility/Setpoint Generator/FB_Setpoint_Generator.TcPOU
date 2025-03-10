@@ -14,7 +14,7 @@ VAR
 
 	fbCTRL_SETPOINT_GENERATOR							: FB_CTRL_SETPOINT_GENERATOR;
 	stCTRL_SETPOINT_GENERATOR_PARAMS					: ST_CTRL_SETPOINT_GENERATOR_PARAMS;
-	arSetpointTable										: ARRAY [1..nNoOfRows] OF FLOAT;
+	arrSetpointTable									: ARRAY [1..nNoOfRows] OF FLOAT;
 
 	eErrorId											: E_CTRL_ERRORCODES;
 	bError												: BOOL;
@@ -122,51 +122,51 @@ END_VAR
       <Implementation>
         <ST><![CDATA[// =========================================================
 (* Init the setpoint array *)
-arSetpointTable[ 1 ]	:= 25;
-arSetpointTable[ 2 ]	:= 30;
-arSetpointTable[ 3 ]	:= 35;
-arSetpointTable[ 4 ]	:= 40;
-arSetpointTable[ 5 ]	:= 45;
-arSetpointTable[ 6 ]	:= 50;
-arSetpointTable[ 7 ]	:= 55;
-arSetpointTable[ 8 ]	:= 60;
-arSetpointTable[ 9 ]	:= 65;
-arSetpointTable[ 10 ]	:= 70;
-arSetpointTable[ 11 ]	:= 75;
-arSetpointTable[ 12 ]	:= 80;
-arSetpointTable[ 13 ]	:= 85;
-arSetpointTable[ 14 ]	:= 90;
-arSetpointTable[ 15 ]	:= 95;
-arSetpointTable[ 16 ]	:= 100;
-arSetpointTable[ 17 ]	:= 105;
-arSetpointTable[ 18 ]	:= 110;
-arSetpointTable[ 19 ]	:= 115;
-arSetpointTable[ 20 ]	:= 120;
-arSetpointTable[ 21 ]	:= 125;
-arSetpointTable[ 22 ]	:= 130;
-arSetpointTable[ 23 ]	:= 135;
-arSetpointTable[ 24 ]	:= 140;
-arSetpointTable[ 25 ]	:= 145;
-arSetpointTable[ 26 ]	:= 150;
-arSetpointTable[ 27 ]	:= 155;
-arSetpointTable[ 28 ]	:= 160;
-arSetpointTable[ 29 ]	:= 165;
-arSetpointTable[ 30 ]	:= 170;
-arSetpointTable[ 31 ]	:= 175;
-arSetpointTable[ 32 ]	:= 180;
-arSetpointTable[ 33 ]	:= 185;
-arSetpointTable[ 34 ]	:= 190;
-arSetpointTable[ 35 ]	:= 195;
-arSetpointTable[ 36 ]	:= 200;
-arSetpointTable[ 37 ]	:= 205;
-arSetpointTable[ 38 ]	:= 210;
-arSetpointTable[ 39 ]	:= 215;
-arSetpointTable[ 40 ]	:= 220;
-arSetpointTable[ 41 ]	:= 225;
-arSetpointTable[ 42 ]	:= 230;
-arSetpointTable[ 43 ]	:= 235;
-arSetpointTable[ 44 ]	:= 240;
-arSetpointTable[ 45 ]	:= 245;
+arrSetpointTable[ 1 ]	:= 25;
+arrSetpointTable[ 2 ]	:= 30;
+arrSetpointTable[ 3 ]	:= 35;
+arrSetpointTable[ 4 ]	:= 40;
+arrSetpointTable[ 5 ]	:= 45;
+arrSetpointTable[ 6 ]	:= 50;
+arrSetpointTable[ 7 ]	:= 55;
+arrSetpointTable[ 8 ]	:= 60;
+arrSetpointTable[ 9 ]	:= 65;
+arrSetpointTable[ 10 ]	:= 70;
+arrSetpointTable[ 11 ]	:= 75;
+arrSetpointTable[ 12 ]	:= 80;
+arrSetpointTable[ 13 ]	:= 85;
+arrSetpointTable[ 14 ]	:= 90;
+arrSetpointTable[ 15 ]	:= 95;
+arrSetpointTable[ 16 ]	:= 100;
+arrSetpointTable[ 17 ]	:= 105;
+arrSetpointTable[ 18 ]	:= 110;
+arrSetpointTable[ 19 ]	:= 115;
+arrSetpointTable[ 20 ]	:= 120;
+arrSetpointTable[ 21 ]	:= 125;
+arrSetpointTable[ 22 ]	:= 130;
+arrSetpointTable[ 23 ]	:= 135;
+arrSetpointTable[ 24 ]	:= 140;
+arrSetpointTable[ 25 ]	:= 145;
+arrSetpointTable[ 26 ]	:= 150;
+arrSetpointTable[ 27 ]	:= 155;
+arrSetpointTable[ 28 ]	:= 160;
+arrSetpointTable[ 29 ]	:= 165;
+arrSetpointTable[ 30 ]	:= 170;
+arrSetpointTable[ 31 ]	:= 175;
+arrSetpointTable[ 32 ]	:= 180;
+arrSetpointTable[ 33 ]	:= 185;
+arrSetpointTable[ 34 ]	:= 190;
+arrSetpointTable[ 35 ]	:= 195;
+arrSetpointTable[ 36 ]	:= 200;
+arrSetpointTable[ 37 ]	:= 205;
+arrSetpointTable[ 38 ]	:= 210;
+arrSetpointTable[ 39 ]	:= 215;
+arrSetpointTable[ 40 ]	:= 220;
+arrSetpointTable[ 41 ]	:= 225;
+arrSetpointTable[ 42 ]	:= 230;
+arrSetpointTable[ 43 ]	:= 235;
+arrSetpointTable[ 44 ]	:= 240;
+arrSetpointTable[ 45 ]	:= 245;
 
 (*
 (* Init parameter struct *)
@@ -209,16 +209,16 @@ IF bInit OR bUpdate THEN
 	bUpdate := FALSE;
 END_IF
 
-(* Set the addresses *)
-stCTRL_SETPOINT_GENERATOR_PARAMS.nDataTable_SIZEOF			:= SIZEOF(arSetpointTable);
-stCTRL_SETPOINT_GENERATOR_PARAMS.pDataTable_ADR				:= ADR(arSetpointTable);
+(* Set the address *)
+stCTRL_SETPOINT_GENERATOR_PARAMS.nDataTable_SIZEOF			:= SIZEOF(arrSetpointTable);
+stCTRL_SETPOINT_GENERATOR_PARAMS.pDataTable_ADR				:= ADR(arrSetpointTable);
 
 (* Generate setpoint-index *)
 fbTON( IN := TRUE, PT:= T#5S);
 IF fbTON.Q
 THEN
 	nSetpointIndex	:=  nSetpointIndex + 1;
-	IF nSetPointIndex > 4
+	IF nSetPointIndex > nNoOfRows
 	THEN
 		nSetPointIndex := 1;
 	END_IF

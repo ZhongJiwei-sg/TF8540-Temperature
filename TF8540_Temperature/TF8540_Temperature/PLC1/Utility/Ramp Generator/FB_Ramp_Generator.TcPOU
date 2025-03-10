@@ -9,21 +9,16 @@ VAR
 	bEnable												: BOOL		:= TRUE;
 	fStart												: LREAL;
 	fTarget												: LREAL		:= 	50.0;
-
 	(* Output *)
 	fOut												: LREAL;
 	bValueReached										: BOOL;
-
 	(* Function block *)
 	fbCTRL_RAMP_GENERATOR								: FB_CTRL_RAMP_GENERATOR;
 	stCTRL_RAMP_GENERATOR_PARAMS						: ST_CTRL_RAMP_GENERATOR_PARAMS;
-
 	eErrorId											: E_CTRL_ERRORCODES;
 	bError												: BOOL;
-
 	bInit, bUpdate										: BOOL	:= TRUE;
-	fbTON												: TON;
-	
+	fbTON												: TON;	
 	fbGetCurTaskIdx 									: GETCURTASKINDEX;
 	bFirstCycle											: BOOL;
 	fCycleTime											: LREAL := 0.025;
@@ -106,7 +101,7 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[// =========================================================
-	(* init parameter struct *)
+	(* Init parameter struct *)
 	stCTRL_RAMP_GENERATOR_PARAMS.tTaskCycleTime		:= T#10MS;
 	stCTRL_RAMP_GENERATOR_PARAMS.tCtrlCycleTime		:= T#10MS;
 	stCTRL_RAMP_GENERATOR_PARAMS.fVeloPos			:= 20; (* in units per second *)
@@ -134,11 +129,8 @@ IF bInit OR bUpdate THEN
 	bUpdate := FALSE;
 END_IF
 
-
 (* Generate target value *)
-fbTON(	IN	:= TRUE,
-		PT	:= T#6S);
-		
+fbTON(IN:= TRUE, PT	:= T#6S);	
 IF fbTON.Q THEN
 	fTarget := -1.0 * fTarget;
 	fbTON(	 IN	:= FALSE);
@@ -170,7 +162,7 @@ fOutToScope := fOut;
       <LineId Id="1" Count="7" />
     </LineIds>
     <LineIds Name="FB_Ramp_Generator.M_Cyclic">
-      <LineId Id="1" Count="39" />
+      <LineId Id="1" Count="36" />
     </LineIds>
   </POU>
 </TcPlcObject>
