@@ -1,19 +1,34 @@
 <?xml version="1.0"?>
 <TcLicenseInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2011/11/TcLicenseInfo">
 	<LicenseInfo>
-		<SystemId>{F9D961FA-F09E-314E-DCDD-D6E05D2A5AA9}</SystemId>
-		<IssueTime>2025-03-04T07:52:00</IssueTime>
-		<ExpireTime>2025-03-12T00:00:00</ExpireTime>
-		<LicenseKey>5739099f76684d6e68a552b955bb9291c5cdb35138a6899d3549e209d95dc1daaab75a42f492762157b8192068696258c7ea615ed6d3eb069cb3e54c936ee41062da811d259d136391ac3ca8f36720e06748e2677559d3991740ef1eea6b2519b726cc5ff33be097a7afa4b1a2396b057b99a0b5e531d37a4b2056059edb47a89609663cbc8d4874cb82cc7f40c49f832b7fdc6c99a8eaeb6d2aefc0a517c6c0fc1c7f1a0d320f1a49d78460c095803764095cfce7b74acf0b7f45ea5443e5293e522ea56f6de8de946a3c2fe6db5e5b7031423fc95a3d8a6d516c30f698c29b725fc6f91528ffe9fa1e4c9e2bfa764d0b4ab6d023e7fb978f2ef95dffeed036</LicenseKey>
+		<SystemId>{AA06D511-7994-7AF9-61DE-577C742DCC1C}</SystemId>
+		<IssueTime>2025-05-09T06:23:00</IssueTime>
+		<ExpireTime>2025-05-17T00:00:00</ExpireTime>
+		<LicenseKey>88daa35092030dcc556c9d283be55f4efc7e4eed2fa765b16b894dc7ad28aaf198eb022ee29f008d229874e30d8754f4b3b8d77ab954e8525055632d574e0caf671d6adef4ab8483f3d77f5639914ca34333fa1c4702613470312159d26d2d559720d4143db4f85f617444e67603dda407c52f6691f990b682f0e4df04a741c62f203a73320fd65b0da5cc95f7fb6288813f2ebc7f6d323478f002fa0f312f765e08e5397a0ce5483978b21570b568c19535a6db79b3bc7d2e4aa1af6cac61c39a7bfbe0bc14da46aa0dd507c90e94203500f2ab01470d1665ac8b449598c27c49bd2b2108e48c686e4c8f10ac6f4d00b2fdf824a93d1958e1580aaa46eba516</LicenseKey>
+		<License>
+			<LicenseId>{28FFAB70-2B9C-472A-AA02-7F730A9C83B9}</LicenseId>
+			<Name>Plastic Processing TwinCAT Framework</Name>
+			<OrderNo>TF8540</OrderNo>
+		</License>
 		<License>
 			<LicenseId>{777F1598-583B-4503-99BB-7C02E0ABD97E}</LicenseId>
 			<Name>TC3 Controller Toolbox</Name>
 			<OrderNo>TF4100</OrderNo>
 		</License>
 		<License>
-			<LicenseId>{28FFAB70-2B9C-472A-AA02-7F730A9C83B9}</LicenseId>
-			<Name>Plastic Processing TwinCAT Framework</Name>
-			<OrderNo>TF8540</OrderNo>
+			<LicenseId>{4C256767-E6E6-4AF5-BD68-9F7ABAD0C200}</LicenseId>
+			<Name>TC3 ADS</Name>
+			<OrderNo>TC1000</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{3FF18E97-7754-401B-93FB-70544DE28A13}</LicenseId>
+			<Name>TC3 IO</Name>
+			<OrderNo>TC1100</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{66689887-CCBD-452C-AC9A-039D997C6E66}</LicenseId>
+			<Name>TC3 PLC</Name>
+			<OrderNo>TC1200</OrderNo>
 		</License>
 	</LicenseInfo>
 </TcLicenseInfo>

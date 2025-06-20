@@ -22,6 +22,7 @@ VAR
 	fbGetCurTaskIdx 									: GETCURTASKINDEX;
 	bFirstCycle											: BOOL;
 	fCycleTime											: LREAL := 0.025;
+	stRampGenerator										: ST_Ramp_Generator;
 //	Scope
 	fInToScope											: LREAL;
 	fOutToScope											: LREAL;

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_Ramp_Generator" Id="{25d4310d-9aca-49f1-844e-fcbc0fc8628f}">
+    <Declaration><![CDATA[TYPE ST_Ramp_Generator :
+STRUCT
+	tRefreshRate									: LREAL;
+	fVelPos											: LREAL	:= 20;
+	fVelNeg											: LREAL	:= 40;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

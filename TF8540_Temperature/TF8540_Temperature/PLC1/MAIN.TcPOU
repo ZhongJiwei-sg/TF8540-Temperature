@@ -6,6 +6,7 @@ PROGRAM MAIN
 VAR
 	fbGetCurTaskIdx 			: GETCURTASKINDEX;
 	bFirstCycle					: BOOL;
+	lrAbsHigh	: lreal;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -18,10 +19,13 @@ IF bFirstCycle THEN
 	;
 END_IF
 
-// =========================================================]]></ST>
+// =========================================================
+
+]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="1" Count="9" />
+      <LineId Id="13" Count="1" />
     </LineIds>
   </POU>
 </TcPlcObject>

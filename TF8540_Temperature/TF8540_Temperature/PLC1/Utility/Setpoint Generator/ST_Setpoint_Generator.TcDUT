@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_Setpoint_Generator" Id="{f6ef61e5-1630-4707-a77b-0ca6f5312cfd}">
+    <Declaration><![CDATA[TYPE ST_Setpoint_Generator :
+STRUCT
+	tRefreshRate									: LREAL;
+	bDisableRamping									: BOOL	:= FALSE;(*A continuous output value is not calculated if this parameter is TRUE. There is a step change between the output values*)
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -5,7 +5,7 @@
       <Data>
         <o xml:space="preserve" t="VisualObject">
           <n n="LastVisuLanguageModelEntry" />
-          <v n="UniqueIdGenerator">"3"</v>
+          <v n="UniqueIdGenerator">"4"</v>
           <o n="VisualElemList" t="VisualElemList">
             <l n="VisualElementList" t="VisualElemCollection" cet="GenericVisualElem">
               <o>
@@ -2570,78 +2570,81 @@ stParamsUnsave.supply[nSupplyCnt]:=FALSE;"</v>
               <v n="BgUseColor">16777215</v>
               <v n="BgUseGradient">false</v>
             </o>
+            <v n="AllElementsHaveDynamicVisibility">false</v>
           </o>
           <o n="GeneratedLMMDescriptions" t="GeneratedLanguageModelEntriesData">
             <o n="GeneratedVisuFbDescription" t="GenericFbDescription">
               <d n="FbMethods" t="CaseInsensitiveHashtable_1" ckt="String" cvt="Guid">
+                <v>AreAllElementsHidden</v>
+                <v>161b7837-8a7e-5b6f-96b9-4c7688f353d5</v>
                 <v>ContainsPoint</v>
-                <v>bb3ea4be-5d9c-49dc-b1e9-e7931f6934ab</v>
+                <v>2766b9bf-0d53-44f9-b6b4-27aabeb2311d</v>
                 <v>Destruct</v>
-                <v>fd34daea-8a2e-4dca-bee8-c1e2fc6ae060</v>
+                <v>d8d803f5-fe36-453f-97f3-a003ecd12af0</v>
                 <v>ElementInfo</v>
-                <v>4d55382b-0bb0-4fb8-bdb2-ecf241775ad5</v>
+                <v>07be8c9b-33d6-492f-9b42-806ab07aae7b</v>
                 <v>FB_Exit</v>
-                <v>7a433859-8a72-4e49-a95c-b29e5b9aa9ce</v>
+                <v>7c45051a-41ac-47e8-92ac-a3968fb19d9a</v>
                 <v>FB_Reinit</v>
-                <v>4878f86c-365f-4160-9ddb-47c7fb2a19de</v>
+                <v>1ebcfbc5-a204-4eaf-b49c-979bb0be64c3</v>
                 <v>GetClientData</v>
-                <v>09764e5f-5cfd-45ec-8668-611a1541f7bb</v>
+                <v>f91ad5eb-1de3-4bba-a268-0ab425cf03a7</v>
                 <v>GetElementArray</v>
-                <v>66dc8b6a-afd0-4756-8903-ec1120f8514f</v>
+                <v>bbbb83de-e960-40df-b8be-9a94100b97c2</v>
                 <v>GetElementIdArray</v>
-                <v>45de368f-69f9-42bd-a016-f026b0ccf979</v>
+                <v>a5e0ef39-a0a8-4c76-9c4e-94b4d92d734a</v>
                 <v>GetElementName</v>
                 <v>d05e379b-ff70-55d2-9dc8-09b5067036cf</v>
                 <v>GetInitializeVersion</v>
-                <v>a2d535b5-8cfb-407f-b933-4299452126f8</v>
+                <v>64b235f2-a18e-4f54-8c9d-d24e56334aac</v>
                 <v>GetLocalUsergroup</v>
-                <v>dc0dfe57-a24a-4687-9ef2-53aae5782453</v>
+                <v>9cffe5d4-1a01-4a77-9f32-a2bf647fb07d</v>
                 <v>GetName</v>
-                <v>308c85da-2cfc-4104-838e-ae1290c4eb25</v>
+                <v>7747348e-dcac-4c4b-97d2-cfaeeeba81dd</v>
                 <v>GetNamespace</v>
-                <v>79de1716-747e-4c4d-8980-b786a7ec7ca9</v>
+                <v>feb4b9c2-3a42-4e8e-a67f-b1af4ec62089</v>
                 <v>GetSize</v>
-                <v>56193f7c-f5b2-44af-99fc-47d8ee2782f5</v>
+                <v>9af705fb-840b-4332-9a53-6cff68851a02</v>
                 <v>GetSurroundingRect</v>
-                <v>c8c37bc4-bfdb-41a2-b58a-5f67c2cf40e2</v>
+                <v>1f8031ae-5477-4b82-a7bc-5d462ad9dfde</v>
                 <v>GetTabOrderIdArray</v>
                 <v>3fa5dd34-34bd-5b00-af3e-758b42c804c8</v>
                 <v>GetText</v>
-                <v>214796ed-a046-43c0-962a-7296e293455f</v>
+                <v>99d6dd27-0dc9-45c4-ac55-43463c786ac7</v>
                 <v>GetTextProperties</v>
-                <v>5e64bb53-129f-4d22-939d-067ffb1f946b</v>
+                <v>b1e9f9da-cf8c-4eaa-8a87-97b5242c5dc2</v>
                 <v>GetTooltip</v>
-                <v>9f6e59fe-430a-40bc-af67-5610d95ce85c</v>
+                <v>82f42355-f55b-425b-b6ae-dbd00ae881e7</v>
                 <v>GetTranslator</v>
-                <v>0a35e5a7-8de1-45fa-b1c6-085b8581b8ad</v>
+                <v>1076c78c-b691-446b-bed1-3fb8c56a62ce</v>
                 <v>GetUpdateRects</v>
-                <v>20141b59-8378-4447-a65d-2eaa0e835db6</v>
+                <v>c2dd6ce2-cc09-49b2-94c8-9e891ddcadb0</v>
                 <v>HandleInput</v>
-                <v>7629fe97-ca32-450d-ba2d-b683899c56aa</v>
+                <v>c7947527-97d3-4c8a-88d5-348c157538f7</v>
                 <v>HasInputAccess</v>
-                <v>111f725f-d83b-4826-a53b-2ddc0038148f</v>
+                <v>fe70adb2-a891-4c82-8da2-eb5a7345831c</v>
                 <v>HasInputAccessIntern</v>
-                <v>9e11558e-ac51-4331-ba50-a7b4ce3808a6</v>
+                <v>3caa5e26-c82f-5b5c-a5c4-3ae38b57486c</v>
                 <v>HasVisibilityAccess</v>
-                <v>b9f50655-2063-4b47-8794-6e9a9850ad77</v>
+                <v>d97b33c9-6760-463c-886e-dc702a8336d7</v>
                 <v>HasVisibilityAccessIntern</v>
-                <v>753547c8-ce07-4012-ad4b-35c236fb323d</v>
+                <v>6e7dfbda-ac72-5d2d-a553-e55d982840a2</v>
                 <v>Initialize</v>
-                <v>1fea9cb5-db07-42f7-bf8d-6897d0a18bd4</v>
+                <v>77625bdc-17e8-48f1-9742-d6036df0e5a2</v>
                 <v>IsAntialiasingInactive</v>
-                <v>652046ff-cdb6-4071-be63-b399333ba06f</v>
+                <v>003bc3e9-a71b-4279-9a90-668b2ebc63fa</v>
                 <v>Paint</v>
-                <v>41ef555d-b69d-4edf-9bda-35384c889fe7</v>
+                <v>f840a2e8-1f23-45e2-ac11-c48ded021321</v>
                 <v>SetClientData</v>
-                <v>0a9785a7-c82f-490b-a88d-657ae447355f</v>
+                <v>b3b3d04b-1a57-4966-ad9b-b8960b6cf99c</v>
                 <v>SetContainerSize</v>
                 <v>eeeb7ee6-263f-5c9f-ae6a-9d2021f7504b</v>
                 <v>SetStaticState</v>
-                <v>0faa5d9e-5aa6-49a2-b3c7-47b4b8ec62bc</v>
+                <v>2894fad5-8d3c-4beb-ab94-edb8c26a3549</v>
                 <v>SetVisuFlagsInternal</v>
-                <v>70489dca-2390-436d-a7d1-2189bf4dcf5e</v>
+                <v>b5fe4114-acb1-40ed-9548-1204217ab41f</v>
                 <v>Update</v>
-                <v>902bcf30-8c9b-4fd8-b01a-283bc1f66bad</v>
+                <v>d22c68bf-4513-4f9e-9ae8-fca2bf0cad19</v>
               </d>
               <d n="FbProperties" t="CaseInsensitiveHashtable_1" ckt="String" cvt="Guid">
                 <v>__getContainer</v>
@@ -2713,9 +2716,7 @@ stParamsUnsave.supply[nSupplyCnt]:=FALSE;"</v>
           </o>
           <v n="LastUsedIdForIdentifier">58</v>
           <o n="TextDocument" t="TextDocument">
-            <v n="TextBlobForSerialisation">"VAR_IN_OUT
-	
-END_VAR"</v>
+            <v n="TextBlobForSerialisation">""</v>
             <n n="LineInfoPersistence" />
           </o>
           <v n="GvlCreated">false</v>
@@ -2758,7 +2759,7 @@ END_VAR"</v>
         <Type n="CaseInsensitiveHashtable">{02a85e84-ef2d-46fc-93f2-acb0bbff3eda}</Type>
         <Type n="CaseInsensitiveHashtable_1">{7df88604-7ac5-4e36-91c4-55e4fdad3e68}</Type>
         <Type n="ChangeVisuInputAction">{b4c3a27b-74e5-4a67-bfa9-12f8c8cda31f}</Type>
-        <Type n="ChangeVisuInputAction[]">_3S.CoDeSys.VisualElem.ChangeVisuInputAction[], VisualElem.plugin, Version=4.6.0.0, Culture=neutral, PublicKeyToken=null</Type>
+        <Type n="ChangeVisuInputAction[]">_3S.CoDeSys.VisualElem.ChangeVisuInputAction[], VisualElem.plugin, Version=4.7.0.0, Culture=neutral, PublicKeyToken=null</Type>
         <Type n="ChangeVisuType">{a418300c-fdec-47d4-86a4-53b5a5f941fa}</Type>
         <Type n="ComplexInput">{1de566f6-72a7-494c-9353-9a418172c96e}</Type>
         <Type n="Double">System.Double</Type>
@@ -2777,7 +2778,7 @@ END_VAR"</v>
         <Type n="String">System.String</Type>
         <Type n="StructuredTypeNode">{503c5b2e-e80e-4ee7-ae00-c5b93a62b1aa}</Type>
         <Type n="STSnippetInputAction">{6302d3fe-6ea5-4c42-819a-a9734a133b3d}</Type>
-        <Type n="STSnippetInputAction[]">_3S.CoDeSys.VisualElem.STSnippetInputAction[], VisualElem.plugin, Version=4.6.0.0, Culture=neutral, PublicKeyToken=null</Type>
+        <Type n="STSnippetInputAction[]">_3S.CoDeSys.VisualElem.STSnippetInputAction[], VisualElem.plugin, Version=4.7.0.0, Culture=neutral, PublicKeyToken=null</Type>
         <Type n="TextDocument">{f3878285-8e4f-490b-bb1b-9acbb7eb04db}</Type>
         <Type n="TypeClass">{16f7aa24-038f-444e-9d81-b001bc091d35}</Type>
         <Type n="TypeNodeAttributes2">{c1464dbe-c10d-4717-be8f-63efe8638434}</Type>

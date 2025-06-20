@@ -5,7 +5,7 @@
       <Data>
         <o xml:space="preserve" t="VisualObject">
           <n n="LastVisuLanguageModelEntry" />
-          <v n="UniqueIdGenerator">"30"</v>
+          <v n="UniqueIdGenerator">"31"</v>
           <o n="VisualElemList" t="VisualElemList">
             <l n="VisualElementList" t="VisualElemCollection" cet="GenericVisualElem">
               <o>
@@ -9635,7 +9635,7 @@
                 <v n="VisualElementIdentifier">"GenElemInst_130"</v>
                 <n n="VisualElementOfflinePaintCommands" />
                 <n n="VisualElementFrameInformation" />
-                <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="IInputAction[]">
+                <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="STSnippetInputAction[]">
                   <v>OnMouseUp</v>
                   <a cet="STSnippetInputAction">
                     <o>
@@ -9652,7 +9652,7 @@
                 <l n="UserManagementAccessRights" t="ArrayList" />
                 <v n="AnimationDuration">"0"</v>
                 <v n="BringToForeground">""</v>
-                <v n="ElementVersion" t="Byte">1</v>
+                <v n="ElementVersion" t="Byte">0</v>
                 <n n="TabOrder" />
               </o>
               <o>
@@ -9824,7 +9824,7 @@
                 <v n="VisualElementIdentifier">"GenElemInst_131"</v>
                 <n n="VisualElementOfflinePaintCommands" />
                 <n n="VisualElementFrameInformation" />
-                <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="IInputAction[]">
+                <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="STSnippetInputAction[]">
                   <v>OnMouseUp</v>
                   <a cet="STSnippetInputAction">
                     <o>
@@ -9841,7 +9841,7 @@
                 <l n="UserManagementAccessRights" t="ArrayList" />
                 <v n="AnimationDuration">"0"</v>
                 <v n="BringToForeground">""</v>
-                <v n="ElementVersion" t="Byte">1</v>
+                <v n="ElementVersion" t="Byte">0</v>
                 <n n="TabOrder" />
               </o>
               <o>
@@ -10013,7 +10013,7 @@
                 <v n="VisualElementIdentifier">"GenElemInst_132"</v>
                 <n n="VisualElementOfflinePaintCommands" />
                 <n n="VisualElementFrameInformation" />
-                <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="IInputAction[]">
+                <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="STSnippetInputAction[]">
                   <v>OnMouseUp</v>
                   <a cet="STSnippetInputAction">
                     <o>
@@ -10030,7 +10030,7 @@
                 <l n="UserManagementAccessRights" t="ArrayList" />
                 <v n="AnimationDuration">"0"</v>
                 <v n="BringToForeground">""</v>
-                <v n="ElementVersion" t="Byte">1</v>
+                <v n="ElementVersion" t="Byte">0</v>
                 <n n="TabOrder" />
               </o>
               <o>
@@ -10202,7 +10202,7 @@
                 <v n="VisualElementIdentifier">"GenElemInst_133"</v>
                 <n n="VisualElementOfflinePaintCommands" />
                 <n n="VisualElementFrameInformation" />
-                <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="IInputAction[]">
+                <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="STSnippetInputAction[]">
                   <v>OnMouseUp</v>
                   <a cet="STSnippetInputAction">
                     <o>
@@ -10218,7 +10218,7 @@
                 <l n="UserManagementAccessRights" t="ArrayList" />
                 <v n="AnimationDuration">"0"</v>
                 <v n="BringToForeground">""</v>
-                <v n="ElementVersion" t="Byte">1</v>
+                <v n="ElementVersion" t="Byte">0</v>
                 <n n="TabOrder" />
               </o>
               <o>
@@ -10390,7 +10390,7 @@
                 <v n="VisualElementIdentifier">"GenElemInst_134"</v>
                 <n n="VisualElementOfflinePaintCommands" />
                 <n n="VisualElementFrameInformation" />
-                <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="IInputAction[]">
+                <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="STSnippetInputAction[]">
                   <v>OnMouseUp</v>
                   <a cet="STSnippetInputAction">
                     <o>
@@ -10407,7 +10407,7 @@
                 <l n="UserManagementAccessRights" t="ArrayList" />
                 <v n="AnimationDuration">"0"</v>
                 <v n="BringToForeground">""</v>
-                <v n="ElementVersion" t="Byte">1</v>
+                <v n="ElementVersion" t="Byte">0</v>
                 <n n="TabOrder" />
               </o>
               <o>
@@ -10579,7 +10579,7 @@
                 <v n="VisualElementIdentifier">"GenElemInst_135"</v>
                 <n n="VisualElementOfflinePaintCommands" />
                 <n n="VisualElementFrameInformation" />
-                <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="IInputAction[]">
+                <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="STSnippetInputAction[]">
                   <v>OnMouseUp</v>
                   <a cet="STSnippetInputAction">
                     <o>
@@ -10596,7 +10596,7 @@
                 <l n="UserManagementAccessRights" t="ArrayList" />
                 <v n="AnimationDuration">"0"</v>
                 <v n="BringToForeground">""</v>
-                <v n="ElementVersion" t="Byte">1</v>
+                <v n="ElementVersion" t="Byte">0</v>
                 <n n="TabOrder" />
               </o>
               <o>
@@ -10768,7 +10768,7 @@
                 <v n="VisualElementIdentifier">"GenElemInst_136"</v>
                 <n n="VisualElementOfflinePaintCommands" />
                 <n n="VisualElementFrameInformation" />
-                <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="IInputAction[]">
+                <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="STSnippetInputAction[]">
                   <v>OnMouseUp</v>
                   <a cet="STSnippetInputAction">
                     <o>
@@ -10785,7 +10785,7 @@
                 <l n="UserManagementAccessRights" t="ArrayList" />
                 <v n="AnimationDuration">"0"</v>
                 <v n="BringToForeground">""</v>
-                <v n="ElementVersion" t="Byte">1</v>
+                <v n="ElementVersion" t="Byte">0</v>
                 <n n="TabOrder" />
               </o>
             </l>
@@ -10808,73 +10808,73 @@
                 <v>AreAllElementsHidden</v>
                 <v>bc3f585a-02dd-529f-958f-fbcbed0ac2e1</v>
                 <v>ContainsPoint</v>
-                <v>711f523e-3be2-444d-afb5-bb07897dd4cf</v>
+                <v>cc6dba19-50bb-4417-8e76-2bc40aea0795</v>
                 <v>Destruct</v>
-                <v>62b28d51-5dcc-4286-abca-012cbdd78e1b</v>
+                <v>8bf809de-72fd-4360-b90a-24ca04d09e7d</v>
                 <v>ElementInfo</v>
-                <v>b964f452-c41d-440f-8275-5245d7bb7c9a</v>
+                <v>cf774af6-80fa-4de0-9c7b-3d72cdbd4150</v>
                 <v>FB_Exit</v>
-                <v>1c03ede8-869d-4ecb-b97b-34b5a17fc6a0</v>
+                <v>b261e204-bc28-413e-9279-16153dacc656</v>
                 <v>FB_Reinit</v>
-                <v>34ded633-f461-4c63-805d-f9bf6ed77cb8</v>
+                <v>b59601e5-1f06-4d6c-8bf6-54b329f19e91</v>
                 <v>GetClientData</v>
-                <v>6871dfe0-5b77-4176-9e7c-eeefd7ddb3c2</v>
+                <v>63606e97-a016-4ff3-b0d1-0d51e4b53cf9</v>
                 <v>GetElementArray</v>
-                <v>bdd551a4-0a49-4cc6-9066-f3018bfdf6a7</v>
+                <v>6e44b4df-e597-4462-b0c1-3df7153563e0</v>
                 <v>GetElementIdArray</v>
-                <v>c0110f9a-f3ec-4331-bf0b-a350d54b1ba2</v>
+                <v>20ab07f6-8278-4b9f-8628-f63e095b3de8</v>
                 <v>GetElementName</v>
                 <v>9148443c-429a-5ce6-80a2-bd8e3aff95af</v>
                 <v>GetInitializeVersion</v>
-                <v>a362d843-3990-4985-b168-2e1fd6191e22</v>
+                <v>52204add-e097-4c86-bb3e-765f9d22c938</v>
                 <v>GetLocalUsergroup</v>
-                <v>4c683083-07b4-45e0-a370-a4b7caba4ce3</v>
+                <v>88e02550-0a78-4ba4-8d1a-303c7825c764</v>
                 <v>GetName</v>
-                <v>eac962f6-1e11-4364-9bfe-ed0444fb85b4</v>
+                <v>2d7ab3d9-2f2c-465d-9209-b114d6af1f73</v>
                 <v>GetNamespace</v>
-                <v>1d263fef-145e-41e6-98ea-7748ecdeb9d5</v>
+                <v>5e119504-7c52-45f9-b653-6f73e3319b92</v>
                 <v>GetSize</v>
-                <v>9ff3121a-8b1c-4264-b881-4a10c3ca766f</v>
+                <v>46303426-cba9-4b8f-a675-f948e9388980</v>
                 <v>GetSurroundingRect</v>
-                <v>1e61bc22-d391-4c4a-b20e-7d8dcd9050ab</v>
+                <v>a0875dba-2e90-4d6d-a580-bbf37c00cff9</v>
                 <v>GetTabOrderIdArray</v>
                 <v>ab0f57cf-3799-50da-8422-7e8928d035a9</v>
                 <v>GetText</v>
-                <v>91b74b23-7ae5-488f-96dc-927a80d2e82b</v>
+                <v>4baa2a03-48e9-4da7-8cf0-679f08527969</v>
                 <v>GetTextProperties</v>
-                <v>83b02f07-3c6b-484f-abb8-d6f54cd3741b</v>
+                <v>a97f49f5-ab07-47b2-9d7b-208f4930b382</v>
                 <v>GetTooltip</v>
-                <v>25b4b1fa-d897-4cd2-8a63-9c98e7f25922</v>
+                <v>6dcc4c00-df27-4a9f-aeca-b7c8ca782aca</v>
                 <v>GetTranslator</v>
-                <v>50f587bf-fe37-4a9f-ba38-74306bb563f5</v>
+                <v>df87841b-be2b-483c-84a8-5409abf2d4bf</v>
                 <v>GetUpdateRects</v>
-                <v>46cda1f5-1e6c-4f52-bde8-626f1a5688dd</v>
+                <v>433b0580-c4fe-48f4-9917-10d486510cdd</v>
                 <v>HandleInput</v>
-                <v>30d041db-bd60-499e-8eb0-f73e23ae0ef9</v>
+                <v>d28bd988-c948-4764-a461-039736b86df2</v>
                 <v>HasInputAccess</v>
-                <v>2d3a9635-5b14-4f81-95a6-0827a8bc81d4</v>
+                <v>041f6396-c0b5-46e6-b3f7-ba2fdde74f12</v>
                 <v>HasInputAccessIntern</v>
-                <v>d3131cf3-bd21-4308-929b-02fd8572845c</v>
+                <v>47971314-1aeb-56fc-8916-3054f97eebfb</v>
                 <v>HasVisibilityAccess</v>
-                <v>1fc182e5-c3bb-4f31-9bb9-01d9634dd4bd</v>
+                <v>c0745cb9-9992-403f-a717-3b9a4f3721c8</v>
                 <v>HasVisibilityAccessIntern</v>
-                <v>c3180c8c-31f7-41d8-8b35-193492585e51</v>
+                <v>0c6e2df0-7c5f-5f81-b680-c5668bb111e3</v>
                 <v>Initialize</v>
-                <v>8157d986-50a3-482f-abe2-77f8217556d7</v>
+                <v>7162d06d-ddb2-46df-91a1-63655fdbf3b3</v>
                 <v>IsAntialiasingInactive</v>
-                <v>fc626750-5d30-4ad2-a9f3-4e6103c75a04</v>
+                <v>e302b1fe-ad92-4e6d-be88-c61bf870f78e</v>
                 <v>Paint</v>
-                <v>ff958a4e-2297-492e-9d98-c6603937fb2c</v>
+                <v>b721247a-81e2-4a10-8084-fcdb6a882450</v>
                 <v>SetClientData</v>
-                <v>fea2c7cc-4e3a-4da3-9f93-23f33a799a18</v>
+                <v>78cde71f-264b-4129-a287-487ed8d81cd6</v>
                 <v>SetContainerSize</v>
                 <v>5eb32912-ad86-5171-892e-9e71c01e7637</v>
                 <v>SetStaticState</v>
-                <v>52254cbb-e3c4-4e19-b725-0ff004b958dc</v>
+                <v>c20f663f-c719-46f0-aa59-8d8644438813</v>
                 <v>SetVisuFlagsInternal</v>
-                <v>e83138a1-f7e1-44be-8322-1727450abd39</v>
+                <v>cf5ad9d6-6002-45b6-82f4-4d43deb27803</v>
                 <v>Update</v>
-                <v>5cacc7e2-f9cd-4e0c-963b-2a869e053252</v>
+                <v>605f1bd4-430a-419b-86b6-a2593e1d11e4</v>
               </d>
               <d n="FbProperties" t="CaseInsensitiveHashtable_1" ckt="String" cvt="Guid">
                 <v>__getContainer</v>
@@ -10946,9 +10946,7 @@
           </o>
           <v n="LastUsedIdForIdentifier">136</v>
           <o n="TextDocument" t="TextDocument">
-            <v n="TextBlobForSerialisation">"VAR_IN_OUT
-	
-END_VAR"</v>
+            <v n="TextBlobForSerialisation">""</v>
             <n n="LineInfoPersistence" />
           </o>
           <v n="GvlCreated">false</v>
@@ -11009,7 +11007,6 @@ END_VAR"</v>
         <Type n="Guid">System.Guid</Type>
         <Type n="Hashtable">System.Collections.Hashtable</Type>
         <Type n="HotkeyConfiguration">{6b108d46-58af-4e41-a3f4-174d8f160cc4}</Type>
-        <Type n="IInputAction[]">_3S.CoDeSys.VisualElem.IInputAction[], VisualElem, Version=4.7.0.0, Culture=neutral, PublicKeyToken=null</Type>
         <Type n="Int16">System.Int16</Type>
         <Type n="Int32">System.Int32</Type>
         <Type n="Int64">System.Int64</Type>
@@ -11018,6 +11015,7 @@ END_VAR"</v>
         <Type n="String">System.String</Type>
         <Type n="StructuredTypeNode">{503c5b2e-e80e-4ee7-ae00-c5b93a62b1aa}</Type>
         <Type n="STSnippetInputAction">{6302d3fe-6ea5-4c42-819a-a9734a133b3d}</Type>
+        <Type n="STSnippetInputAction[]">_3S.CoDeSys.VisualElem.STSnippetInputAction[], VisualElem.plugin, Version=4.7.0.0, Culture=neutral, PublicKeyToken=null</Type>
         <Type n="TextDocument">{f3878285-8e4f-490b-bb1b-9acbb7eb04db}</Type>
         <Type n="TypeClass">{16f7aa24-038f-444e-9d81-b001bc091d35}</Type>
         <Type n="TypeNodeAttributes2">{c1464dbe-c10d-4717-be8f-63efe8638434}</Type>

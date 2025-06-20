@@ -25,6 +25,7 @@ VAR
 	fbGetCurTaskIdx 									: GETCURTASKINDEX;
 	bFirstCycle											: BOOL;
 	fCycleTime											: LREAL := 0.025;
+	StSetPointGeneraor									: ST_Setpoint_Generator;
 //	Scope
 	fInToScope											: LREAL;
 	fOutToScope											: LREAL;
@@ -137,7 +138,7 @@ IF bInit OR bUpdate THEN
 	(* Init parameter struct *)
 	stCTRL_SETPOINT_GENERATOR_PARAMS.tTaskCycleTime				:= UDINT_TO_TIME(_TaskInfo[GETCURTASKINDEXEX()].cycleTime/10000);
 	stCTRL_SETPOINT_GENERATOR_PARAMS.tCtrlCycleTime				:= UDINT_TO_TIME(_TaskInfo[GETCURTASKINDEXEX()].cycleTime/10000);
-	stCTRL_SETPOINT_GENERATOR_PARAMS.bDisableRamping			:= FALSE; (*A continuous output value is not calculated if this parameter is TRUE. There is a step change between the output values*)
+	stCTRL_SETPOINT_GENERATOR_PARAMS.bDisableRamping			:= FALSE; 
 	stCTRL_SETPOINT_GENERATOR_PARAMS.fVeloNeg					:= 10; (* In units per second *)
 	stCTRL_SETPOINT_GENERATOR_PARAMS.fVeloPos					:= 8;  (* In units per second *)
 	stCTRL_SETPOINT_GENERATOR_PARAMS.nDataTable_NumberOfRows	:= nNoOfRows;

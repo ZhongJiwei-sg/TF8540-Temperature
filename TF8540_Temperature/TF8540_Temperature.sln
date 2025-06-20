@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# TcXaeShell Solution File, Format Version 11.00
+# Visual Studio 15
 VisualStudioVersion = 15.0.33403.129
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{B1E792BE-AA5F-4E3C-8C82-674BF9C0715B}") = "TF8540_Temperature", "TF8540_Temperature\TF8540_Temperature.tsproj", "{BFC93410-2DF6-429E-BAB6-C8D9A19DCB44}"

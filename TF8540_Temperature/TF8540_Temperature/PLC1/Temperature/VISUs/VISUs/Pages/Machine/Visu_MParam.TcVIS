@@ -5,7 +5,7 @@
       <Data>
         <o xml:space="preserve" t="VisualObject">
           <n n="LastVisuLanguageModelEntry" />
-          <v n="UniqueIdGenerator">"9"</v>
+          <v n="UniqueIdGenerator">"10"</v>
           <o n="VisualElemList" t="VisualElemList">
             <l n="VisualElementList" t="VisualElemCollection" cet="GenericVisualElem">
               <o>
@@ -4537,73 +4537,73 @@ stParamsUnsave.mParams[nVisuCount]:=FALSE;"</v>
                 <v>AreAllElementsHidden</v>
                 <v>9df09692-747d-5a50-8841-4804eba53f29</v>
                 <v>ContainsPoint</v>
-                <v>17cf12e1-62d6-40f3-a6f3-3418a466ab4c</v>
+                <v>d99f8f06-8b86-45cb-ad45-f7e63afc5867</v>
                 <v>Destruct</v>
-                <v>1a5ae5a1-ddcc-4feb-a18a-8a8e7d751440</v>
+                <v>c34fa00c-8c9f-4e59-9ba8-b4c02a464d54</v>
                 <v>ElementInfo</v>
-                <v>59ea39df-9e8b-4650-9558-c72e692a9320</v>
+                <v>416cbe92-52bc-4104-8e18-02780150d25b</v>
                 <v>FB_Exit</v>
-                <v>b814719b-7439-4813-94b0-eb0d8fa7330c</v>
+                <v>e1d711bb-f8d7-4ebb-ba1d-727aaefad57b</v>
                 <v>FB_Reinit</v>
-                <v>c6233ec1-8ef2-44d5-b132-d6156e646122</v>
+                <v>5d1b9678-9ef9-4c2e-a5e6-1d9879c6b07f</v>
                 <v>GetClientData</v>
-                <v>b73f509f-a0e9-419a-bd97-a76c66f0cd03</v>
+                <v>6fb3c602-04fe-4d4f-9113-8d62b7f57892</v>
                 <v>GetElementArray</v>
-                <v>50a4b2b7-21ba-4ec9-98f9-ab467b7376c9</v>
+                <v>39b25cca-57d0-4855-8886-112c470bc1ff</v>
                 <v>GetElementIdArray</v>
-                <v>c879b0b2-a248-456c-9833-5c0ff23e2f1d</v>
+                <v>2f1c049f-d786-4560-9c86-1d6063a0988b</v>
                 <v>GetElementName</v>
                 <v>f2f0fa7c-35be-56e4-9614-3e3b27953427</v>
                 <v>GetInitializeVersion</v>
-                <v>6ec60c3d-9512-49f1-bcea-0f6ae3e9d4c1</v>
+                <v>8832e629-175f-43fa-b45a-944ccdc6e86f</v>
                 <v>GetLocalUsergroup</v>
-                <v>ab00c75d-7eae-4a25-a150-e32e4e391264</v>
+                <v>84297510-d447-47af-bf77-357bec6711d1</v>
                 <v>GetName</v>
-                <v>433ef612-5832-418e-a4f4-68c85a03a3de</v>
+                <v>df740c0a-9673-4d2a-830e-ea49cd93bd75</v>
                 <v>GetNamespace</v>
-                <v>98c8ebec-4899-4f60-a8b8-f2e5c38f716e</v>
+                <v>3ee33767-6de2-46c1-b19a-f7f228bf2945</v>
                 <v>GetSize</v>
-                <v>c7b35998-bf4f-414c-8c3f-bb94172cbbba</v>
+                <v>404b7b88-1865-4e95-8ab9-aac0fb8524f9</v>
                 <v>GetSurroundingRect</v>
-                <v>a5843346-9706-4850-a16e-4756710ca40d</v>
+                <v>b6b33d70-8b28-4724-851b-7f0b230124c4</v>
                 <v>GetTabOrderIdArray</v>
                 <v>2c20480d-d4c4-56cf-966b-fec3018aea4e</v>
                 <v>GetText</v>
-                <v>4ff70dd6-9069-4993-bc66-201de5b7974d</v>
+                <v>582ba326-8da6-4214-8ab1-1b77e3d7aa4a</v>
                 <v>GetTextProperties</v>
-                <v>dcfc2e7e-8da9-4873-8e62-0dead6f2e89c</v>
+                <v>2b6cf636-13a1-4038-9ce0-6c7c0523b71f</v>
                 <v>GetTooltip</v>
-                <v>01f5d5a2-5a2c-4657-95f0-82b2d11a2933</v>
+                <v>07592f58-db7c-4376-bf57-1477cc951f6f</v>
                 <v>GetTranslator</v>
-                <v>cfc836a1-2ccb-47e1-b58d-c307b4340406</v>
+                <v>af31af61-0226-48f9-894c-434858ee0bce</v>
                 <v>GetUpdateRects</v>
-                <v>d459151c-f5fb-4e43-9eb2-05f6e99e733c</v>
+                <v>d9803808-0d8c-40b8-84d9-162a42594de8</v>
                 <v>HandleInput</v>
-                <v>30c53a25-dfc9-47e5-8f83-60174438bdc7</v>
+                <v>15ce8132-55f3-4fcf-9117-44923b31e8b7</v>
                 <v>HasInputAccess</v>
-                <v>706edc55-36fd-431e-bafb-a3345ebdd1ed</v>
+                <v>5c928762-c6ff-441e-a411-09129baae4d8</v>
                 <v>HasInputAccessIntern</v>
-                <v>0a3687fd-598f-42d7-8722-bffec610167a</v>
+                <v>ab520b12-c341-57de-9d2b-0a20fbb479a3</v>
                 <v>HasVisibilityAccess</v>
-                <v>56b6d823-8db1-414e-b182-8837d6e35111</v>
+                <v>420cb63b-5699-4d6e-9c8e-21c1535a1634</v>
                 <v>HasVisibilityAccessIntern</v>
-                <v>cc506da1-4ab6-48a1-8ee6-546d6f9323b3</v>
+                <v>d584d410-e10f-56b6-ae95-f7e64c88c5e8</v>
                 <v>Initialize</v>
-                <v>0ff202e2-d3aa-4a09-80a5-68d49fac890f</v>
+                <v>71219ed8-7d3c-455f-94df-577417f9f1cd</v>
                 <v>IsAntialiasingInactive</v>
-                <v>2c9b75c1-f530-4c04-84a4-a44b73692612</v>
+                <v>f2b15a7d-e7b0-42e1-b991-d6ad81ab6506</v>
                 <v>Paint</v>
-                <v>fd41589e-aa4b-4c72-8401-6aa6a22b09cf</v>
+                <v>423d840d-7277-4105-a5b3-1f8d5d0c8480</v>
                 <v>SetClientData</v>
-                <v>aac7ae54-d081-4e4f-af46-766fd6621c03</v>
+                <v>37fb838e-b1e5-4c49-9202-d6392822d153</v>
                 <v>SetContainerSize</v>
                 <v>1f92549f-c078-5eb7-9bce-c5e217f3df50</v>
                 <v>SetStaticState</v>
-                <v>43f13f28-6eb7-4dc7-9e76-792322461aa1</v>
+                <v>578a2c70-0c64-415d-a3c9-9ed0453166e4</v>
                 <v>SetVisuFlagsInternal</v>
-                <v>ce84922c-cf24-4b2c-8b64-a20d08ebd726</v>
+                <v>662da8e1-d901-4e84-a7c1-dc9c4acfa744</v>
                 <v>Update</v>
-                <v>279aeae2-9e7f-46dc-93d1-34071a66c19a</v>
+                <v>6fc1d449-6aad-47e9-8056-25d5eca09322</v>
               </d>
               <d n="FbProperties" t="CaseInsensitiveHashtable_1" ckt="String" cvt="Guid">
                 <v>__getContainer</v>
@@ -4675,9 +4675,7 @@ stParamsUnsave.mParams[nVisuCount]:=FALSE;"</v>
           </o>
           <v n="LastUsedIdForIdentifier">147</v>
           <o n="TextDocument" t="TextDocument">
-            <v n="TextBlobForSerialisation">"VAR_IN_OUT
-	
-END_VAR"</v>
+            <v n="TextBlobForSerialisation">""</v>
             <n n="LineInfoPersistence" />
           </o>
           <v n="GvlCreated">false</v>
