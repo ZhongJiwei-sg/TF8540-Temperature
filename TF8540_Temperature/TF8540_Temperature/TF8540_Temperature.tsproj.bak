@@ -134,7 +134,7 @@
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{F9BD6FAD-461A-5894-800A-02EB316C2FBE}" IecBaseType="true" AutoDeleteType="true">ARRAY [1..1] OF Tc2_PfwLib_Processing.ST_TcPfw_TempCtrlInput</Name>
+			<Name GUID="{3F6DE44C-34A1-FE7C-6C15-00033FA82C98}" IecBaseType="true" AutoDeleteType="true">ARRAY [1..6] OF Tc2_PfwLib_Processing.ST_TcPfw_TempCtrlInput</Name>
 			<Comment><![CDATA[ $-$ eMold remove to here 
 
 		I/O resources for temp ctrl
@@ -144,11 +144,11 @@ change log
  22.05.2015 | TempLib| VAR_GLOBAL deactivate .lib mapping
 
  $-$ General remove from here ]]></Comment>
-			<BitSize>224</BitSize>
+			<BitSize>1344</BitSize>
 			<BaseType GUID="{671AA0FB-DD81-CAD2-F0D8-60AD027997D5}" Namespace="Tc2_PfwLib_Processing">ST_TcPfw_TempCtrlInput</BaseType>
 			<ArrayInfo>
 				<LBound>1</LBound>
-				<Elements>1</Elements>
+				<Elements>6</Elements>
 			</ArrayInfo>
 		</DataType>
 		<DataType>
@@ -249,12 +249,12 @@ change log
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{004900AF-2EDF-5F61-481A-534DC8DDBB69}" IecBaseType="true" AutoDeleteType="true">ARRAY [1..1] OF Tc2_PfwLib_Processing.ST_TcPfw_TempCtrlOutput</Name>
-			<BitSize>128</BitSize>
+			<Name GUID="{6DCFC95A-44F6-F1A6-2978-6E188D818E4B}" IecBaseType="true" AutoDeleteType="true">ARRAY [1..6] OF Tc2_PfwLib_Processing.ST_TcPfw_TempCtrlOutput</Name>
+			<BitSize>768</BitSize>
 			<BaseType GUID="{3E6715BF-5A90-180E-9521-C3B21869AEDF}" Namespace="Tc2_PfwLib_Processing">ST_TcPfw_TempCtrlOutput</BaseType>
 			<ArrayInfo>
 				<LBound>1</LBound>
-				<Elements>1</Elements>
+				<Elements>6</Elements>
 			</ArrayInfo>
 		</DataType>
 		<DataType>
@@ -289,14 +289,14 @@ change log
 		</System>
 		<Plc>
 			<Project GUID="{E3EF9621-99B9-40CC-AA5A-65A1FEE60A10}" Name="PLC1" PrjFilePath="PLC1\PLC1.plcproj" TmcFilePath="PLC1\PLC1.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{A5BD31C0-0AD3-E828-C469-C127D63507A3}" TmcPath="PLC1\PLC1.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{3505CEAD-F0C5-87E2-415F-952FAEA65EC6}" TmcPath="PLC1\PLC1.tmc">
 					<Name>PLC1 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" ContextId="2" AreaNo="33">
 						<Name>Temperature_Task Outputs</Name>
 						<Var>
 							<Name>.out_PfwTempCtrlOutput</Name>
-							<Type GUID="{004900AF-2EDF-5F61-481A-534DC8DDBB69}">ARRAY [1..1] OF Tc2_PfwLib_Processing.ST_TcPfw_TempCtrlOutput</Type>
+							<Type GUID="{6DCFC95A-44F6-F1A6-2978-6E188D818E4B}">ARRAY [1..6] OF Tc2_PfwLib_Processing.ST_TcPfw_TempCtrlOutput</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="1" ContextId="2" AreaNo="32">
@@ -312,7 +312,7 @@ change log
  22.05.2015 | TempLib| VAR_GLOBAL deactivate .lib mapping
 
  $-$ General remove from here ]]></Comment>
-							<Type GUID="{F9BD6FAD-461A-5894-800A-02EB316C2FBE}">ARRAY [1..1] OF Tc2_PfwLib_Processing.ST_TcPfw_TempCtrlInput</Type>
+							<Type GUID="{3F6DE44C-34A1-FE7C-6C15-00033FA82C98}">ARRAY [1..6] OF Tc2_PfwLib_Processing.ST_TcPfw_TempCtrlInput</Type>
 						</Var>
 					</Vars>
 					<Contexts>

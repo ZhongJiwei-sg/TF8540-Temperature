@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <TcLicenseInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2011/11/TcLicenseInfo">
 	<LicenseInfo>
-		<SystemId>{AA06D511-7994-7AF9-61DE-577C742DCC1C}</SystemId>
-		<IssueTime>2025-05-09T06:23:00</IssueTime>
-		<ExpireTime>2025-05-17T00:00:00</ExpireTime>
-		<LicenseKey>88daa35092030dcc556c9d283be55f4efc7e4eed2fa765b16b894dc7ad28aaf198eb022ee29f008d229874e30d8754f4b3b8d77ab954e8525055632d574e0caf671d6adef4ab8483f3d77f5639914ca34333fa1c4702613470312159d26d2d559720d4143db4f85f617444e67603dda407c52f6691f990b682f0e4df04a741c62f203a73320fd65b0da5cc95f7fb6288813f2ebc7f6d323478f002fa0f312f765e08e5397a0ce5483978b21570b568c19535a6db79b3bc7d2e4aa1af6cac61c39a7bfbe0bc14da46aa0dd507c90e94203500f2ab01470d1665ac8b449598c27c49bd2b2108e48c686e4c8f10ac6f4d00b2fdf824a93d1958e1580aaa46eba516</LicenseKey>
+		<SystemId>{1D739096-320D-962E-5408-B3A69FAF7A56}</SystemId>
+		<IssueTime>2025-06-23T08:35:00</IssueTime>
+		<ExpireTime>2025-07-01T00:00:00</ExpireTime>
+		<LicenseKey>23f17b98a5dd1685f133ccf96232bc3832b123b457fc784f915b30596a3e0bef487c8a9ddef9d6d463df15acabe1d3d90a51abc2eb3054c5b391b11181e375760c51d812e9af0d505b0db05fc57281f704d618771f743b4fcf481126bf93ba111e73fe2ce22c79518217862dc898ed8c790b218e04b264f0ad802198b95e8520442cdbb6ad98d55cc709da520e2be33e1bfe0b4b8a858dde749114cea002ba61a4349020d6f56b2f7bfb2cb3206ca6cf0df2bdc4aaa695716f897b20a037d93e8301fd06e24a630f210d0f6dba6903402a5dd0b2029cafc1ccb8f66d2daf69ed310604e6570f19fc4d3445b95fb7684728e87e0c685d0a7954d6c19c369e0a6c</LicenseKey>
 		<License>
 			<LicenseId>{28FFAB70-2B9C-472A-AA02-7F730A9C83B9}</LicenseId>
 			<Name>Plastic Processing TwinCAT Framework</Name>
@@ -16,19 +16,59 @@
 			<OrderNo>TF4100</OrderNo>
 		</License>
 		<License>
+			<LicenseId>{2C358067-6E81-4F6A-B8D9-AC1F63FEB6FD}</LicenseId>
+			<Name>TC3 Vision Base</Name>
+			<OrderNo>TF7100</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{7A0CF84A-530D-4F8B-8C98-33A57151C348}</LicenseId>
+			<Name>TC3 Hydraulic Positioning</Name>
+			<OrderNo>TF5810</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{C0BF0BC1-CBED-4D55-86DC-0706BF289DCE}</LicenseId>
+			<Name>TC3 Kinematic Transformation L1</Name>
+			<OrderNo>TF5110</OrderNo>
+		</License>
+		<License>
 			<LicenseId>{4C256767-E6E6-4AF5-BD68-9F7ABAD0C200}</LicenseId>
 			<Name>TC3 ADS</Name>
 			<OrderNo>TC1000</OrderNo>
 		</License>
 		<License>
-			<LicenseId>{3FF18E97-7754-401B-93FB-70544DE28A13}</LicenseId>
-			<Name>TC3 IO</Name>
-			<OrderNo>TC1100</OrderNo>
+			<LicenseId>{A19036CF-A53B-4E3A-99FF-023EF5C4798B}</LicenseId>
+			<Name>TC3 NC PTP Axis</Name>
+			<Instances>10</Instances>
 		</License>
 		<License>
 			<LicenseId>{66689887-CCBD-452C-AC9A-039D997C6E66}</LicenseId>
 			<Name>TC3 PLC</Name>
 			<OrderNo>TC1200</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{A15FA260-08A3-4DCD-93E9-5F22F7D234ED}</LicenseId>
+			<Name>TC3 Motion Pick-and-Place</Name>
+			<OrderNo>TF5420</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{C13CAEC7-1F41-4491-935E-FF6254005C74}</LicenseId>
+			<Name>TC3 Physics Base</Name>
+			<OrderNo>TF5440</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{520DE751-9DB6-47CB-8240-BD5C466E7E64}</LicenseId>
+			<Name>TC3 NC PTP</Name>
+			<OrderNo>TF5000</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{DEA72F0A-9EA0-48F4-ABB5-766516202B8E}</LicenseId>
+			<Name>TC3 NC I</Name>
+			<OrderNo>TF5100</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{3FF18E97-7754-401B-93FB-70544DE28A13}</LicenseId>
+			<Name>TC3 IO</Name>
+			<OrderNo>TC1100</OrderNo>
 		</License>
 	</LicenseInfo>
 </TcLicenseInfo>
