@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.17">
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.19">
 	<DataTypes>
 		<DataType>
 			<Name GUID="{E8E8A895-B9B2-AE05-D243-53BC55782F0C}" Namespace="Tc2_PfwLib_Processing" AutoDeleteType="true">ST_TcPfw_AdsAddr</Name>
@@ -134,7 +134,7 @@
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name IecBaseType="true">ARRAY [1..16] OF Tc2_PfwLib_Processing.ST_TcPfw_TempCtrlInput</Name>
+			<Name GUID="{04F860E0-3E04-C5FD-E082-211F814D7A5E}" IecBaseType="true" AutoDeleteType="true">ARRAY [1..16] OF Tc2_PfwLib_Processing.ST_TcPfw_TempCtrlInput</Name>
 			<Comment><![CDATA[ $-$ eMold remove to here 
 
 		I/O resources for temp ctrl
@@ -249,7 +249,7 @@ change log
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name IecBaseType="true">ARRAY [1..16] OF Tc2_PfwLib_Processing.ST_TcPfw_TempCtrlOutput</Name>
+			<Name GUID="{BD1BB2EA-00B5-7A6A-5538-E8BAFA95408C}" IecBaseType="true" AutoDeleteType="true">ARRAY [1..16] OF Tc2_PfwLib_Processing.ST_TcPfw_TempCtrlOutput</Name>
 			<BitSize>2048</BitSize>
 			<BaseType GUID="{3E6715BF-5A90-180E-9521-C3B21869AEDF}" Namespace="Tc2_PfwLib_Processing">ST_TcPfw_TempCtrlOutput</BaseType>
 			<ArrayInfo>
@@ -289,7 +289,7 @@ change log
 		</System>
 		<Plc>
 			<Project GUID="{E3EF9621-99B9-40CC-AA5A-65A1FEE60A10}" Name="PLC1" PrjFilePath="PLC1\PLC1.plcproj" TmcFilePath="PLC1\PLC1.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{E165E4E8-9C83-5A30-AFC1-1B894F6307BE}" TmcPath="PLC1\PLC1.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{E7C52EFD-75D3-52A9-CE05-6C0DDD5F00D7}" TmcPath="PLC1\PLC1.tmc">
 					<Name>PLC1 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" ContextId="2" AreaNo="33">
@@ -303,15 +303,6 @@ change log
 						<Name>Temperature_Task Inputs</Name>
 						<Var>
 							<Name>.in_PfwTempCtrlInput</Name>
-							<Comment><![CDATA[ $-$ eMold remove to here 
-
-		I/O resources for temp ctrl
-	
-
-change log
- 22.05.2015 | TempLib| VAR_GLOBAL deactivate .lib mapping
-
- $-$ General remove from here ]]></Comment>
 							<Type GUID="{04F860E0-3E04-C5FD-E082-211F814D7A5E}">ARRAY [1..16] OF Tc2_PfwLib_Processing.ST_TcPfw_TempCtrlInput</Type>
 						</Var>
 					</Vars>
